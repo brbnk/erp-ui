@@ -36,8 +36,25 @@
       transform: translate(44px, 5px);
       text-decoration: none;
       color: $primary;
-      font-style: italic;
       font-size: 12px;
+    }
+
+    .username {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 150px;
+        height: 140px;
+        border-radius: 100%;
+      }
+
+      a {
+        margin-top: -15px;
+        transform: none;
+      }
     }
   }
 }

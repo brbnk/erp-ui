@@ -1,34 +1,52 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { page, line, vertical, horizontal, container } from './login.module.scss'
-import TextInput from 'components/inputs/text/text.jsx'
-import SendInput from '@material-ui/icons/Send'
+import styles from './login.module.scss'
+import TextInput from 'components/inputs/text/text.component.jsx'
+import SendIcon from '@material-ui/icons/Send'
 
-const Form = ({ placeholder, forget, action }) => {
+const Form = ({ placeholder, forgetLabel, action }) => {
+  const [ input, setInput ] = useState('')
+
   return (
     <>
-      <TextInput placeholder={ placeholder }>
-        <SendInput onClick={action} />
+      <TextInput placeholder={ placeholder } handleInput={ setInput }>
+        <SendIcon onClick={action} />
       </TextInput>
-      <a href=""> { forget } </a>
+      <a href=""> { forgetLabel } </a>
     </>
   )
 }
 
+const User = ({ user, height }) => {
+  const { username } = styles
+  const { name, photo, display } = user
+
+  return (
+    <div className={username} style={{display: display, height: `${height}px`}}>
+      <img src={photo}/>
+      <h2> {name} </h2>
+      <a href=""> Trocar usuário </a>
+    </div>
+  )
+}
+
 function LoginPage() {
+  const join = (arr) => arr.join(' ')
+  const { page, line, vertical, horizontal, container } = styles
+
   const [form, setForm] = useState({
     placeholder: 'Enter username',
-    forget: 'Esqueceu seu Username?'
+    forgetLabel: 'Esqueceu seu Username?'
   })
 
   const [user, setUser] = useState({
     found: false,
-    name: ''
+    name: '',
+    photo: '',
+    display: 'none'
   })
 
   const [height, setHeight] = useState(0)
-
-  const join = (arr) => arr.join(' ')
 
   const submitUsername = () => {
     if (true) {
@@ -39,11 +57,12 @@ function LoginPage() {
 
       setUser({
         found: true,
-        display: true,
-        name: 'Bruno Nakayabu'
+        name: 'Bruno Nakayabu',
+        photo: 'https://www.kindpng.com/picc/m/136-1369892_avatar-people-person-business-user-man-character-avatar.png',
+        display: 'flex'
       })
 
-      setHeight(300)
+      setHeight(250)
     }
   }
 
@@ -54,12 +73,13 @@ function LoginPage() {
 
       <div className={container}>
         <h1> SIMPLE ERP SYSTEM </h1>
-        <div style={{ display: user.found ? 'block' : 'none', height: `${height}px` }}>
-          <h1> {user.name} </h1>
-        </div>
+        <User
+          height={height}
+          user={user}
+        />
         <Form
           placeholder={ form.placeholder }
-          forget={ form.forget }
+          forgetLabel={ form.forgetLabel }
           action={ submitUsername }
         />
       </div>
