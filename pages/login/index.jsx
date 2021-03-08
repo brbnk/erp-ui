@@ -1,28 +1,48 @@
-import { page, line, vertical, horizontal, container } from './login.module.scss'
-import Input from 'components/inputs/text/text.jsx'
 import { useState } from 'react'
+
+import { page, line, vertical, horizontal, container } from './login.module.scss'
+import TextInput from 'components/inputs/text/text.jsx'
+import SendInput from '@material-ui/icons/Send'
 
 const Form = ({ placeholder, forget, action }) => {
   return (
     <>
-      <Input placeholder={ placeholder } action={ action } />
+      <TextInput placeholder={ placeholder }>
+        <SendInput onClick={action} />
+      </TextInput>
       <a href=""> { forget } </a>
     </>
   )
 }
 
 function LoginPage() {
-  const [placeholder, setPlaceholder] = useState('Enter username')
-  const [forget, setForget] = useState('Esqueceu seu Username?')
-  const [userFound, setUserFound] = useState(true)
+  const [form, setForm] = useState({
+    placeholder: 'Enter username',
+    forget: 'Esqueceu seu Username?'
+  })
+
+  const [user, setUser] = useState({
+    found: false,
+    name: ''
+  })
+
   const [height, setHeight] = useState(0)
 
   const join = (arr) => arr.join(' ')
 
   const submitUsername = () => {
-    if (userFound) {
-      setPlaceholder('Enter password')
-      setForget('Esqueceu sua Senha?')
+    if (true) {
+      setForm({
+        placeholder: 'Enter password',
+        forget: 'Esqueceu sua Senha?'
+      })
+
+      setUser({
+        found: true,
+        display: true,
+        name: 'Bruno Nakayabu'
+      })
+
       setHeight(300)
     }
   }
@@ -34,10 +54,12 @@ function LoginPage() {
 
       <div className={container}>
         <h1> SIMPLE ERP SYSTEM </h1>
-        <div style={{ height: `${height}px` }}> </div>
+        <div style={{ display: user.found ? 'block' : 'none', height: `${height}px` }}>
+          <h1> {user.name} </h1>
+        </div>
         <Form
-          placeholder={ placeholder }
-          forget={ forget }
+          placeholder={ form.placeholder }
+          forget={ form.forget }
           action={ submitUsername }
         />
       </div>

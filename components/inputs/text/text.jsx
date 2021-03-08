@@ -1,10 +1,9 @@
 import { input_text } from './text.module.scss'
-import SendInput from '@material-ui/icons/Send'
 
-const Input = ({ placeholder, action }) => {
+const Input = ({ children, placeholder }) => {
   return (
     <div className={input_text}>
-      <SendInput onClick={action} />
+      { children }
       <input type="text" placeholder={placeholder} />
     </div>
   )
