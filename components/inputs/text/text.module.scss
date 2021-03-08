@@ -1,0 +1,22 @@
+@import "colors";
+
+.input_text {
+  position: relative;
+  text-align: center;
+
+  input {
+    font-style: italic;
+    padding: 5px 13px;
+    width: 332px;
+    height: 50px;
+    font-size: 20px;
+    padding-right: 42px;
+  }
+
+  svg {
+    position: absolute;
+    right: 0;
+    transform: translate(-55px, 13px);
+    color: $primary;
+  }
+}

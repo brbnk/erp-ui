@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   ui:
-    restart: on-failure
+    restart: "no"
     build:
       context: .
       dockerfile: Dockerfile
