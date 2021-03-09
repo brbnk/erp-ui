@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
+import { useRouter } from 'next/router'
 
 import styles from './login.module.scss'
 import TextInput from 'components/inputs/text/text.component.jsx'
@@ -39,6 +40,7 @@ const User = ({ user, changeUser, visibility }) => {
 
 // Page
 function LoginPage() {
+  const router = useRouter()
   const join = (arr) => arr.join(' ')
   const { page, line, vertical, horizontal, container } = styles
 
@@ -61,11 +63,15 @@ function LoginPage() {
     setInput('')
     setForm(usernameStateForm)
     setVisibility(false)
+    setTimeout(() => {
+      setUser({})
+    }, 300)
   }
 
   const submit = async () => {
-    if (user) {
+    if (Object.keys(user).length !== 0) {
       // Requet password
+      router.push('/dashboard')
     }
 
     // Request username
@@ -79,6 +85,7 @@ function LoginPage() {
       })
 
       setVisibility(true)
+      setInput('')
     }
   }
 
