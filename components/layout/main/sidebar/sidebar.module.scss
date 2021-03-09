@@ -9,7 +9,7 @@
   align-items: center;
   background-color: $contrast;
 
-  a {
+  span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,6 +17,7 @@
     text-decoration: none;
     color: $secondary;
     transition: all .3s;
+    cursor: pointer;
 
     &:hover {
       background: white;

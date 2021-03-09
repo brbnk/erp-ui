@@ -1,7 +1,11 @@
-import Page from 'components/layout/page/page.component'
+import { getLayout as mainPageLayout } from 'components/layout/main/main.component'
 
 const Dashboard = () => {
-  return <Page/>
+  return (
+    <div> </div>
+  )
 }
+
+Dashboard.getLayout = mainPageLayout
 
 export default Dashboard

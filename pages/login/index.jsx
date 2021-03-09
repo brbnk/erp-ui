@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { useRouter } from 'next/router'
 
+import { IsObjectEmpty } from 'utils/validator'
 import styles from './login.module.scss'
 import TextInput from 'components/inputs/text/text.component.jsx'
 import SendIcon from '@material-ui/icons/Send'
@@ -20,13 +21,19 @@ const Form = ({ placeholder, forgetLabel, action, setInput, input }) => {
 
 // User Component
 const User = ({ user, changeUser, visibility }) => {
+  const [firstLoad, setFirstLoad] = useState(true)
+
   const { username } = styles
   const { name, photo } = user
+
+  useEffect(() => {
+    setFirstLoad(false)
+  }, [])
 
   const wrapperProps = useSpring({
     config: { mass: 1, tension: 400, friction: 50, velocity: 0 },
     to: { height: visibility ? 250 : 0 },
-    from: { height: visibility ? 0 : 250 }
+    from: { height: visibility || firstLoad ? 0 : 250 }
   })
 
   return (
@@ -63,13 +70,11 @@ function LoginPage() {
     setInput('')
     setForm(usernameStateForm)
     setVisibility(false)
-    setTimeout(() => {
-      setUser({})
-    }, 300)
+    setTimeout(() => setUser({}), 300)
   }
 
   const submit = async () => {
-    if (Object.keys(user).length !== 0) {
+    if (!IsObjectEmpty(user)) {
       // Requet password
       router.push('/dashboard')
     }
