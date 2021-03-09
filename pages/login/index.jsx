@@ -1,68 +1,84 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useSpring, animated } from 'react-spring'
 
 import styles from './login.module.scss'
 import TextInput from 'components/inputs/text/text.component.jsx'
 import SendIcon from '@material-ui/icons/Send'
 
-const Form = ({ placeholder, forgetLabel, action }) => {
-  const [ input, setInput ] = useState('')
-
+// Form Component
+const Form = ({ placeholder, forgetLabel, action, setInput, input }) => {
   return (
     <>
-      <TextInput placeholder={ placeholder } handleInput={ setInput }>
+      <TextInput placeholder={placeholder} handleInput={setInput} input={input}>
         <SendIcon onClick={action} />
       </TextInput>
-      <a href=""> { forgetLabel } </a>
+      <a href="" style={{ width: 'fit-content' }}> {forgetLabel} </a>
     </>
   )
 }
 
-const User = ({ user, height }) => {
+// User Component
+const User = ({ user, changeUser, visibility }) => {
   const { username } = styles
-  const { name, photo, display } = user
+  const { name, photo } = user
+
+  const wrapperProps = useSpring({
+    config: { mass: 1, tension: 400, friction: 50, velocity: 0 },
+    to: { height: visibility ? 250 : 0 },
+    from: { height: visibility ? 0 : 250 }
+  })
 
   return (
-    <div className={username} style={{display: display, height: `${height}px`}}>
+    <animated.div className={username} style={wrapperProps}>
       <img src={photo}/>
       <h2> {name} </h2>
-      <a href=""> Trocar usuário </a>
-    </div>
+      <a onClick={changeUser}> Trocar usuário </a>
+    </animated.div>
   )
 }
 
+// Page
 function LoginPage() {
   const join = (arr) => arr.join(' ')
   const { page, line, vertical, horizontal, container } = styles
 
-  const [form, setForm] = useState({
+  const usernameStateForm = {
     placeholder: 'Enter username',
     forgetLabel: 'Esqueceu seu Username?'
-  })
+  }
 
-  const [user, setUser] = useState({
-    found: false,
-    name: '',
-    photo: '',
-    display: 'none'
-  })
+  const passwordStateForm = {
+    placeholder: 'Enter password',
+    forgetLabel: 'Esqueceu sua Senha?'
+  }
 
-  const [height, setHeight] = useState(0)
+  const [form, setForm] = useState(usernameStateForm)
+  const [user, setUser] = useState({})
+  const [input, setInput] = useState('')
+  const [visibility, setVisibility] = useState(false)
 
-  const submitUsername = () => {
+  const changeUser = async () => {
+    setInput('')
+    setForm(usernameStateForm)
+    setVisibility(false)
+  }
+
+  const submit = async () => {
+    if (user) {
+      // Requet password
+    }
+
+    // Request username
     if (true) {
-      setForm({
-        placeholder: 'Enter password',
-        forget: 'Esqueceu sua Senha?'
-      })
+      setForm(passwordStateForm)
 
       setUser({
         found: true,
         name: 'Bruno Nakayabu',
-        photo: 'https://www.kindpng.com/picc/m/136-1369892_avatar-people-person-business-user-man-character-avatar.png',
-        display: 'flex'
+        photo: 'https://freepikpsd.com/wp-content/uploads/2019/10/avatar-png-2-Transparent-Images.png'
       })
 
-      setHeight(250)
+      setVisibility(true)
     }
   }
 
@@ -74,13 +90,17 @@ function LoginPage() {
       <div className={container}>
         <h1> SIMPLE ERP SYSTEM </h1>
         <User
-          height={height}
           user={user}
+          changeUser={changeUser}
+          visibility={visibility}
+          setVisibility={setVisibility}
         />
         <Form
-          placeholder={ form.placeholder }
-          forgetLabel={ form.forgetLabel }
-          action={ submitUsername }
+          placeholder={form.placeholder}
+          forgetLabel={form.forgetLabel}
+          action={submit}
+          setInput={setInput}
+          input={input}
         />
       </div>
     </div>
