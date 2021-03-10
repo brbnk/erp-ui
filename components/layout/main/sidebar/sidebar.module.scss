@@ -9,11 +9,12 @@
   align-items: center;
   background-color: $contrast;
 
-  span {
+  div, span {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 100%;
     text-decoration: none;
     color: $secondary;
     transition: all .3s;

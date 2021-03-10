@@ -1,14 +1,14 @@
 import { getLayout as mainPageLayout } from 'components/layout/main/main.component'
 import PageLayout from 'components/layout/main/page/page.component'
 
-const Dashboard = () => {
+const Users = () => {
   return (
-    <PageLayout title='Dashboard'>
+    <PageLayout title='Usuários'>
 
     </PageLayout>
   )
 }
 
-Dashboard.getLayout = mainPageLayout
+Users.getLayout = mainPageLayout
 
-export default Dashboard
+export default Users
