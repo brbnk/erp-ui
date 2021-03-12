@@ -29,23 +29,23 @@ const icons = {
   Monetization: {
     ref: getForwardRef(<MonetizationIcon />),
     path: '/monetization',
-    delay: 400
+    delay: 300
   },
   Users: {
     ref: getForwardRef(<UsersIcon />),
     path: '/users',
-    delay: 600
+    delay: 400
   },
   Catalog: {
     ref: getForwardRef(<CatalogIcon />),
     path: '/catalog',
-    delay: 800
+    delay: 500
   },
   Settings: {
     ref: getForwardRef(<SettingsIcon />),
     path: '/monetization',
-    delay: 1000
-  },
+    delay: 600
+  }
 }
 
 const RenderLink = ({ Component, path }) => {

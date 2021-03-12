@@ -14,7 +14,9 @@ const MainPageLayout = ({ children }) => {
   )
 }
 
-export const getLayout = page => <MainPageLayout>{page}</MainPageLayout>
+export const getLayout = function(page) {
+  return <MainPageLayout> { page } </MainPageLayout>
+}
 
 
 export default MainPageLayout
