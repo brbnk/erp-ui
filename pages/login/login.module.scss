@@ -44,10 +44,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
 
       img {
         width: 150px;
-        height: 140px;
+        height: 150px;
         border-radius: 100%;
       }
 
