@@ -1,11 +1,11 @@
 import { getLayout as mainPageLayout } from 'components/layout/main/main.component'
-import PageLayout from 'components/layout/main/page/page.component'
+import Page from 'components/layout/main/page/page.component'
 
 const Monetization = () => {
   return (
-    <PageLayout title='Pedidos'>
+    <Page title='Pedidos'>
 
-    </PageLayout>
+    </Page>
   )
 }
 
