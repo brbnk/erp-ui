@@ -5,12 +5,19 @@ import AddCircleOutlined from '@material-ui/icons/AddCircleOutlined';
 import SearchIcon from '@material-ui/icons/Search';
 
 import style from './filters.module.scss'
+import { useEffect, useState } from 'react';
 
-const Filters = () => {
+const Filters = ({ filterProducts }) => {
+  const [ input, setInput ] = useState('')
+
+  useEffect(() => {
+    filterProducts(input)
+  }, [input])
+
   return (
     <div className={style.filters}>
       <div className={style.quick_search}>
-        <TextInput placeholder={"Quick Search"}>
+        <TextInput placeholder={"Quick Search"} handleInput={setInput} input={input}>
           <SearchIcon />
         </TextInput>
       </div>

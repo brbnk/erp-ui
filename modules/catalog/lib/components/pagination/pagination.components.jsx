@@ -3,8 +3,6 @@ import { useState } from 'react'
 
 import Controls from './controls/controls.components'
 
-const pageRange = [ 1, 2, 3, 4 ]
-
 const Page = ({ pageNum, selected, action }) => (
   <span
     className={ selected == pageNum ? style.selected : '' }
@@ -12,7 +10,7 @@ const Page = ({ pageNum, selected, action }) => (
   > {pageNum} </span>
 )
 
-const Pagination = ({ change }) => {
+const Pagination = ({ change, pageRange }) => {
   const [ selectedPage, setSelectedPage ] = useState(1)
 
   const selectPageAction = (number) => {
@@ -44,8 +42,8 @@ const Pagination = ({ change }) => {
     <Controls prev={moveToPreviousPage} next={moveToNextPage} first={moveToFirstPage} last={moveToLastPage}>
       <div className={style.pagination}>
         {
-          pageRange.map((pageNum, index) => (
-            <Page pageNum={pageNum} selected={selectedPage} action={selectPageAction} key={index} />
+          pageRange.map((_, index) => (
+            <Page pageNum={index+1} selected={selectedPage} action={selectPageAction} key={index} />
           ))
         }
       </div>

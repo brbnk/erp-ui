@@ -1,4 +1,4 @@
-export const page1 = [
+export const products = [
   {
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4W04BpXdct-D-dJ9jHXm3CfGKtW6Qq2w5RLBeT5hBsLCSnJ9j4v6Zh1_7sN2-b_7bqPSAozqw&usqp=CAc",
     name: "Camiseta Pequeno Poru - GG",
@@ -60,9 +60,21 @@ export const page1 = [
     name: "Tênis De Corrida casuais Para Homens Tênis ...",
     price: "R$ 59,90"
   },
-]
-
-export const page2 = [
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4W04BpXdct-D-dJ9jHXm3CfGKtW6Qq2w5RLBeT5hBsLCSnJ9j4v6Zh1_7sN2-b_7bqPSAozqw&usqp=CAc",
+    name: "Camiseta Pequeno Poru - GG",
+    price: "R$ 87,92"
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSR3-FpzHVy1vD_hx-9S-Mp901GPJr1cjnOiTaK5IATiIjRgIIKORFtvzjgA-eF67QWMb6_r4&usqp=CAc",
+    name: "Camiseta Didididiê Branca",
+    price: "R$ 79,90"
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNGP6ek2o4ULOPdmXwUI66DjzoInBPlwv79H6Ea3ZI5xzT8iHXJalx_fH8eHWFY5JS4EcVKoQx&usqp=CAc",
+    name: "Camiseta Amor Significado - Branca",
+    price: "R$ 49,90"
+  },
   {
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4W04BpXdct-D-dJ9jHXm3CfGKtW6Qq2w5RLBeT5hBsLCSnJ9j4v6Zh1_7sN2-b_7bqPSAozqw&usqp=CAc",
     name: "Camiseta Pequeno Poru - GG",

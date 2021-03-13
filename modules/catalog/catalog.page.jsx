@@ -6,23 +6,60 @@ import Pagination from 'modules/catalog/lib/components/pagination/pagination.com
 import Filters from 'modules/catalog/lib/components/filters/filters.component'
 
 import style from './catalog.module.scss'
-import { page1, page2 } from './mock/products'
-import { useState } from 'react'
+import { products } from './mock/products'
+import { useEffect, useState } from 'react'
 
 const Catalog = () => {
-  const [ page, setPage ] = useState(page1)
+  const [ page, setPage ] = useState([])
+  const [ filtered, setFiltered ] = useState([])
+  const [ pageNumber, setPageNumber ] = useState(1)
+  const [ range, setRange ] = useState([])
+  const [ maxProductsPerPage, setMaxProductsPerPage ] = useState(12)
 
-  const handleChangePage = (pageNumber) => {
+  useEffect(() => {
+    const numberOfPages = Math.ceil(products.length / maxProductsPerPage)
+
+    setPage(products.slice(0, maxProductsPerPage))
+    setRange([...Array(numberOfPages).keys()])
+  }, [])
+
+  const handleChangePage = (num) => {
     // Make Request to Server
-    const page = pageNumber == 1 ? page1 : page2
+    const obj = filtered.length > 0 ? filtered : products
+    const page = obj.slice((num-1)*maxProductsPerPage, num*maxProductsPerPage)
     setPage(page)
+    setPageNumber(num)
+  }
+
+  const filterName = query => {
+      return products.filter(el => el.name.includes(query))
+  }
+
+  const handleFilterProducts = (query) => {
+    if (!query) {
+      const numberOfPages = Math.ceil(products.length / maxProductsPerPage)
+      setFiltered([])
+      setPage(products.slice(0, maxProductsPerPage))
+      setRange([...Array(numberOfPages).keys()])
+      setPageNumber(1)
+      return
+    }
+
+    if (query.length <= 3) return
+
+    const filteredByName = filterName(query)
+    const numberOfPages = Math.ceil(filteredByName.length / maxProductsPerPage)
+
+    setFiltered(filteredByName.slice((pageNumber-1)*maxProductsPerPage, pageNumber*maxProductsPerPage))
+    setRange([...Array(numberOfPages).keys()])
+    setPageNumber(1)
   }
 
   return (
     <Page title='Catálogo' contentLayout={style.layout}>
-      <Filters />
-      <ProductList products={page}/>
-      <Pagination change={handleChangePage}/>
+      <Filters filterProducts={handleFilterProducts}/>
+      <ProductList products={filtered.length > 0 ? filtered : page}/>
+      <Pagination pageRange={range} change={handleChangePage}/>
     </Page>
   )
 }
