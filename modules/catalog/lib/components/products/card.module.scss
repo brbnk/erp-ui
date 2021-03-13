@@ -1,0 +1,54 @@
+@import 'colors';
+
+.card {
+  display: grid;
+  grid-template-rows: 200px 40px 40px;
+  border: 1px solid $secondary;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 200px;
+  height: 280px;
+  cursor: pointer;
+
+  .image {
+    overflow: hidden;
+    height: 200px;
+    border-radius: 5px;
+    text-align: center;
+
+    img {
+      width: 100%;
+      transition: .3s all;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .name {
+    padding: 0 10px;
+    margin: auto 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .price {
+    padding: 0 10px;
+    font-size: 1.5em;
+    color: $primary;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .discount {
+    display: flex;
+
+    span {
+      font-size: .8em;
+      text-decoration: line-through;
+      transform: translate(-6px, 10px);
+      font-style: italic;
+    }
+  }
+}
