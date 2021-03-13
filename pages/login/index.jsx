@@ -1,3 +1,3 @@
-import LoginPage from 'containers/login/login.page'
+import LoginPage from 'modules/login/login.page'
 
 export default LoginPage

@@ -1,3 +1,3 @@
-import DashboardPage from 'containers/dashboard/dashboard.page'
+import DashboardPage from 'modules/dashboard/dashboard.page'
 
 export default DashboardPage

@@ -1,51 +1,11 @@
-import { useEffect, useState } from 'react'
-import { useSpring, animated } from 'react-spring'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { IsObjectEmpty } from 'utils/validator'
 import styles from './login.module.scss'
-import TextInput from 'components/inputs/text/text.component.jsx'
-import SendIcon from '@material-ui/icons/Send'
+import Form from './lib/components/form/form.component'
+import User from './lib/components/user/user.component'
 
-// Form Component
-const Form = ({ placeholder, forgetLabel, action, setInput, input }) => {
-  return (
-    <>
-      <TextInput placeholder={placeholder} handleInput={setInput} input={input}>
-        <SendIcon onClick={action} />
-      </TextInput>
-      <a href="" style={{ width: 'fit-content' }}> {forgetLabel} </a>
-    </>
-  )
-}
-
-// User Component
-const User = ({ user, changeUser, visibility }) => {
-  const [firstLoad, setFirstLoad] = useState(true)
-
-  const { username } = styles
-  const { name, photo } = user
-
-  useEffect(() => {
-    setFirstLoad(false)
-  }, [])
-
-  const wrapperProps = useSpring({
-    config: { mass: 1, tension: 400, friction: 50, velocity: 0 },
-    to: { height: visibility ? 250 : 0 },
-    from: { height: visibility || firstLoad ? 0 : 250 }
-  })
-
-  return (
-    <animated.div className={username} style={wrapperProps}>
-      <img src={photo}/>
-      <h2> {name} </h2>
-      <a onClick={changeUser}> Trocar usuário </a>
-    </animated.div>
-  )
-}
-
-// Page
 function LoginPage() {
   const router = useRouter()
   const join = (arr) => arr.join(' ')

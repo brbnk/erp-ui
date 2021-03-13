@@ -1,3 +1,3 @@
-import UsersPage from 'containers/users/users.page'
+import UsersPage from 'modules/users/users.page'
 
 export default UsersPage
