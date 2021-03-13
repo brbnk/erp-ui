@@ -11,6 +11,7 @@ const Catalog = () => {
   const [ page, setPage ] = useState(page1)
 
   const handleChangePage = (pageNumber) => {
+    // Make Request to Server
     const page = pageNumber == 1 ? page1 : page2
     setPage(page)
   }

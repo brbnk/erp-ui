@@ -4,7 +4,7 @@ const ProductCard = ({ product }) => {
   const { img, name, discount, price } = product
 
   return (
-    <div className={style.card}>
+    <>
       <div className={style.image}>
         <img src={img}/>
       </div>
@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
           </div> :
           <b className={style.price}> {price} </b>
       }
-    </div>
+    </>
   )
 }
 
