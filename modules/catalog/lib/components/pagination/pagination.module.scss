@@ -5,22 +5,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5px !important;
 
   span {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: 1.8em;
+    height: 1.8em;
     border-radius: 100%;
     border: 1px solid $contrast;
     transition: .3s all;
     cursor: pointer;
-
-    & + span {
-      margin-left: 5px;
-    }
-
   }
 }
 

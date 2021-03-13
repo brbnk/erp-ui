@@ -1,6 +1,8 @@
 import style from './pagination.module.scss'
 import { useState } from 'react'
 
+import Controls from './controls/controls.components'
+
 const pageRange = [ 1, 2, 3, 4 ]
 
 const Page = ({ pageNum, selected, action }) => (
@@ -18,14 +20,36 @@ const Pagination = ({ change }) => {
     change(number)
   }
 
+  const moveToPreviousPage = () => {
+    if (selectedPage == 1) return
+    const previousPage = selectedPage - 1
+    selectPageAction(previousPage)
+  }
+
+  const moveToNextPage = () => {
+    if (selectedPage == pageRange.length) return
+    const nextPage = selectedPage + 1
+    selectPageAction(nextPage)
+  }
+
+  const moveToFirstPage = () => {
+    selectPageAction(1)
+  }
+
+  const moveToLastPage = () => {
+    selectPageAction(pageRange.length)
+  }
+
   return (
-    <div className={style.pagination}>
-      {
-        pageRange.map((pageNum, index) => (
-          <Page pageNum={pageNum} selected={selectedPage} action={selectPageAction} key={index} />
-        ))
-      }
-    </div>
+    <Controls prev={moveToPreviousPage} next={moveToNextPage} first={moveToFirstPage} last={moveToLastPage}>
+      <div className={style.pagination}>
+        {
+          pageRange.map((pageNum, index) => (
+            <Page pageNum={pageNum} selected={selectedPage} action={selectPageAction} key={index} />
+          ))
+        }
+      </div>
+    </Controls>
   )
 }
 
