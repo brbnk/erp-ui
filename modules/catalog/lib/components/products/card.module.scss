@@ -26,12 +26,24 @@
     }
   }
 
-  .name {
-    padding: 0 10px;
-    margin: auto 0;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow: hidden;
+    padding: 0 10px;
+
+    span {
+      font-size: .7em;
+    }
+
+    .name {
+      margin: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      color: $primary;
+    }
   }
 
   .price {
@@ -48,7 +60,7 @@
       font-size: .8em;
       text-decoration: line-through;
       transform: translate(-6px, 10px);
-      font-style: italic;
+      color: $primary;
     }
   }
 }

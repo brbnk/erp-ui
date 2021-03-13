@@ -8,7 +8,10 @@ const ProductCard = ({ product }) => {
       <div className={style.image}>
         <img src={img}/>
       </div>
-      <p className={style.name}> {name} </p>
+      <div className={style.info}>
+        <span> Código: <b>1374</b> </span>
+        <p className={style.name}> {name} </p>
+      </div>
       {
         discount ?
           <div className={style.discount}>

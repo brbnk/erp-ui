@@ -6,12 +6,18 @@ import FirstPageIcon from '@material-ui/icons/FirstPage'
 
 const Controls = ({ children, prev, next, first, last }) => {
   return (
-    <div className={style.control}>
-      <FirstPageIcon onClick={ first }/>
-      <PreviousIcon onClick={ prev }/>
-      { children }
-      <NextIcon onClick={ next }/>
-      <LastPageIcon onClick={ last }/>
+    <div className={style.control_wrapper}>
+      <div className={style.control}>
+        <FirstPageIcon onClick={ first }/>
+        <PreviousIcon onClick={ prev }/>
+        { children }
+        <NextIcon onClick={ next }/>
+        <LastPageIcon onClick={ last }/>
+      </div>
+      <div className={style.counter}>
+        <span> Total: 18 </span>
+        <span> Page 1 of 2 </span>
+      </div>
     </div>
   )
 }
