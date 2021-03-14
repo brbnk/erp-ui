@@ -1,4 +1,3 @@
-import { getLayout as mainPageLayout } from 'components/layout/main/main.component'
 import Page from 'components/layout/main/page/page.component'
 
 import ProductList from 'modules/catalog/lib/components/products/list.component'
@@ -65,7 +64,5 @@ const Catalog = () => {
     </Page>
   )
 }
-
-Catalog.getLayout = mainPageLayout
 
 export default Catalog

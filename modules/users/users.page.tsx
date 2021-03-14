@@ -1,4 +1,3 @@
-import { getLayout as mainPageLayout } from 'components/layout/main/main.component'
 import Page from 'components/layout/main/page/page.component'
 
 const Users = () => {
@@ -8,7 +7,5 @@ const Users = () => {
     </Page>
   )
 }
-
-Users.getLayout = mainPageLayout
 
 export default Users

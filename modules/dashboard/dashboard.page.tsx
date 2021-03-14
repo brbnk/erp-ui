@@ -1,4 +1,3 @@
-import { getLayout as mainPageLayout } from 'components/layout/main/main.component'
 import Page from 'components/layout/main/page/page.component'
 
 import styles from './dashboard.module.scss'
@@ -14,7 +13,5 @@ const Dashboard = () => {
     </Page>
   )
 }
-
-Dashboard.getLayout = mainPageLayout
 
 export default Dashboard
