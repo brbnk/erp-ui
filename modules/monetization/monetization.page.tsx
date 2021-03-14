@@ -1,14 +1,14 @@
 import { getLayout as mainPageLayout } from 'components/layout/main/main.component'
 import Page from 'components/layout/main/page/page.component'
 
-const Users = () => {
+const Monetization = () => {
   return (
-    <Page title='Usuários'>
+    <Page title='Pedidos' contentLayout={{}}>
 
     </Page>
   )
 }
 
-Users.getLayout = mainPageLayout
+Monetization.getLayout = mainPageLayout
 
-export default Users
+export default Monetization

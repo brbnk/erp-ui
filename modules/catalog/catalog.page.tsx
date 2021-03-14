@@ -61,7 +61,7 @@ const Catalog = () => {
       <Filters filterProducts={handleFilterProducts}/>
       <ProductList products={filtered.length > 0 ? filtered : page}/>
       <Pagination pageRange={range} change={handleChangePage}/>
-      <Modal />
+      {/* <Modal /> */}
     </Page>
   )
 }

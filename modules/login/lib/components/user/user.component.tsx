@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSpring, a } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 
 import styles from './user.module.scss'
 
@@ -20,11 +20,11 @@ const User = ({ user, changeUser, visibility }) => {
   })
 
   return (
-    <a.div className={username} style={wrapperProps}>
+    <animated.div className={username} style={wrapperProps}>
       <img src={photo}/>
       <h2> {name} </h2>
       <a onClick={changeUser}> Trocar usuário </a>
-    </a.div>
+    </animated.div>
   )
 }
 

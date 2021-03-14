@@ -65,7 +65,6 @@ function LoginPage() {
           user={user}
           changeUser={changeUser}
           visibility={visibility}
-          setVisibility={setVisibility}
         />
         <Form
           placeholder={form.placeholder}
