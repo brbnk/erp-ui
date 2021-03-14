@@ -7,7 +7,6 @@ const User = ({ user, changeUser, visibility }) => {
   const [firstLoad, setFirstLoad] = useState(true)
 
   const { username } = styles
-  const { name, photo } = user
 
   useEffect(() => {
     setFirstLoad(false)
@@ -20,11 +19,11 @@ const User = ({ user, changeUser, visibility }) => {
   })
 
   return (
-    <animated.div className={username} style={wrapperProps}>
-      <img src={photo}/>
-      <h2> {name} </h2>
+    user.found ? <animated.div className={username} style={wrapperProps}>
+      <img src={user.photo}/>
+      <h2> {user.name} </h2>
       <a onClick={changeUser}> Trocar usuário </a>
-    </animated.div>
+    </animated.div> : null
   )
 }
 

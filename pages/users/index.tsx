@@ -1,3 +1,3 @@
-import UsersPage from 'modules/users/users.page'
+import UsersPage from 'src/users/users.page'
 
 export default UsersPage

@@ -1,3 +1,3 @@
-import CatalogPage from 'modules/catalog/catalog.page'
+import CatalogPage from 'src/catalog/catalog.page'
 
 export default CatalogPage

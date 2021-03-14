@@ -15,6 +15,7 @@ const MainPageLayout = ({ children }) => {
 }
 
 export const getLayout = function(page: any) {
+  if (true) return page
   return <MainPageLayout> { page } </MainPageLayout>
 }
 

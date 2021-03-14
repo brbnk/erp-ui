@@ -1,3 +1,3 @@
-import Monetization from 'modules/monetization/monetization.page'
+import Monetization from 'src/monetization/monetization.page'
 
 export default Monetization

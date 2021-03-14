@@ -1,56 +1,37 @@
-import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { Form, User } from './lib/components/main'
+import { useUserDisplayer, useLoginForm } from './hooks/main'
 
-import { IsObjectEmpty } from 'utils/validator'
 import styles from './login.module.scss'
-import Form from './lib/components/form/form.component'
-import User from './lib/components/user/user.component'
 
 function LoginPage() {
   const router = useRouter()
-  const join = (arr) => arr.join(' ')
+  const join = (arr: Array<string>) => arr.join(' ')
   const { page, line, vertical, horizontal, container } = styles
 
-  const usernameStateForm = {
-    placeholder: 'Enter username',
-    forgetLabel: 'Esqueceu seu Username?'
-  }
-
-  const passwordStateForm = {
-    placeholder: 'Enter password',
-    forgetLabel: 'Esqueceu sua Senha?'
-  }
-
-  const [form, setForm] = useState(usernameStateForm)
-  const [user, setUser] = useState({})
-  const [input, setInput] = useState('')
-  const [visibility, setVisibility] = useState(false)
+  const { user, visibility, resetUser, assignUser } = useUserDisplayer()
+  const { resetForm, setPasswordForm, input, setInput, form } = useLoginForm()
 
   const changeUser = async () => {
-    setInput('')
-    setForm(usernameStateForm)
-    setVisibility(false)
-    setTimeout(() => setUser({}), 300)
+    resetForm()
+    resetUser()
   }
 
   const submit = async () => {
-    if (!IsObjectEmpty(user)) {
+    if (user.found) {
       // Requet password
       router.push('/dashboard')
     }
 
     // Request username
     if (true) {
-      setForm(passwordStateForm)
-
-      setUser({
+      assignUser({
         found: true,
         name: 'Bruno Nakayabu',
         photo: 'https://freepikpsd.com/wp-content/uploads/2019/10/avatar-png-2-Transparent-Images.png'
       })
 
-      setVisibility(true)
-      setInput('')
+      setPasswordForm()
     }
   }
 
@@ -68,7 +49,7 @@ function LoginPage() {
         />
         <Form
           placeholder={form.placeholder}
-          forgetLabel={form.forgetLabel}
+          forgetText={form.forgetLabel}
           action={submit}
           setInput={setInput}
           input={input}

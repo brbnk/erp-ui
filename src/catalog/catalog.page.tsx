@@ -1,8 +1,8 @@
 import Page from 'components/layout/main/page/page.component'
 
-import ProductList from 'modules/catalog/lib/components/products/list.component'
-import Pagination from 'modules/catalog/lib/components/pagination/pagination.components'
-import Filters from 'modules/catalog/lib/components/filters/filters.component'
+import ProductList from 'src/catalog/lib/components/products/list.component'
+import Pagination from 'src/catalog/lib/components/pagination/pagination.components'
+import Filters from 'src/catalog/lib/components/filters/filters.component'
 import Modal from 'components/modal/modal.component'
 
 import style from './catalog.module.scss'

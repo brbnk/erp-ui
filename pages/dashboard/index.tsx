@@ -1,3 +1,3 @@
-import DashboardPage from 'modules/dashboard/dashboard.page'
+import DashboardPage from 'src/dashboard/dashboard.page'
 
 export default DashboardPage

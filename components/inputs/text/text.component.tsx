@@ -1,10 +1,15 @@
 import styles from './text.module.scss'
 
-const Input = ({ children, placeholder, handleInput, input }) => {
-  const { input_text } = styles
+type InputText = {
+  children?: React.ReactNode
+  placeholder: string,
+  handleInput: (input: string) => void,
+  input: string
+}
 
+const Input = ({ children, placeholder, handleInput, input }: InputText) => {
   return (
-    <div className={ input_text }>
+    <div className={styles.input_text}>
       <input
         type="text"
         placeholder={ placeholder }
