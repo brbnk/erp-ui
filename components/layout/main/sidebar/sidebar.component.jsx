@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { forwardRef } from 'react'
 import { useSpring, animated } from 'react-spring'
 
+import Trail from 'components/trail/trail.component'
+
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import MonetizationIcon from '@material-ui/icons/MonetizationOn'
 import UsersIcon from '@material-ui/icons/Group'
@@ -23,28 +25,23 @@ const getForwardRef = (component) => {
 const icons = {
   Dashboard: {
     ref: getForwardRef(<DashboardIcon/>),
-    path: '/dashboard',
-    delay: 200
+    path: '/dashboard'
   },
   Monetization: {
     ref: getForwardRef(<MonetizationIcon />),
-    path: '/monetization',
-    delay: 300
+    path: '/monetization'
   },
   Users: {
     ref: getForwardRef(<UsersIcon />),
-    path: '/users',
-    delay: 400
+    path: '/users'
   },
   Catalog: {
     ref: getForwardRef(<CatalogIcon />),
-    path: '/catalog',
-    delay: 500
+    path: '/catalog'
   },
   Settings: {
     ref: getForwardRef(<SettingsIcon />),
-    path: '/monetization',
-    delay: 600
+    path: '/monetization'
   }
 }
 
@@ -59,26 +56,21 @@ const RenderLink = ({ Component, path }) => {
 const Sidebar = () => {
   const {sidebar} = styles
 
-  const props = time => useSpring({
-    from: { opacity: 0 },
-    to: {opacity: 1 },
-    config: { duration: 200 },
-    delay: time
-  })
-
   return (
-    <animated.div className={sidebar} style={props(0)}>
-      {
-        Object.keys(icons).map((key, index) => {
-          const { ref, path, delay } = icons[key]
-          return (
-            <animated.div style={props(delay)} key={index}>
-              <RenderLink Component={ref} path={path}/>
-            </animated.div>
-          )
-        })
-      }
-    </animated.div>
+    <div className={sidebar}>
+      <Trail>
+        {
+          Object.keys(icons).map((key, index) => {
+            const { ref, path } = icons[key]
+            return (
+              <div key={index}>
+                <RenderLink Component={ref} path={path}/>
+              </div>
+            )
+          })
+        }
+      </Trail>
+    </div>
   )
 }
 

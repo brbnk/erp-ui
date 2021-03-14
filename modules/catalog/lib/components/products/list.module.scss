@@ -1,0 +1,7 @@
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  overflow-y: auto;
+  grid-gap: 10px;
+  justify-items: center;
+}

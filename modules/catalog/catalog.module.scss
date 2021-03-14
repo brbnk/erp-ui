@@ -1,0 +1,7 @@
+@import 'colors';
+
+.layout {
+  display: grid;
+  grid-template-rows: 1fr calc(100vh * 0.75) 1fr;
+  grid-gap: 5px;
+}

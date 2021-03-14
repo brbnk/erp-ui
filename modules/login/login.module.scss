@@ -33,29 +33,10 @@
     }
 
     a {
-      transform: translate(44px, 5px);
+      transform: translate(34px, 5px);
       text-decoration: none;
       color: $primary;
       font-size: 12px;
-    }
-
-    .username {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-
-      img {
-        width: 150px;
-        height: 150px;
-        border-radius: 100%;
-      }
-
-      a {
-        margin-top: -15px;
-        transform: none;
-      }
     }
   }
 }
