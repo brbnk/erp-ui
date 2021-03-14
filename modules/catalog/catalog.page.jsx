@@ -4,6 +4,7 @@ import Page from 'components/layout/main/page/page.component'
 import ProductList from 'modules/catalog/lib/components/products/list.component'
 import Pagination from 'modules/catalog/lib/components/pagination/pagination.components'
 import Filters from 'modules/catalog/lib/components/filters/filters.component'
+import Modal from 'components/modal/modal.component'
 
 import style from './catalog.module.scss'
 import { products } from './mock/products'
@@ -60,6 +61,7 @@ const Catalog = () => {
       <Filters filterProducts={handleFilterProducts}/>
       <ProductList products={filtered.length > 0 ? filtered : page}/>
       <Pagination pageRange={range} change={handleChangePage}/>
+      <Modal />
     </Page>
   )
 }

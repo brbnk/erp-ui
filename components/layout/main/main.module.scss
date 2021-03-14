@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 50px auto;
   height: 100vh;
+  position: relative;
 
   .main {
     display: grid;
