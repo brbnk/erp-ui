@@ -1,4 +1,4 @@
-import TextInput from 'components/inputs/text/text.component.jsx'
+import TextInput from 'components/inputs/text/text.component.tsx'
 
 import FilterIcon from '@material-ui/icons/FilterListOutlined';
 import AddCircleOutlined from '@material-ui/icons/AddCircleOutlined';

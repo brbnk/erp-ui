@@ -2,7 +2,6 @@ import styles from './sidebar.module.scss'
 import Link from 'next/link'
 
 import { forwardRef } from 'react'
-import { useSpring, animated } from 'react-spring'
 
 import Trail from 'components/trail/trail.component'
 

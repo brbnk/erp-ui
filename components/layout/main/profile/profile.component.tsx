@@ -1,6 +1,12 @@
 import styles from './profile.module.scss'
 
-const Profile = ({ name, role, img }) => {
+type ProfileType = {
+  name: string,
+  role: string,
+  img: string
+}
+
+const Profile = ({ name, role, img }: ProfileType) => {
   const { profile, info } = styles
 
   return (

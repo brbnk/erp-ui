@@ -1,6 +1,11 @@
 import { animated, useSpring } from 'react-spring'
 
-const Content = ({ children, layout }) => {
+type ContentType = {
+  children?: React.ReactNode,
+  layout: string
+}
+
+const Content = ({ children, layout }: ContentType) => {
   const props = useSpring({
     from: { opacity: 0 },
     to: {opacity: 1 },

@@ -14,10 +14,8 @@ const MainPageLayout = ({ children }) => {
   )
 }
 
-export const getLayout = function(page: any) {
-  if (true) return page
+export const applyLayout = function(page: any) {
   return <MainPageLayout> { page } </MainPageLayout>
 }
-
 
 export default MainPageLayout

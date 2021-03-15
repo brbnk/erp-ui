@@ -1,7 +1,12 @@
 import React from 'react'
-import { useTrail, a } from 'react-spring'
+import { useTrail, animated } from 'react-spring'
 
-const Trail = ({ children, containerClass }) => {
+type TrailType = {
+  children?: React.ReactNode,
+  containerClass?: string
+}
+
+const Trail = ({ children, containerClass }: TrailType) => {
   const items = React.Children.toArray(children)
 
   const trail = useTrail(items.length, {
@@ -13,7 +18,7 @@ const Trail = ({ children, containerClass }) => {
   return (
     <>
       {trail.map((t, index) => (
-        <a.div key={index} style={t} className={containerClass}> {items[index]} </a.div>
+        <animated.div key={index} style={t} className={containerClass}> {items[index]} </animated.div>
       ))}
     </>
   )

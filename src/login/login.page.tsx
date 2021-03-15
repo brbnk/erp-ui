@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import { Form, User } from './lib/components/main'
 import { useUserDisplayer, useLoginForm } from './hooks/main'
+import { reducer, authState } from 'store/authStore'
+import { useReducer } from 'react'
 
 import styles from './login.module.scss'
 
@@ -11,6 +13,7 @@ function LoginPage() {
 
   const { user, visibility, resetUser, assignUser } = useUserDisplayer()
   const { resetForm, setPasswordForm, input, setInput, form } = useLoginForm()
+  const [ state, dispatch ] = useReducer(reducer, authState)
 
   const changeUser = async () => {
     resetForm()
@@ -20,6 +23,7 @@ function LoginPage() {
   const submit = async () => {
     if (user.found) {
       // Requet password
+      dispatch({ type: "AUHTORIZED" })
       router.push('/dashboard')
     }
 

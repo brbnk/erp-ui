@@ -3,8 +3,27 @@ import Title from 'components/layout/main/title/title.component'
 import Profile from 'components/layout/main/profile/profile.component'
 import Content from 'components/layout/main/content/content.component'
 
-const PageLayout = ({ children, title, contentLayout }) => {
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { getToken } from 'store/authStore'
+
+type PageLayoutType = {
+  children?: React.ReactNode
+  title: string,
+  contentLayout: string
+}
+
+const PageLayout = ({ children, title, contentLayout }: PageLayoutType) => {
+  const router = useRouter()
   const { main, header } = styles
+
+  useEffect(() => {
+    const auth = getToken()
+
+    if (!auth) {
+      router.push('/login')
+    }
+  }, [])
 
   return (
     <div className={main}>
