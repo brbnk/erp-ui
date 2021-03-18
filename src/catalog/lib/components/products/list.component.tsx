@@ -2,8 +2,13 @@ import ProductCard from 'src/catalog/lib/components/products/card.component'
 import Trail from 'components/trail/trail.component'
 import style from './list.module.scss'
 import cardStyle from './card.module.scss'
+import { Products } from '../../../catalog.page'
 
-const ProductList = ({ products }) => {
+type ProductListProps = {
+  products: Products[]
+}
+
+const ProductList = ({ products }: ProductListProps) => {
   return (
     <div className={style.products}>
       <Trail containerClass={cardStyle.card}>

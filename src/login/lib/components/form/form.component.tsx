@@ -1,12 +1,12 @@
-import TextInput from 'components/inputs/text/text.component.tsx'
+import TextInput from 'components/inputs/text/text.component'
 import SendIcon from '@material-ui/icons/Send'
 
 type FormType = {
   placeholder: string,
   forgetText: string,
+  input: string,
   action: () => void,
-  setInput: (input: string) => void,
-  input: string
+  setInput: (input: string) => void
 }
 
 const Form = (f: FormType) => {

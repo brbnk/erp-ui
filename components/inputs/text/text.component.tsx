@@ -1,13 +1,13 @@
 import styles from './text.module.scss'
 
-type InputText = {
-  children?: React.ReactNode
+type InputTextProps = {
+  children?: JSX.Element
   placeholder: string,
-  handleInput: (input: string) => void,
-  input: string
+  input: string,
+  handleInput: (input: string) => void
 }
 
-const Input = ({ children, placeholder, handleInput, input }: InputText) => {
+const Input = ({ children, placeholder, handleInput, input }: InputTextProps) => {
   return (
     <div className={styles.input_text}>
       <input

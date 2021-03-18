@@ -1,12 +1,12 @@
 import React from 'react'
 import { useTrail, animated } from 'react-spring'
 
-type TrailType = {
+type TrailProps = {
   children?: React.ReactNode,
   containerClass?: string
 }
 
-const Trail = ({ children, containerClass }: TrailType) => {
+const Trail = ({ children, containerClass }: TrailProps) => {
   const items = React.Children.toArray(children)
 
   const trail = useTrail(items.length, {

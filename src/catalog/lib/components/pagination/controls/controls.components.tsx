@@ -4,7 +4,15 @@ import NextIcon from '@material-ui/icons/NavigateNext'
 import LastPageIcon from '@material-ui/icons/LastPage'
 import FirstPageIcon from '@material-ui/icons/FirstPage'
 
-const Controls = ({ children, prev, next, first, last }) => {
+type ControlsProps = {
+  children: JSX.Element[] | JSX.Element,
+  prev: () => void,
+  next: () => void,
+  first: () => void,
+  last: () => void
+}
+
+const Controls = ({ children, prev, next, first, last }: ControlsProps) => {
   return (
     <div className={style.control_wrapper}>
       <div className={style.control}>

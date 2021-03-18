@@ -3,7 +3,13 @@ import { useSpring, animated } from 'react-spring'
 
 import styles from './user.module.scss'
 
-const User = ({ user, changeUser, visibility }) => {
+type UserProps = {
+  user: any,
+  changeUser: () => void,
+  visibility: boolean
+}
+
+const User = ({ user, changeUser, visibility }: UserProps) => {
   const [firstLoad, setFirstLoad] = useState(true)
 
   const { username } = styles

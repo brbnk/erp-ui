@@ -1,21 +1,21 @@
 import styles from './profile.module.scss'
 
-type ProfileType = {
+type ProfileProps = {
   name: string,
   role: string,
   img: string
 }
 
-const Profile = ({ name, role, img }: ProfileType) => {
+const Profile = ({ name, role, img }: ProfileProps) => {
   const { profile, info } = styles
 
   return (
     <div className={profile}>
       <div className={info}>
-        <h4> {name} </h4>
-        <span> {role} </span>
+        <h4> { name } </h4>
+        <span> { role } </span>
       </div>
-      <img src={img}/>
+      <img src={ img }/>
     </div>
   )
 }

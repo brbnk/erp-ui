@@ -3,19 +3,32 @@ import { useState } from 'react'
 
 import Controls from './controls/controls.components'
 
-const Page = ({ pageNum, selected, action }) => (
+type PageProps = {
+  pageNum: number,
+  selected: number,
+  action: (pageNum: number) => void
+}
+
+type PaginationProps = {
+  emitChange: (num: number) => void,
+  pageRange: Array<number>
+}
+
+const Page = ({ pageNum, selected, action }: PageProps) => (
   <span
     className={ selected == pageNum ? style.selected : '' }
     onClick={() => action(pageNum)}
-  > {pageNum} </span>
+  >
+    {pageNum}
+  </span>
 )
 
-const Pagination = ({ change, pageRange }) => {
+const Pagination = ({ emitChange, pageRange }: PaginationProps) => {
   const [ selectedPage, setSelectedPage ] = useState(1)
 
-  const selectPageAction = (number) => {
+  const selectPageAction = (number: number) => {
     setSelectedPage(number)
-    change(number)
+    emitChange(number)
   }
 
   const moveToPreviousPage = () => {
@@ -39,11 +52,21 @@ const Pagination = ({ change, pageRange }) => {
   }
 
   return (
-    <Controls prev={moveToPreviousPage} next={moveToNextPage} first={moveToFirstPage} last={moveToLastPage}>
+    <Controls
+      prev={ moveToPreviousPage }
+      next={ moveToNextPage }
+      first={ moveToFirstPage }
+      last={ moveToLastPage }
+    >
       <div className={style.pagination}>
         {
           pageRange.map((_, index) => (
-            <Page pageNum={index+1} selected={selectedPage} action={selectPageAction} key={index} />
+            <Page
+              pageNum={ index + 1 }
+              selected={ selectedPage }
+              action={ selectPageAction }
+              key={index}
+            />
           ))
         }
       </div>

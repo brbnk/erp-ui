@@ -1,6 +1,12 @@
 import style from './card.module.scss'
 
-const ProductCard = ({ product }) => {
+import { Products } from '../../../catalog.page'
+
+type ProductCardProps = {
+  product: Products
+}
+
+const ProductCard = ({ product }: ProductCardProps) => {
   const { img, name, discount, price } = product
 
   return (

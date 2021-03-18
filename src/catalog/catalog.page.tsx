@@ -9,12 +9,19 @@ import style from './catalog.module.scss'
 import { products } from './mock/products'
 import { useEffect, useState } from 'react'
 
+export type Products = {
+  img: string,
+  name: string,
+  discount?: string,
+  price: string
+}
+
 const Catalog = () => {
-  const [ page, setPage ] = useState([])
-  const [ filtered, setFiltered ] = useState([])
-  const [ pageNumber, setPageNumber ] = useState(1)
-  const [ range, setRange ] = useState([])
-  const [ maxProductsPerPage, setMaxProductsPerPage ] = useState(12)
+  const [ page, setPage ] = useState<Products[]>([])
+  const [ filtered, setFiltered ] = useState<Products[]>([])
+  const [ pageNumber, setPageNumber ] = useState<number>(1)
+  const [ range, setRange ] = useState<number[]>([])
+  const [ maxProductsPerPage, setMaxProductsPerPage ] = useState<number>(12)
 
   useEffect(() => {
     const numberOfPages = Math.ceil(products.length / maxProductsPerPage)
@@ -23,7 +30,7 @@ const Catalog = () => {
     setRange([...Array(numberOfPages).keys()])
   }, [])
 
-  const handleChangePage = (num) => {
+  const handleChangePage = (num: number) => {
     // Make Request to Server
     const obj = filtered.length > 0 ? filtered : products
     const page = obj.slice((num-1)*maxProductsPerPage, num*maxProductsPerPage)
@@ -31,11 +38,11 @@ const Catalog = () => {
     setPageNumber(num)
   }
 
-  const filterName = query => {
+  const filterName = (query: string) => {
       return products.filter(el => el.name.includes(query))
   }
 
-  const handleFilterProducts = (query) => {
+  const handleFilterProducts = (query: string) => {
     if (!query) {
       const numberOfPages = Math.ceil(products.length / maxProductsPerPage)
       setFiltered([])
@@ -59,7 +66,7 @@ const Catalog = () => {
     <Page title='Catálogo' contentLayout={style.layout}>
       <Filters filterProducts={handleFilterProducts}/>
       <ProductList products={filtered.length > 0 ? filtered : page}/>
-      <Pagination pageRange={range} change={handleChangePage}/>
+      <Pagination pageRange={range} emitChange={handleChangePage}/>
       {/* <Modal /> */}
     </Page>
   )

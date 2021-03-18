@@ -1,14 +1,20 @@
-import TextInput from 'components/inputs/text/text.component.tsx'
-
-import FilterIcon from '@material-ui/icons/FilterListOutlined';
-import AddCircleOutlined from '@material-ui/icons/AddCircleOutlined';
-import SearchIcon from '@material-ui/icons/Search';
-
 import style from './filters.module.scss'
 import { useEffect, useState } from 'react';
 
-const Filters = ({ filterProducts }) => {
-  const [ input, setInput ] = useState('')
+import TextInput from 'components/inputs/text/text.component'
+
+import {
+  FilterListOutlined,
+  AddCircleOutlined,
+  Search
+} from '@material-ui/icons'
+
+type FilterProps = {
+  filterProducts: (input: string) => void
+}
+
+const Filters = ({ filterProducts }: FilterProps) => {
+  const [ input, setInput ] = useState<string>('')
 
   useEffect(() => {
     filterProducts(input)
@@ -18,12 +24,12 @@ const Filters = ({ filterProducts }) => {
     <div className={style.filters}>
       <div className={style.quick_search}>
         <TextInput placeholder={"Quick Search"} handleInput={setInput} input={input}>
-          <SearchIcon />
+          <Search />
         </TextInput>
       </div>
       <div className={style.actions}>
         <AddCircleOutlined className={style.add}/>
-        <FilterIcon/>
+        <FilterListOutlined/>
       </div>
     </div>
   )

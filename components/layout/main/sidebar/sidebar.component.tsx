@@ -5,14 +5,16 @@ import { forwardRef } from 'react'
 
 import Trail from 'components/trail/trail.component'
 
-import DashboardIcon from '@material-ui/icons/Dashboard'
-import MonetizationIcon from '@material-ui/icons/MonetizationOn'
-import UsersIcon from '@material-ui/icons/Group'
-import CatalogIcon from '@material-ui/icons/ListAlt'
-import SettingsIcon from '@material-ui/icons/Settings'
+import {
+  Dashboard,
+  MonetizationOn,
+  Group,
+  ListAlt,
+  Settings
+} from '@material-ui/icons'
 
-const getForwardRef = (component) => {
-  return forwardRef(({ onClick, href }, ref) => {
+const getForwardRef = (component: any) => {
+  return forwardRef<any, any>(({ onClick, href }, ref) => {
     return (
       <span data-href={href} onClick={onClick} ref={ref}>
         { component }
@@ -21,30 +23,37 @@ const getForwardRef = (component) => {
   })
 }
 
-const icons = {
+type IconType = 'Dashboard' | 'Monetization' | 'Users' | 'Catalog' | 'Settings'
+
+const icons: Record<IconType, { ref: any, path: string }> = {
   Dashboard: {
-    ref: getForwardRef(<DashboardIcon/>),
+    ref: getForwardRef(<Dashboard/>),
     path: '/dashboard'
   },
   Monetization: {
-    ref: getForwardRef(<MonetizationIcon />),
+    ref: getForwardRef(<MonetizationOn/>),
     path: '/monetization'
   },
   Users: {
-    ref: getForwardRef(<UsersIcon />),
+    ref: getForwardRef(<Group/>),
     path: '/users'
   },
   Catalog: {
-    ref: getForwardRef(<CatalogIcon />),
+    ref: getForwardRef(<ListAlt/>),
     path: '/catalog'
   },
   Settings: {
-    ref: getForwardRef(<SettingsIcon />),
+    ref: getForwardRef(<Settings/>),
     path: '/monetization'
   }
 }
 
-const RenderLink = ({ Component, path }) => {
+type RenderLinkProps = {
+  Component: any,
+  path: string
+}
+
+const RenderLink = ({ Component, path }: RenderLinkProps) => {
   return (
      <Link href={path} passHref>
        <Component/>
@@ -53,13 +62,13 @@ const RenderLink = ({ Component, path }) => {
 }
 
 const Sidebar = () => {
-  const {sidebar} = styles
+  const { sidebar } = styles
 
   return (
     <div className={sidebar}>
       <Trail>
         {
-          Object.keys(icons).map((key, index) => {
+          Object.keys(icons).map((key: IconType, index: number) => {
             const { ref, path } = icons[key]
             return (
               <div key={index}>

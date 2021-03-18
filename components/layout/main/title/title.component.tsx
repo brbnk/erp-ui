@@ -1,6 +1,10 @@
 import { useSpring, animated } from 'react-spring'
 
-const Title = ({ text }) => {
+type TitleProps = {
+  text: string
+}
+
+const Title = ({ text }: TitleProps) => {
   const props = useSpring({
     from: { opacity: 0 },
     to: {opacity: 1 },

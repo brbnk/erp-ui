@@ -1,7 +1,11 @@
 import styles from './main.module.scss'
 import Sidebar from 'components/layout/main/sidebar/sidebar.component'
 
-const MainPageLayout = ({ children }) => {
+type MainPageLayoutProps = {
+  children: React.ReactChild[]
+}
+
+const MainPageLayout = ({ children }: MainPageLayoutProps) => {
   const { main_wrapper } = styles
 
   return (
@@ -14,7 +18,7 @@ const MainPageLayout = ({ children }) => {
   )
 }
 
-export const applyLayout = function(page: any) {
+export const applyLayout = function(page: JSX.Element) {
   return <MainPageLayout> { page } </MainPageLayout>
 }
 

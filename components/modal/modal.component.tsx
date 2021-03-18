@@ -1,10 +1,10 @@
 import style from './modal.module.scss'
 
-type ModalType = {
-  children?: React.ReactNode
+type ModalProps = {
+  children?: JSX.Element | JSX.Element[]
 }
 
-const Modal = ({ children }: ModalType) => {
+const Modal = ({ children }: ModalProps) => {
   return (
     <div className={style.wrapper}>
       <div className={style.modal}>
