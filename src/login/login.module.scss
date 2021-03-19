@@ -5,23 +5,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-
-  .line {
-    position: absolute;
-    background-color: $primary;
-  }
-
-  .horizontal {
-    width: 100vw;
-    height: 5px;
-    bottom: 20px;
-  }
-
-  .vertical {
-    height: 100vh;
-    width: 5px;
-    right: 20px;
-  }
+  background: linear-gradient(283deg, $primary 0%, $contrast 100%);
 
   .container {
     display: flex;
@@ -29,13 +13,13 @@
 
     h1 {
       font-size: 40px;
-      color: $contrast;
+      color: $secondary;
     }
 
     a {
       transform: translate(34px, 5px);
       text-decoration: none;
-      color: $primary;
+      color: $secondary;
       font-size: 12px;
     }
   }

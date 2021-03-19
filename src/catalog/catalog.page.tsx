@@ -21,7 +21,7 @@ const Catalog = () => {
   const [ filtered, setFiltered ] = useState<Products[]>([])
   const [ pageNumber, setPageNumber ] = useState<number>(1)
   const [ range, setRange ] = useState<number[]>([])
-  const [ maxProductsPerPage, setMaxProductsPerPage ] = useState<number>(12)
+  const [ maxProductsPerPage, setMaxProductsPerPage ] = useState<number>(10)
 
   useEffect(() => {
     const numberOfPages = Math.ceil(products.length / maxProductsPerPage)

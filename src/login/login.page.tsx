@@ -41,9 +41,6 @@ function LoginPage() {
 
   return (
     <div className={page}>
-      <span className={join([line, vertical])}/>
-      <span className={join([line, horizontal])}/>
-
       <div className={container}>
         <h1> SIMPLE ERP SYSTEM </h1>
         <User
