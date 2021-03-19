@@ -1,10 +1,5 @@
 import { useState } from 'react'
-
-type User = {
-  found: boolean,
-  name?: string,
-  photo?: string
-}
+import { User } from 'core/models/users'
 
 function useUserDisplayer() {
   const [user, setUser] = useState<User>({ found: false })

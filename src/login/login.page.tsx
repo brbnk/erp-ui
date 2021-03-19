@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { Form, User } from './lib/components/main'
-import { useUserDisplayer, useLoginForm } from './hooks/main'
+import { useUserDisplayer, useLoginForm } from './lib/hooks/main'
 import { reducer, authState } from 'store/authStore'
 import { useReducer } from 'react'
 
@@ -9,7 +9,7 @@ import styles from './login.module.scss'
 function LoginPage() {
   const router = useRouter()
   const join = (arr: Array<string>) => arr.join(' ')
-  const { page, line, vertical, horizontal, container } = styles
+  const { page, container } = styles
 
   const { user, visibility, resetUser, assignUser } = useUserDisplayer()
   const { resetForm, setPasswordForm, input, setInput, form } = useLoginForm()

@@ -1,20 +1,12 @@
-import Page from 'components/layout/main/page/page.component'
-
-import ProductList from 'src/catalog/lib/components/products/list.component'
-import Pagination from 'src/catalog/lib/components/pagination/pagination.components'
-import Filters from 'src/catalog/lib/components/filters/filters.component'
-import Modal from 'components/modal/modal.component'
-
-import style from './catalog.module.scss'
-import { products } from './mock/products'
 import { useEffect, useState } from 'react'
 
-export type Products = {
-  img: string,
-  name: string,
-  discount?: string,
-  price: string
-}
+import { Page } from 'components/layout'
+import { Modal } from 'components'
+import { Products } from 'core/models/products'
+import { ProductList, Pagination, Filters } from './lib/components/index'
+import { products } from './mock/products'
+
+import style from './catalog.module.scss'
 
 const Catalog = () => {
   const [ page, setPage ] = useState<Products[]>([])

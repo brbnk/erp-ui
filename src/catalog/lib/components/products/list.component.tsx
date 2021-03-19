@@ -1,8 +1,9 @@
-import ProductCard from 'src/catalog/lib/components/products/card.component'
-import Trail from 'components/trail/trail.component'
+import { Trail } from 'components'
+import { Products } from 'core/models/products'
+import ProductCard from './card.component'
+
 import style from './list.module.scss'
 import cardStyle from './card.module.scss'
-import { Products } from '../../../catalog.page'
 
 type ProductListProps = {
   products: Products[]

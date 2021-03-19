@@ -1,4 +1,4 @@
-import TextInput from 'components/inputs/text/text.component'
+import { TextInput } from 'components/inputs'
 import SendIcon from '@material-ui/icons/Send'
 
 type FormType = {

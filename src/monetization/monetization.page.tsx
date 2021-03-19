@@ -1,4 +1,4 @@
-import Page from 'components/layout/main/page/page.component'
+import { Page } from 'components/layout'
 
 const Monetization = () => {
   return (

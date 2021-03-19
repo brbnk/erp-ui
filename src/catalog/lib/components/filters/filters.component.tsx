@@ -1,13 +1,8 @@
-import style from './filters.module.scss'
 import { useEffect, useState } from 'react';
+import { TextInput } from 'components/inputs'
+import { FilterListOutlined, AddCircleOutlined, Search } from '@material-ui/icons'
 
-import TextInput from 'components/inputs/text/text.component'
-
-import {
-  FilterListOutlined,
-  AddCircleOutlined,
-  Search
-} from '@material-ui/icons'
+import style from './filters.module.scss'
 
 type FilterProps = {
   filterProducts: (input: string) => void
