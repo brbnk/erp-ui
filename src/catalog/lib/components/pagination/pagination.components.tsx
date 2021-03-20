@@ -14,7 +14,7 @@ type PaginationProps = {
   pageRange: Array<number>
 }
 
-const Page = ({ pageNum, selected, action }: PageProps) => (
+const PageNumbers = ({ pageNum, selected, action }: PageProps) => (
   <span
     className={ selected == pageNum ? style.selected : '' }
     onClick={() => action(pageNum)}
@@ -61,7 +61,7 @@ const Pagination = ({ emitChange, pageRange }: PaginationProps) => {
       <div className={style.pagination}>
         {
           pageRange.map((_, index) => (
-            <Page
+            <PageNumbers
               pageNum={ index + 1 }
               selected={ selectedPage }
               action={ selectPageAction }

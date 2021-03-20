@@ -1,4 +1,4 @@
-export const products = [
+const products = [
   {
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4W04BpXdct-D-dJ9jHXm3CfGKtW6Qq2w5RLBeT5hBsLCSnJ9j4v6Zh1_7sN2-b_7bqPSAozqw&usqp=CAc",
     name: "Camiseta Pequeno Poru - GG",
@@ -91,3 +91,5 @@ export const products = [
     price: "R$ 49,90"
   }
 ]
+
+export default products
