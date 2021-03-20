@@ -32,7 +32,7 @@ const PageLayout = ({ children, title, contentLayout }: PageLayoutProps) => {
         <Profile
           name='Bruno Nakayabu'
           role='Admnistrador'
-          img='https://freepikpsd.com/wp-content/uploads/2019/10/avatar-png-2-Transparent-Images.png'
+          img='https://mlkgqpwrt1na.i.optimole.com/jYEI2CY-j_4Wfhth/w:auto/h:auto/q:auto/https://www.negretti.com.br/wp-content/uploads/2020/05/O-QUE-E-ECOMMERCE.jpg'
         />
       </div>
       <Content layout={contentLayout}>

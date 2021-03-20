@@ -23,7 +23,7 @@ const Filters = ({ filterProducts }: FilterProps) => {
         </TextInput>
       </div>
       <div className={style.actions}>
-        <AddCircleOutlined className={style.add}/>
+        <AddCircleOutlined/>
         <FilterListOutlined/>
       </div>
     </div>

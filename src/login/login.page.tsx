@@ -32,7 +32,7 @@ function LoginPage() {
       assignUser({
         found: true,
         name: 'Bruno Nakayabu',
-        photo: 'https://freepikpsd.com/wp-content/uploads/2019/10/avatar-png-2-Transparent-Images.png'
+        photo: 'https://mlkgqpwrt1na.i.optimole.com/jYEI2CY-j_4Wfhth/w:auto/h:auto/q:auto/https://www.negretti.com.br/wp-content/uploads/2020/05/O-QUE-E-ECOMMERCE.jpg'
       })
 
       setPasswordForm()
