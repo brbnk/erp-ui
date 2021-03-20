@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { Form, User } from './lib/components/main'
 import { useUserDisplayer, useLoginForm } from './lib/hooks/main'
-import { reducer, authState } from 'store/authStore'
+import { reducer, authState } from 'contexts/store/authStore'
 import { useReducer } from 'react'
 
 import styles from './login.module.scss'

@@ -23,13 +23,21 @@
     &:hover {
       background: white;
 
-      svg {
+      svg, span {
         color: $contrast;
       }
     }
 
     svg {
       font-size: 35px;
+    }
+  }
+
+  .selected {
+    background-color: white;
+
+    svg, span {
+      color: $contrast;
     }
   }
 }

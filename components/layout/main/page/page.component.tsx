@@ -5,7 +5,7 @@ import Content from 'components/layout/main/content/content.component'
 
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { getToken } from 'store/authStore'
+import { getToken } from 'contexts/store/authStore'
 
 type PageLayoutProps = {
   children?: React.ReactChildren | React.ReactChild | JSX.Element[] | JSX.Element
