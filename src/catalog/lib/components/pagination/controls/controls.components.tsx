@@ -4,15 +4,21 @@ import NextIcon from '@material-ui/icons/NavigateNext'
 import LastPageIcon from '@material-ui/icons/LastPage'
 import FirstPageIcon from '@material-ui/icons/FirstPage'
 
+import { SelectedPage } from '../../../hooks/usePagination'
+
 type ControlsProps = {
   children: JSX.Element[] | JSX.Element,
   prev: () => void,
   next: () => void,
   first: () => void,
-  last: () => void
+  last: () => void,
+  selected: SelectedPage,
+  total: number
 }
 
-const Controls = ({ children, prev, next, first, last }: ControlsProps) => {
+const Controls = ({ children, prev, next, first, last, total, selected }: ControlsProps) => {
+  const { page, totalPages } = selected
+
   return (
     <div className={style.control_wrapper}>
       <div className={style.control}>
@@ -23,8 +29,8 @@ const Controls = ({ children, prev, next, first, last }: ControlsProps) => {
         <LastPageIcon onClick={ last }/>
       </div>
       <div className={style.counter}>
-        <span> Total: 18 </span>
-        <span> Page 1 of 2 </span>
+        <span> Total: { total }  </span>
+        <span> Page { page } of { totalPages } </span>
       </div>
     </div>
   )

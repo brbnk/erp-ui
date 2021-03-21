@@ -5,14 +5,15 @@ import { FilterListOutlined, AddCircleOutlined, Search } from '@material-ui/icon
 import style from './filters.module.scss'
 
 type FilterProps = {
-  filterProducts: (input: string) => void
+  quickSearch: (input: string) => void,
+  modalState: (modalState: boolean) => void
 }
 
-const Filters = ({ filterProducts }: FilterProps) => {
+const Filters = ({ quickSearch, modalState }: FilterProps) => {
   const [ input, setInput ] = useState<string>('')
 
   useEffect(() => {
-    filterProducts(input)
+    quickSearch(input)
   }, [input])
 
   return (
@@ -23,7 +24,7 @@ const Filters = ({ filterProducts }: FilterProps) => {
         </TextInput>
       </div>
       <div className={style.actions}>
-        <AddCircleOutlined/>
+        <AddCircleOutlined onClick={() => modalState(true)}/>
         <FilterListOutlined/>
       </div>
     </div>

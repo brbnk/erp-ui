@@ -21,7 +21,11 @@ const getForwardRef = (component: any, section: string) => {
         style={{ display: 'flex', flexDirection: 'column', paddingTop: '2px'}}
       >
         { component }
-        <span style={{ fontSize: '0.5em', marginTop: '-3px' }}> { section } </span>
+        <span
+          style={{ fontSize: '0.5em', marginTop: '-3px', fontWeight: 'bold' }}
+        >
+          { section }
+        </span>
       </span>
     )
   })
