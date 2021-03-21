@@ -18,44 +18,5 @@
     background-color: white;
     position: absolute;
     z-index: 9999;
-
-    div:first-child {
-      display: flex;
-      align-items: center;
-      background: linear-gradient($gradient);
-      padding: 5px 20px;
-      gap: 10px;
-
-      h2, svg {
-        color: $secondary;
-      }
-
-      svg {
-        font-size: 2em;
-      }
-    }
-
-    .actions {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 5px 20px;
-      gap: 10px;
-
-      span {
-        border: 1px solid $secondary;
-        padding: 5px 15px;
-        cursor: pointer;
-      }
-
-      .insert {
-        background: linear-gradient($gradient);
-        color: $secondary;
-      }
-
-      .cancel {
-        background-color: lightgray;
-      }
-    }
   }
 }

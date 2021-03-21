@@ -20,8 +20,6 @@ export function useProducts({ query }: ProductsParams) {
       return
     }
 
-    if (query.length <= 3) return
-
     const filteredByName = filterName(query)
 
     setProducts(filteredByName)
