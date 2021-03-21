@@ -18,8 +18,8 @@ const Trail = ({ children, containerClass, configs }: TrailProps) => {
 
   const trail = useTrail(items.length, {
     config: { mass: 5, tension: 2500, friction: 200 },
-    opacity: configs.reverse ? 0 : 1,
-    from: { opacity: configs.reverse ? 1 : 0 },
+    opacity: reverse ? 0 : 1,
+    from: { opacity: reverse ? 1 : 0 },
     reset, reverse
   })
 
