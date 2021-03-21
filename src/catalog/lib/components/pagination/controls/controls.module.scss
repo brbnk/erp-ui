@@ -1,3 +1,5 @@
+@import 'colors';
+
 .control_wrapper {
   display: flex;
   justify-content: center;
@@ -21,6 +23,7 @@
 
     svg {
       cursor: pointer;
+      color: $primary;
     }
   }
 }

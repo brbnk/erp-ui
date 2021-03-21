@@ -7,18 +7,27 @@ type PàginationParams = {
   products: Products[]
 }
 
+export type SelectedPage = {
+  page: number,
+  totalPages?: number
+}
+
 export function usePagination({ page, perPage, products }: PàginationParams) {
   const [ pages, setPages ] = useState<number[]>([])
+  const [ selected, setSelected ] = useState<SelectedPage>({ page: 1, totalPages: 1 })
   const [ paginatedProducts, setPaginatedProducts ] = useState<Products[]>([])
+  const [ totalProducts, setTotalProducts ] = useState<number>(0)
 
   useEffect(() => {
-    const maxPage = Math.ceil(products.length / perPage)
+    const totalPages = Math.ceil(products.length / perPage)
     const start = (page - 1) * perPage
     const end = page * perPage
 
-    setPages([...Array(maxPage).keys()])
+    setPages([...Array(totalPages).keys()])
     setPaginatedProducts(products.slice(start, end))
+    setTotalProducts(products.length)
+    setSelected({ page, totalPages })
   }, [ page, perPage, products ])
 
-  return { pages, paginatedProducts }
+  return { pages, paginatedProducts, totalProducts, selected }
 }

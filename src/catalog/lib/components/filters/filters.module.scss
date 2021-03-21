@@ -10,13 +10,10 @@
     align-items: center;
     gap: 5px;
 
-    .add {
-      color: $contrast;
-    }
-
     svg {
       font-size: 1.8em;
       cursor: pointer;
+      color: $primary;
     }
   }
 

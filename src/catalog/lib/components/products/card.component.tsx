@@ -1,6 +1,6 @@
 import style from './card.module.scss'
 
-import { Products } from '../../../catalog.page'
+import { Products } from 'core/models/products'
 
 type ProductCardProps = {
   product: Products
