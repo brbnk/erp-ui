@@ -4,10 +4,12 @@ import { usePagination, useProducts } from './lib/hooks/index'
 import { ProductList, Pagination, Filters } from './lib/components/index'
 import { AddCircleOutline } from '@material-ui/icons'
 import Modal from 'components/modal/modal.component'
+import { TrailConfigs } from 'components/trail/trail.component'
 
 import style from './catalog.module.scss'
 
 const Catalog = () => {
+  const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
   const [ query, setQuery ] = useState({ query: null })
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
@@ -22,6 +24,9 @@ const Catalog = () => {
   const handleChangePage = (num: number) => {
     // Make Request to Server
     setPagination({ page: num, perPage: 10})
+
+    let reverse = num < selected.page
+    setTrailConfigs({ reset: true, reverse })
   }
 
   const handleQuickSearch = (q: string) => {
@@ -31,7 +36,10 @@ const Catalog = () => {
       setPagination({ page: 1, perPage: 10 })
   }
 
-  const handleModalState = (state: boolean) => setModalIsOpen(state)
+  const handleModalState = (state: boolean) => {
+    setModalIsOpen(state)
+    setTrailConfigs({ reset: false, reverse: false })
+  }
 
   return (
     <Page title='Catálogo' contentLayout={style.layout}>
@@ -41,6 +49,7 @@ const Catalog = () => {
       />
       <ProductList
         products={paginatedProducts}
+        trailConfigs={trailConfigs}
       />
       <Pagination
         pageRange={pages}

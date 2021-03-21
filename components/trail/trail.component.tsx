@@ -1,18 +1,26 @@
 import React from 'react'
 import { useTrail, animated } from 'react-spring'
 
-type TrailProps = {
-  children?: React.ReactNode,
-  containerClass?: string
+export type TrailConfigs = {
+  reset: boolean,
+  reverse: boolean
 }
 
-const Trail = ({ children, containerClass }: TrailProps) => {
+type TrailProps = {
+  children?: React.ReactNode,
+  containerClass?: string,
+  configs: TrailConfigs
+}
+
+const Trail = ({ children, containerClass, configs }: TrailProps) => {
   const items = React.Children.toArray(children)
+  const { reset, reverse } = configs
 
   const trail = useTrail(items.length, {
     config: { mass: 5, tension: 2500, friction: 200 },
-    opacity: 1,
-    from: { opacity: 0 },
+    opacity: configs.reverse ? 0 : 1,
+    from: { opacity: configs.reverse ? 1 : 0 },
+    reset, reverse
   })
 
   return (

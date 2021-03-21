@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   return (
     <div className={sidebar}>
-      <Trail>
+      <Trail configs={{ reset: false, reverse: false }}>
         {
           Object.keys(icons).map((key: IconType, index: number) => {
             const { ref, path } = icons[key]

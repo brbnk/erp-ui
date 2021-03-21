@@ -26,6 +26,7 @@ const PageNumbers = ({ pageNum, selected, action }: PageProps) => (
 
 const Pagination = ({ emitChange, pageRange, total, selected }: PaginationProps) => {
   const selectPageAction = (number: number) => {
+    if (number == selected.page) return
     emitChange(number)
   }
 
