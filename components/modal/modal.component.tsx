@@ -11,7 +11,7 @@ const Modal = ({ children }: ModalProps) => {
   const props = useSpring({
     config: { mass: 1, tension: 300, friction: 30 },
     opacity: 1,
-    from: { opacity: 0 },
+    from: { opacity: 0 }
   })
 
   return (
