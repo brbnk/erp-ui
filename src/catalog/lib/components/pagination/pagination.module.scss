@@ -14,13 +14,14 @@
     width: 1.8em;
     height: 1.8em;
     border-radius: 100%;
-    border: 1px solid $contrast;
+    border: 1px solid $primary;
     transition: .3s all;
     cursor: pointer;
+    color: $primary;
   }
 }
 
 .selected {
-  background-color: $contrast;
-  color: white;
+  background: $primary;
+  color: white !important;
 }

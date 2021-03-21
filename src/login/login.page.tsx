@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { Form, User } from './lib/components/main'
 import { useUserDisplayer, useLoginForm } from './lib/hooks/main'
-import { reducer, authState } from 'store/authStore'
+import { reducer, authState } from 'contexts/store/authStore'
 import { useReducer } from 'react'
 
 import styles from './login.module.scss'
@@ -32,7 +32,7 @@ function LoginPage() {
       assignUser({
         found: true,
         name: 'Bruno Nakayabu',
-        photo: 'https://freepikpsd.com/wp-content/uploads/2019/10/avatar-png-2-Transparent-Images.png'
+        photo: 'https://mlkgqpwrt1na.i.optimole.com/jYEI2CY-j_4Wfhth/w:auto/h:auto/q:auto/https://www.negretti.com.br/wp-content/uploads/2020/05/O-QUE-E-ECOMMERCE.jpg'
       })
 
       setPasswordForm()

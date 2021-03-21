@@ -2,15 +2,15 @@
 
 .card {
   display: grid;
-  grid-template-rows: 200px 40px 40px;
+  grid-template-rows: 250px 40px 40px;
   border: 1px solid $secondary;
   width: 250px;
-  height: 280px;
+  height: 330px;
   cursor: pointer;
 
   .image {
     overflow: hidden;
-    height: 200px;
+    height: 250px;
     text-align: center;
 
     img {
@@ -18,7 +18,7 @@
       transition: .5s all;
 
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
       }
     }
   }

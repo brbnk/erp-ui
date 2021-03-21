@@ -1,45 +1,44 @@
 import style from './pagination.module.scss'
-import { useState } from 'react'
-
 import Controls from './controls/controls.components'
+import { SelectedPage } from '../../hooks/usePagination'
 
 type PageProps = {
   pageNum: number,
-  selected: number,
+  selected: SelectedPage,
   action: (pageNum: number) => void
 }
 
 type PaginationProps = {
   emitChange: (num: number) => void,
-  pageRange: Array<number>
+  pageRange: Array<number>,
+  total: number,
+  selected: SelectedPage
 }
 
 const PageNumbers = ({ pageNum, selected, action }: PageProps) => (
   <span
-    className={ selected == pageNum ? style.selected : '' }
+    className={ selected.page == pageNum ? style.selected : '' }
     onClick={() => action(pageNum)}
   >
     {pageNum}
   </span>
 )
 
-const Pagination = ({ emitChange, pageRange }: PaginationProps) => {
-  const [ selectedPage, setSelectedPage ] = useState(1)
-
+const Pagination = ({ emitChange, pageRange, total, selected }: PaginationProps) => {
   const selectPageAction = (number: number) => {
-    setSelectedPage(number)
+    if (number == selected.page) return
     emitChange(number)
   }
 
   const moveToPreviousPage = () => {
-    if (selectedPage == 1) return
-    const previousPage = selectedPage - 1
+    if (selected.page == 1) return
+    const previousPage = selected.page - 1
     selectPageAction(previousPage)
   }
 
   const moveToNextPage = () => {
-    if (selectedPage == pageRange.length) return
-    const nextPage = selectedPage + 1
+    if (selected.page == pageRange.length) return
+    const nextPage = selected.page + 1
     selectPageAction(nextPage)
   }
 
@@ -57,13 +56,15 @@ const Pagination = ({ emitChange, pageRange }: PaginationProps) => {
       next={ moveToNextPage }
       first={ moveToFirstPage }
       last={ moveToLastPage }
+      total={ total }
+      selected={ selected }
     >
       <div className={style.pagination}>
         {
           pageRange.map((_, index) => (
             <PageNumbers
               pageNum={ index + 1 }
-              selected={ selectedPage }
+              selected={ selected }
               action={ selectPageAction }
               key={index}
             />
