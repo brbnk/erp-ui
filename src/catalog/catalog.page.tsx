@@ -3,7 +3,7 @@ import { Page } from 'components/layout'
 import { usePagination, useProducts } from './lib/hooks/index'
 import { ProductList, Pagination, Filters } from './lib/components/index'
 import { AddCircleOutline } from '@material-ui/icons'
-import Modal from 'components/modal/modal.component'
+import { Modal, ModalTitle, ModalActions, ModalContent } from 'components/modal/index'
 import { TrailConfigs } from 'components/trail/trail.component'
 
 import style from './catalog.module.scss'
@@ -30,10 +30,11 @@ const Catalog = () => {
   }
 
   const handleQuickSearch = (q: string) => {
-    setQuery({ query: q })
-
-    if (!q || q.length > 3)
+    if (!q || q.length > 6) {
+      setQuery({ query: q })
       setPagination({ page: 1, perPage: 10 })
+      setTrailConfigs({ reset: true, reverse: false })
+    }
   }
 
   const handleModalState = (state: boolean) => {
@@ -58,14 +59,17 @@ const Catalog = () => {
         selected={selected}
       />
       { modalIsOpen ?
-        <Modal modalState={handleModalState}>
-          <div>
+        <Modal>
+          <ModalTitle title="Inserir Produto">
             <AddCircleOutline />
-            <h2> Inserir Produto  </h2>
-          </div>
-          <div>
-
-          </div>
+          </ModalTitle>
+          <ModalContent>
+            <span> Teste </span>
+          </ModalContent>
+          <ModalActions
+            state={handleModalState}
+            action={{ type: 'INSERT', event: () => ({}) }}
+          />
         </Modal> : null
       }
     </Page>

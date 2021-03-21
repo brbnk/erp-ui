@@ -1,0 +1,17 @@
+@import 'colors';
+
+.modal_title {
+  display: flex;
+  align-items: center;
+  background: linear-gradient($gradient);
+  padding: 5px 20px;
+  gap: 10px;
+
+  h2, svg {
+    color: $secondary;
+  }
+
+  svg {
+    font-size: 2em;
+  }
+}
