@@ -1,10 +1,10 @@
 import { useEffect, useState, ChangeEvent } from 'react'
-import { Page } from 'components/layout'
+import { Page } from 'lib/components/layout'
 import { usePagination, useProducts } from './lib/hooks'
 import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
 import { AddCircleOutline } from '@material-ui/icons'
-import { Modal, ModalTitle, ModalActions } from 'components/modal'
-import { TrailConfigs } from 'components/trail/trail.component'
+import { Modal, ModalTitle, ModalActions } from 'lib/components/modal'
+import { TrailConfigs } from 'lib/components/trail/trail.component'
 import style from './catalog.module.scss'
 
 const Catalog = () => {

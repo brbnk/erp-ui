@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 import { InsertPhoto } from '@material-ui/icons'
-import { ModalContent } from 'components/modal'
-import { FormInput } from 'components/inputs'
+import { ModalContent } from 'lib/components/modal'
+import { FormInput } from 'lib/components/inputs'
 
 import style from './insert-modal.module.scss'
 
