@@ -1,0 +1,73 @@
+@import 'colors';
+
+.insert {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  height: 100%;
+
+  .img_container {
+    display: grid;
+    grid-template-rows: .6fr .34fr .06fr;
+    grid-gap: 5px;
+
+    .viewer {
+      background-image: url('https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg');
+    }
+
+    .drop {
+      border: 3px lightgray dashed;
+
+      .empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: #e9e9e9;
+        opacity: .7;
+        transition: all .3s;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        svg {
+          font-size: 3em;
+        }
+
+        h4 {
+          margin: 0;
+        }
+      }
+    }
+
+    .add_link {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    h2 {
+      margin: 0;
+      margin-bottom: 3px;
+      border-bottom: 1px solid lightgray;
+      color: $contrast;
+    }
+
+    .identity {
+
+    }
+  }
+}

@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, ChangeEvent } from 'react'
 import { Page } from 'components/layout'
-import { usePagination, useProducts } from './lib/hooks/index'
-import { ProductList, Pagination, Filters } from './lib/components/index'
+import { usePagination, useProducts } from './lib/hooks'
+import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
 import { AddCircleOutline } from '@material-ui/icons'
-import { Modal, ModalTitle, ModalActions, ModalContent } from 'components/modal/index'
+import { Modal, ModalTitle, ModalActions } from 'components/modal'
 import { TrailConfigs } from 'components/trail/trail.component'
-
 import style from './catalog.module.scss'
 
 const Catalog = () => {
@@ -14,7 +13,12 @@ const Catalog = () => {
   const [ query, setQuery ] = useState({ query: null })
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
 
-  const { products } = useProducts(query)
+  const [ form, setForm ] = useState({
+    code: '',
+    name: ''
+  } as any)
+
+  const { products, hasChange } = useProducts(query)
   const { pages, paginatedProducts, totalProducts, selected } = usePagination({ ...pagination, products })
 
   useEffect(() => {
@@ -30,16 +34,24 @@ const Catalog = () => {
   }
 
   const handleQuickSearch = (q: string) => {
-    if (!q || q.length > 6) {
+    if (!q || q.length > 3) {
       setQuery({ query: q })
       setPagination({ page: 1, perPage: 10 })
-      setTrailConfigs({ reset: true, reverse: false })
+      setTrailConfigs({ reset: hasChange || !q, reverse: false })
     }
   }
 
   const handleModalState = (state: boolean) => {
     setModalIsOpen(state)
     setTrailConfigs({ reset: false, reverse: false })
+  }
+
+  const handleFormInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const submitForm = () => {
+    console.log(form)
   }
 
   return (
@@ -63,12 +75,12 @@ const Catalog = () => {
           <ModalTitle title="Inserir Produto">
             <AddCircleOutline />
           </ModalTitle>
-          <ModalContent>
-            <span> Teste </span>
-          </ModalContent>
+          <InsertModal
+            handleFormInput={handleFormInput}
+          />
           <ModalActions
             state={handleModalState}
-            action={{ type: 'INSERT', event: () => ({}) }}
+            action={{ type: 'INSERT', event: submitForm }}
           />
         </Modal> : null
       }
