@@ -1,0 +1,36 @@
+.form {
+  position: relative;
+  margin: 5px 0;
+  font-size: 1.2em;
+
+  input {
+    width: 100%;
+    border: none;
+    padding-top: 8px;
+    height: 30px;
+    font-size: .8em;
+    border-bottom: 1px solid black;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus + span,
+    &:not(:focus):valid + span {
+      transform: translateY(-14px);
+      font-size: 12px;
+      opacity: 1;
+      font-style: italic;
+    }
+  }
+
+  span {
+    position: absolute;
+    pointer-events: none;
+    left: 2px;
+    bottom: 8px;
+    font-size: .7em;
+    transition: 0.3s ease all;
+    opacity: .5;
+  }
+}

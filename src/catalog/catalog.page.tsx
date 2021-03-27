@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Page } from 'components/layout'
-import { usePagination, useProducts } from './lib/hooks/index'
-import { ProductList, Pagination, Filters } from './lib/components/index'
+import { Page } from 'lib/components/layout'
+import { usePagination, useProducts } from './lib/hooks'
+import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
 import { AddCircleOutline } from '@material-ui/icons'
-import { Modal, ModalTitle, ModalActions, ModalContent } from 'components/modal/index'
-import { TrailConfigs } from 'components/trail/trail.component'
-
+import { Modal, ModalTitle, ModalActions } from 'lib/components/modal'
+import { TrailConfigs } from 'lib/components/trail/trail.component'
 import style from './catalog.module.scss'
 
 const Catalog = () => {
@@ -14,7 +13,12 @@ const Catalog = () => {
   const [ query, setQuery ] = useState({ query: null })
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
 
-  const { products } = useProducts(query)
+  const [ form, setForm ] = useState({
+    code: '',
+    name: ''
+  } as any)
+
+  const { products, hasChange } = useProducts(query)
   const { pages, paginatedProducts, totalProducts, selected } = usePagination({ ...pagination, products })
 
   useEffect(() => {
@@ -22,24 +26,35 @@ const Catalog = () => {
   }, [])
 
   const handleChangePage = (num: number) => {
-    // Make Request to Server
-    setPagination({ page: num, perPage: 10})
+    setPagination({ ...pagination, page: num })
 
     let reverse = num < selected.page
     setTrailConfigs({ reset: true, reverse })
   }
 
   const handleQuickSearch = (q: string) => {
-    if (!q || q.length > 6) {
+    if (!q || q.length > 3) {
       setQuery({ query: q })
-      setPagination({ page: 1, perPage: 10 })
-      setTrailConfigs({ reset: true, reverse: false })
+      setPagination({ ...pagination, page: 1 })
+      setTrailConfigs({ reset: hasChange || !q, reverse: false })
     }
   }
 
   const handleModalState = (state: boolean) => {
     setModalIsOpen(state)
     setTrailConfigs({ reset: false, reverse: false })
+
+    if (!state) {
+      setForm({})
+    }
+  }
+
+  const handleFormInput = (name: string, value: string | number | boolean) => {
+    setForm({ ...form, [name]: value })
+  }
+
+  const submitForm = () => {
+    console.log(form)
   }
 
   return (
@@ -63,12 +78,12 @@ const Catalog = () => {
           <ModalTitle title="Inserir Produto">
             <AddCircleOutline />
           </ModalTitle>
-          <ModalContent>
-            <span> Teste </span>
-          </ModalContent>
+          <InsertModal
+            handleFormInput={handleFormInput}
+          />
           <ModalActions
             state={handleModalState}
-            action={{ type: 'INSERT', event: () => ({}) }}
+            action={{ type: 'INSERT', event: submitForm }}
           />
         </Modal> : null
       }

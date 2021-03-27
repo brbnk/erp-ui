@@ -22,11 +22,12 @@ export function usePagination({ page, perPage, products }: PàginationParams) {
     const totalPages = Math.ceil(products.length / perPage)
     const start = (page - 1) * perPage
     const end = page * perPage
+    const currentPage = products.length > 0 ? page : 0;
 
     setPages([...Array(totalPages).keys()])
     setPaginatedProducts(products.slice(start, end))
     setTotalProducts(products.length)
-    setSelected({ page, totalPages })
+    setSelected({ page: currentPage, totalPages })
   }, [ page, perPage, products ])
 
   return { pages, paginatedProducts, totalProducts, selected }
