@@ -1,12 +1,11 @@
-import { ChangeEvent } from 'react'
 import { InsertPhoto } from '@material-ui/icons'
 import { ModalContent } from 'lib/components/modal'
-import { FormInput } from 'lib/components/inputs'
+import { FormInput, Checkbox } from 'lib/components/inputs'
 
 import style from './insert-modal.module.scss'
 
 type InsertModalProps = {
-  handleFormInput: (e: ChangeEvent<HTMLInputElement>) => void
+  handleFormInput: (name: string, value: string | number | boolean) => void
 }
 
 const InsertModal = ({ handleFormInput }: InsertModalProps) => {
@@ -30,8 +29,35 @@ const InsertModal = ({ handleFormInput }: InsertModalProps) => {
         <div className={style.infos}>
           <div className={style.identity}>
             <h2> Identificação </h2>
-            <FormInput placeholder='Código do Produto' name='code' handleInput={handleFormInput}/>
-            <FormInput placeholder='Nome do Produto' name='name' handleInput={handleFormInput} />
+            <div>
+              <FormInput
+                placeholder='Cód. Produto'
+                name='code'
+                handleInput={handleFormInput}
+              />
+              <FormInput
+                placeholder='Cód. Auxiliar'
+                name='auxcode'
+                handleInput={handleFormInput}
+              />
+              <FormInput
+                placeholder='Ref'
+                name='reference'
+                handleInput={handleFormInput}
+              />
+              <FormInput
+                style={{ gridColumn: '1/4' }}
+                placeholder='Nome do Produto'
+                name='name'
+                handleInput={handleFormInput}
+              />
+            </div>
+          </div>
+          <div>
+            <h2> Visibilidade </h2>
+            <div>
+              <Checkbox name='isactive' label='Ativo?' handleInput={handleFormInput} />
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState, ChangeEvent } from 'react'
+import { useEffect, useState } from 'react'
 import { Page } from 'lib/components/layout'
 import { usePagination, useProducts } from './lib/hooks'
 import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
@@ -26,8 +26,7 @@ const Catalog = () => {
   }, [])
 
   const handleChangePage = (num: number) => {
-    // Make Request to Server
-    setPagination({ page: num, perPage: 10})
+    setPagination({ ...pagination, page: num })
 
     let reverse = num < selected.page
     setTrailConfigs({ reset: true, reverse })
@@ -36,7 +35,7 @@ const Catalog = () => {
   const handleQuickSearch = (q: string) => {
     if (!q || q.length > 3) {
       setQuery({ query: q })
-      setPagination({ page: 1, perPage: 10 })
+      setPagination({ ...pagination, page: 1 })
       setTrailConfigs({ reset: hasChange || !q, reverse: false })
     }
   }
@@ -44,10 +43,14 @@ const Catalog = () => {
   const handleModalState = (state: boolean) => {
     setModalIsOpen(state)
     setTrailConfigs({ reset: false, reverse: false })
+
+    if (!state) {
+      setForm({})
+    }
   }
 
-  const handleFormInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+  const handleFormInput = (name: string, value: string | number | boolean) => {
+    setForm({ ...form, [name]: value })
   }
 
   const submitForm = () => {
