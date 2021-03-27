@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { TextInput } from 'components/inputs'
+import { TextInput } from 'lib/components/inputs'
 import { FilterListOutlined, AddCircleOutlined, Search } from '@material-ui/icons'
 
 import style from './filters.module.scss'

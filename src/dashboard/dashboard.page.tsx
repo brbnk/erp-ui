@@ -1,4 +1,4 @@
-import { Page } from 'components/layout'
+import { Page } from 'lib/components/layout'
 
 import styles from './dashboard.module.scss'
 

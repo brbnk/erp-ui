@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import styles from './sidebar.module.scss'
 
-import Trail from 'components/trail/trail.component'
+import Trail from 'lib/components/trail/trail.component'
 
 import { icons, RenderLink, IconType } from './sidebar'
 
