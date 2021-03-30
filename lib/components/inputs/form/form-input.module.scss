@@ -6,10 +6,10 @@
   input {
     width: 100%;
     border: none;
-    padding-top: 8px;
-    height: 30px;
+    padding: 8px 0 3px 8px;
+    height: 40px;
     font-size: .8em;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
 
     &:focus {
       outline: none;
@@ -17,18 +17,20 @@
 
     &:focus + span,
     &:not(:focus):valid + span {
-      transform: translateY(-14px);
+      transform: translate(-3px, -20px);
       font-size: 12px;
       opacity: 1;
       font-style: italic;
+      background-color: white;
+      padding: 0 5px;
     }
   }
 
   span {
     position: absolute;
     pointer-events: none;
-    left: 2px;
-    bottom: 8px;
+    left: 8px;
+    bottom: 12px;
     font-size: .7em;
     transition: 0.3s ease all;
     opacity: .5;
