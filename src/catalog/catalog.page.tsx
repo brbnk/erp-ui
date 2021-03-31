@@ -6,6 +6,9 @@ import { AddCircleOutline } from '@material-ui/icons'
 import { Modal, ModalTitle, ModalActions } from 'lib/components/modal'
 import { TrailConfigs } from 'lib/components/trail/trail.component'
 import style from './catalog.module.scss'
+import { IsObjectEmpty } from 'core/utils/validator'
+
+const axios = require('axios').default
 
 const Catalog = () => {
   const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
@@ -22,7 +25,7 @@ const Catalog = () => {
   const { pages, paginatedProducts, totalProducts, selected } = usePagination({ ...pagination, products })
 
   useEffect(() => {
-    setQuery({ query: '' })
+    setQuery({ query: '' });
   }, [])
 
   const handleChangePage = (num: number) => {
@@ -54,7 +57,14 @@ const Catalog = () => {
   }
 
   const submitForm = () => {
-    console.log(form)
+    if (IsObjectEmpty(form)) {
+      alert('Invalid Form')
+      return
+    }
+
+    axios.post('http://localhost:5000/products', form)
+      .then(res => { alert(res); console.log(res) })
+      .catch(err => { alert(err); console.log(err) })
   }
 
   return (

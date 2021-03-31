@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-
-import styles from './sidebar.module.scss'
+import { icons, RenderLink, IconType } from './sidebar'
 
 import Trail from 'lib/components/trail/trail.component'
+import styles from './sidebar.module.scss'
 
-import { icons, RenderLink, IconType } from './sidebar'
 
 const Sidebar = () => {
   const [ selectedLink, setSelectedLink ] = useState<IconType>('dashboard')
