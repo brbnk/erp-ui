@@ -1,10 +1,6 @@
 import React from 'react'
 import { useTrail, animated } from 'react-spring'
-
-export type TrailConfigs = {
-  reset: boolean,
-  reverse: boolean
-}
+import { TrailConfigs } from 'core/types'
 
 type TrailProps = {
   children?: React.ReactNode,
