@@ -1,13 +1,15 @@
 FROM mhart/alpine-node:15
 
-WORKDIR /app
+WORKDIR /usr/local
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && npm cache clean --force
+
+WORKDIR /usr/local/app
 
 COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+ENTRYPOINT ["sh", "/usr/local/app/entrypoint.sh"]
