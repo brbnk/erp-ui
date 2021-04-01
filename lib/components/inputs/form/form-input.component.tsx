@@ -1,25 +1,22 @@
-import { useState } from 'react'
-
 import styles from './form-input.module.scss'
 
-type FormInput = {
+type FormInputProps = {
   type?: 'text' | 'number',
   placeholder: string,
   name: string,
+  value: string | number | readonly string[],
   handleInput: (name: string, value: string | number | boolean) => void,
   style?: React.CSSProperties
 }
 
-function FormInput({ placeholder, name, handleInput, style = {}, type = 'text' }: FormInput) {
-  const [ input, setInput ] = useState<string>('')
-
+function FormInput({ placeholder, name, value, handleInput, style = {}, type = 'text' }: FormInputProps) {
   return (
     <div className={ styles.form } style={style}>
       <input
         type={ type }
         name={ name }
-        value={ input }
-        onChange={ e => { handleInput(name, e.target.value); setInput(e.target.value) } }
+        value={ value }
+        onChange={ e => handleInput(name, e.target.value) }
         required={ true }
       />
       <span> { placeholder } </span>
