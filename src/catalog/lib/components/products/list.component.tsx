@@ -1,7 +1,7 @@
 import ProductCard from './card.component'
 import { Products } from 'core/models/products'
 import { Trail } from 'lib/components'
-import { TrailConfigs } from 'lib/components/trail/trail.component'
+import { TrailConfigs } from 'core/types'
 
 import style from './list.module.scss'
 import cardStyle from './card.module.scss'

@@ -14,9 +14,9 @@ const ModalActions = ({ action, state }: ModalActionsProps) => {
   const { type, event } = action
   return (
     <div className={style.actions}>
-      { type == 'INSERT' ? <span className={style.insert} onClick={() => event()}> INSERIR </span> : null }
-      { type == 'UPDATE' ? <span className={style.insert} onClick={() => event()}> EDITAR </span> : null }
-      { type == 'DELETE' ? <span className={style.insert} onClick={() => event()}> DELETAR </span> : null }
+      { type == 'INSERT' ? <span className={style.insert} onClick={event}> INSERIR </span> : null }
+      { type == 'UPDATE' ? <span className={style.insert} onClick={event}> EDITAR </span> : null }
+      { type == 'DELETE' ? <span className={style.insert} onClick={event}> DELETAR </span> : null }
       <span className={style.cancel} onClick={() => state(false)}> CANCELAR </span>
     </div>
   )
