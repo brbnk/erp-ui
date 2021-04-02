@@ -64,4 +64,16 @@ export class FormHelper {
 
     form[field].error.state = form[field].error.messages.length > 0
   }
+
+  static HasErrors = (form: any) => {
+    return Object.keys(form).some(key => {
+      const { error } = form[key]
+
+      if (error) {
+        return error.state
+      }
+
+      return false
+    })
+  }
 }

@@ -15,8 +15,8 @@
       outline: none;
     }
 
-    &:focus + span,
-    &:not(:focus):valid + span {
+    &:focus + .placeholder,
+    &:not(:focus):valid + .placeholder {
       transform: translate(-3px, -20px);
       font-size: 12px;
       opacity: 1;
@@ -26,7 +26,7 @@
     }
   }
 
-  span {
+  .placeholder {
     position: absolute;
     pointer-events: none;
     left: 8px;
@@ -34,5 +34,23 @@
     font-size: .7em;
     transition: 0.3s ease all;
     opacity: .5;
+  }
+
+  .errors {
+    margin: 0;
+    font-size: 10px;
+    color: white;
+    position: absolute;
+    background: black;
+    left: 0;
+    z-index: 9999;
+    padding: 10px 10px 10px 25px;
+    min-width: -moz-max-content;
+    min-width: max-content;
+    top: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
   }
 }

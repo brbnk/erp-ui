@@ -31,15 +31,35 @@ const Catalog = () => {
       value: '',
       type: 'string',
       validator: [
-        { rule: (e: string) => e.length < 4, message: 'O código deve ter 3 caracteres no máximo.' },
+        { rule: (e: string) => e.length < 4, message: 'O campo "Cód. Produto" deve ter 3 caracteres no máximo.' },
         { rule: (e: string) => !e.includes('word'), message: 'Não pode conter a palavra word' }
       ],
       error: { state: false, messages: [] }
     },
-    name: { value: '', type: 'string' },
-    auxcode: { value: '', type: 'string' },
-    reference: { value: '', type: 'string' },
-    isactive: { checked: false, type: 'bool' }
+    name: {
+      value: '',
+      type: 'string',
+      validator: [
+        { rule: (e: string) => e.length < 20, message: 'O campo "Nome do Produto" deve ter 20 caracteres no máximo.' }
+      ],
+      error: { state: false, messages: [] }
+    },
+    auxcode: {
+      value: '',
+      type: 'string'
+    },
+    reference: {
+      value: '',
+      type: 'string',
+      validator: [
+        { rule: (e: string) => e.length < 4, message: 'O campo "Ref" deve ter 4 caracteres no máximo.' }
+      ],
+      error: { state: false, messages: [] }
+    },
+    isactive: {
+      checked: false,
+      type: 'bool'
+    }
   })
 
   const { products, hasChange } = useProducts(query)
@@ -85,6 +105,13 @@ const Catalog = () => {
   }
 
   const submitForm = () => {
+    const hasErrors = FormHelper.HasErrors(form)
+
+    if (hasErrors) {
+      alert()
+      return
+    }
+
     const payload = FormHelper.ToJson(form)
     console.log(payload)
   }
@@ -131,6 +158,7 @@ const Catalog = () => {
                   name='reference'
                   value={ form.reference.value }
                   handleInput={ handleFormInput }
+                  error={ form.reference.error }
                 />
                 <FormInput
                   style={{ gridColumn: '1/4' }}
@@ -138,6 +166,7 @@ const Catalog = () => {
                   name='name'
                   value={ form.name.value }
                   handleInput={ handleFormInput }
+                  error={ form.name.error }
                 />
               </Template>
               <Template slot='visibility'>
