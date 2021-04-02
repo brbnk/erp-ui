@@ -1,6 +1,6 @@
 import { useSpring, animated } from 'react-spring'
 
-type TitleProps = {
+interface TitleProps {
   text: string
 }
 

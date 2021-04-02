@@ -2,13 +2,13 @@ import style from './pagination.module.scss'
 import Controls from './controls/controls.components'
 import { SelectedPage } from '../../hooks/usePagination'
 
-type PageProps = {
+interface PageProps {
   pageNum: number,
   selected: SelectedPage,
   action: (pageNum: number) => void
 }
 
-type PaginationProps = {
+interface PaginationProps {
   emitChange: (num: number) => void,
   pageRange: Array<number>,
   total: number,

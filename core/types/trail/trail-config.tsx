@@ -1,4 +1,4 @@
-export type TrailConfigs = {
+export interface TrailConfigs {
   reset: boolean,
   reverse: boolean
 }

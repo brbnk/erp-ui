@@ -6,7 +6,7 @@ import { TrailConfigs } from 'core/types'
 import style from './list.module.scss'
 import cardStyle from './card.module.scss'
 
-type ProductListProps = {
+interface ProductListProps {
   products: Products[],
   trailConfigs: TrailConfigs
 }

@@ -4,7 +4,7 @@ import { Slot } from 'lib/components'
 
 import style from './insert-modal.module.scss'
 
-type InsertModalProps = {
+interface InsertModalProps {
   children: JSX.Element | JSX.Element[]
 }
 

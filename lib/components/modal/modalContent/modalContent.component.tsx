@@ -1,6 +1,6 @@
 import style from './modalContent.module.scss'
 
-type ModalContentProps = {
+interface ModalContentProps {
   children: JSX.Element | JSX.Element[]
 }
 
