@@ -27,7 +27,15 @@ const Catalog = () => {
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
 
   const [ form, setForm ] = useState<Form<InsertForm>>({
-    code: { value: '', type: 'string', validator: [ (e: string) => e.length < 4 ] },
+    code: {
+      value: '',
+      type: 'string',
+      validator: [
+        { rule: (e: string) => e.length < 4, message: 'O código deve ter 3 caracteres no máximo.' },
+        { rule: (e: string) => !e.includes('word'), message: 'Não pode conter a palavra word' }
+      ],
+      error: { state: false, messages: [] }
+    },
     name: { value: '', type: 'string' },
     auxcode: { value: '', type: 'string' },
     reference: { value: '', type: 'string' },
@@ -67,15 +75,12 @@ const Catalog = () => {
   }
 
   const handleFormInput = (name: string, value: string | number | boolean) => {
-    const { validator } = form[name]
+    const newForm = { ...form }
 
-    if (validator && validator.length > 0) {
-      const ok = validator.some((v: any) => v(value))
+    FormHelper.Validator(newForm, name, value)
 
-      if (!ok) alert()
-    }
+    const dirtyForm = FormHelper.SetValue(newForm, name, value)
 
-    const dirtyForm = FormHelper.SetValue({ ...form }, name, value)
     setForm({ ...dirtyForm })
   }
 
@@ -113,6 +118,7 @@ const Catalog = () => {
                   name='code'
                   value={ form.code.value }
                   handleInput={ handleFormInput }
+                  error={ form.code.error }
                 />
                 <FormInput
                   placeholder='Cód. Auxiliar'

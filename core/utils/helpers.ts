@@ -39,4 +39,29 @@ export class FormHelper {
 
     return form
   }
+
+  static Validator = (form: any, field: string, value: string | number | boolean) => {
+    const { validator } = form[field]
+
+    if (validator && validator.length > 0) {
+      validator.forEach((v: any) => {
+        let ok = v.rule(value)
+
+        if (form[field].error.state && ok) {
+          form[field].error.messages = form[field].error.messages.filter((item: string) => {
+            return item !== v.message
+          })
+        }
+
+        if (!ok) {
+          let hasMessage = form[field].error.messages.some((item: string) => item === v.message)
+
+          if (!hasMessage)
+            form[field].error.messages.push(v.message)
+        }
+      })
+    }
+
+    form[field].error.state = form[field].error.messages.length > 0
+  }
 }
