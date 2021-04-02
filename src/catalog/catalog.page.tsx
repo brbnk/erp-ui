@@ -22,7 +22,7 @@ type InsertForm = {
 const Catalog = () => {
   const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
-  const [ query, setQuery ] = useState({ query: null })
+  const [ filters, setFilters ] = useState({ query: null })
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
 
   const [ form, setForm ] = useState<Form<InsertForm>>({
@@ -33,11 +33,11 @@ const Catalog = () => {
     "isactive": { checked: false, type: 'bool' }
   })
 
-  const { products, hasChange } = useProducts(query)
+  const { products, hasChange } = useProducts(filters)
   const { pages, paginatedProducts, totalProducts, selected } = usePagination({ ...pagination, products })
 
   useEffect(() => {
-    setQuery({ query: '' })
+    setFilters({ query: '' })
   }, [])
 
   const handleChangePage = (num: number) => {
@@ -49,7 +49,7 @@ const Catalog = () => {
 
   const handleQuickSearch = (q: string) => {
     if (!q || q.length > 3) {
-      setQuery({ query: q })
+      setFilters({ query: q })
       setPagination({ ...pagination, page: 1 })
       setTrailConfigs({ reset: hasChange || !q, reverse: false })
     }
