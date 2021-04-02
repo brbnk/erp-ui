@@ -7,9 +7,10 @@ import { usePagination, useProducts } from './lib/hooks'
 import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
 import { AddCircleOutline } from '@material-ui/icons'
 import { TrailConfigs, Form } from 'core/types'
-import style from './catalog.module.scss'
-
+import { FormHelper } from 'core/utils/helpers'
 const axios = require('axios').default
+
+import style from './catalog.module.scss'
 
 type InsertForm = {
   code: string,
@@ -58,33 +59,28 @@ const Catalog = () => {
   const handleModalState = (state: boolean) => {
     setModalIsOpen(state)
     setTrailConfigs({ reset: false, reverse: false })
+
+    if (!state) {
+      const clearedForm = FormHelper.Clear({ ...form })
+      setForm({ ...clearedForm })
+    }
   }
 
   const handleFormInput = (name: string, value: string | number | boolean) => {
-    if (form[name].type == 'bool') {
-      form[name].checked = value
-    }
-    else {
-      form[name].value = value
+    const { validator } = form[name]
+
+    if (validator && validator.length > 0) {
+      const ok = validator.some((v: any) => v(value))
+
+      if (!ok) alert()
     }
 
-    setForm({ ...form })
+    const dirtyForm = FormHelper.SetValue({ ...form }, name, value)
+    setForm({ ...dirtyForm })
   }
 
   const submitForm = () => {
-    const payload = Object.keys(form).reduce((payload, key) => {
-      let value: string | boolean;
-
-      if (form[key].type == 'bool') {
-        value = form[key].checked
-      }
-      else {
-        value = form[key].value
-      }
-
-      return { ...payload, [key]: value }
-    }, {})
-
+    const payload = FormHelper.ToJson(form)
     console.log(payload)
   }
 
