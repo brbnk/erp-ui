@@ -1,11 +1,13 @@
 import styles from './form-input.module.scss'
 
-type FormInputProps = {
+type HandleInput = (name: string, value: string) => void
+
+interface FormInputProps {
   type?: 'text' | 'number',
   placeholder: string,
   name: string,
   value: string | number | readonly string[],
-  handleInput: (name: string, value: string | number | boolean) => void,
+  handleInput: HandleInput,
   style?: React.CSSProperties
 }
 

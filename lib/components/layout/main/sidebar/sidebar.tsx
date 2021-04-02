@@ -11,7 +11,7 @@ import {
 
 export type IconType = 'dashboard' | 'monetization' | 'users' | 'catalog' | 'settings'
 
-const getForwardRef = (component: any, section: string) => {
+const getForwardRef = (icon: any, section: string) => {
   return forwardRef<any, any>(({ onClick, href }, ref) => {
     return (
       <span
@@ -20,11 +20,9 @@ const getForwardRef = (component: any, section: string) => {
         ref={ref}
         style={{ display: 'flex', flexDirection: 'column', paddingTop: '2px'}}
       >
-        { component }
-        <span
-          style={{ fontSize: '0.5em', marginTop: '-3px', fontWeight: 'bold' }}
-        >
-          { section }
+        { icon }
+        <span style={{ fontSize: '0.5em', marginTop: '-3px', fontWeight: 'bold' }}>
+         { section }
         </span>
       </span>
     )
@@ -54,7 +52,7 @@ export const icons: Record<IconType, { ref: any, path: string }> = {
   }
 }
 
-type RenderLinkProps = {
+interface RenderLinkProps {
   Component: any,
   path: string
 }

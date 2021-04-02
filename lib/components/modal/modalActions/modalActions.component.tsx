@@ -1,11 +1,13 @@
-type Action = 'INSERT' | 'UPDATE' | 'DELETE'
+type Action = {
+  type: 'INSERT' | 'UPDATE' | 'DELETE',
+  event: () => void
+}
 
-type ModalActionsProps = {
-  action: {
-    type: Action,
-    event: () => void
-  },
-  state: (state: boolean) => void
+type State = (s: boolean) => void
+
+interface ModalActionsProps {
+  action: Action,
+  state: State
 }
 
 import style from './modalActions.module.scss'

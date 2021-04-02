@@ -12,7 +12,7 @@ const axios = require('axios').default
 
 import style from './catalog.module.scss'
 
-type InsertForm = {
+interface InsertForm {
   code: string,
   name: string,
   auxcode: string,
@@ -27,11 +27,11 @@ const Catalog = () => {
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
 
   const [ form, setForm ] = useState<Form<InsertForm>>({
-    "code": { value: '', type: 'string', validator: [ (e: string) => e.length < 4 ] },
-    "name": { value: '', type: 'string' },
-    "auxcode": { value: '', type: 'string' },
-    "reference": { value: '', type: 'string' },
-    "isactive": { checked: false, type: 'bool' }
+    code: { value: '', type: 'string', validator: [ (e: string) => e.length < 4 ] },
+    name: { value: '', type: 'string' },
+    auxcode: { value: '', type: 'string' },
+    reference: { value: '', type: 'string' },
+    isactive: { checked: false, type: 'bool' }
   })
 
   const { products, hasChange } = useProducts(query)
