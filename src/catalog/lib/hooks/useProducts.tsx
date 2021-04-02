@@ -3,7 +3,7 @@ import { Products } from 'core/models/products'
 
 import mockProducts from '../../mock/products'
 
-type ProductsParams = {
+interface ProductsParams {
   query?: string
 }
 

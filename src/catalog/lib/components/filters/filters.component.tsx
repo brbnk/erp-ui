@@ -4,7 +4,7 @@ import { FilterListOutlined, AddCircleOutlined, Search } from '@material-ui/icon
 
 import style from './filters.module.scss'
 
-type FilterProps = {
+interface FilterProps {
   quickSearch: (input: string) => void,
   modalState: (modalState: boolean) => void
 }

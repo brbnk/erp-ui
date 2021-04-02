@@ -2,10 +2,10 @@ import React from 'react'
 import { useTrail, animated } from 'react-spring'
 import { TrailConfigs } from 'core/types'
 
-type TrailProps = {
+interface TrailProps {
   children?: React.ReactNode,
   containerClass?: string,
-  configs: TrailConfigs
+  configs?: TrailConfigs
 }
 
 const Trail = ({ children, containerClass, configs }: TrailProps) => {

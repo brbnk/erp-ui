@@ -2,7 +2,7 @@ import style from './card.module.scss'
 
 import { Products } from 'core/models/products'
 
-type ProductCardProps = {
+interface ProductCardProps {
   product: Products
 }
 

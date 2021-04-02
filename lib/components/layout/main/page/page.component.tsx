@@ -7,10 +7,10 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { getToken } from 'contexts/store/authStore'
 
-type PageLayoutProps = {
+interface PageLayoutProps {
   children?: React.ReactChildren | React.ReactChild | JSX.Element[] | JSX.Element
   title: string,
-  contentLayout: string
+  contentLayout?: string
 }
 
 const PageLayout = ({ children, title, contentLayout }: PageLayoutProps) => {

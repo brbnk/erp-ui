@@ -1,12 +1,10 @@
-import { useState, ChangeEvent } from 'react'
-
 import styles from './checkbox.module.scss'
 
-type CheckboxProps = {
+interface CheckboxProps {
   name: string,
   label: string,
   value: boolean,
-  handleInput: (name: string, value: string | number | boolean) => void,
+  handleInput: (name: string, value: boolean) => void,
 }
 
 const Checkbox = ({ name, label, value, handleInput }: CheckboxProps) => {
