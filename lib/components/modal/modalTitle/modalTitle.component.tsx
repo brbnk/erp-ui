@@ -1,6 +1,6 @@
 import style from './modalTitle.module.scss'
 
-type ModalTitleProps = {
+interface ModalTitleProps {
   children: JSX.Element,
   title: string
 }

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Products } from 'core/models/products'
 
-type PàginationParams = {
+interface PàginationParams {
   page: number,
   perPage: number,
   products: Products[]
 }
 
-export type SelectedPage = {
+export interface SelectedPage {
   page: number,
   totalPages?: number
 }

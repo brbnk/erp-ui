@@ -1,9 +1,9 @@
 import React from 'react'
 import { animated, useSpring } from 'react-spring'
 
-type ContentTypeProps = {
+interface ContentTypeProps {
   children?: React.ReactChild | React.ReactChildren | JSX.Element[] | JSX.Element,
-  layout: string
+  layout?: string
 }
 
 const Content = ({ children, layout }: ContentTypeProps) => {

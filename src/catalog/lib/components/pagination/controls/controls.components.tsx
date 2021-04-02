@@ -6,12 +6,14 @@ import FirstPageIcon from '@material-ui/icons/FirstPage'
 
 import { SelectedPage } from '../../../hooks/usePagination'
 
-type ControlsProps = {
+type Control = () => void
+
+interface ControlsProps {
   children: JSX.Element[] | JSX.Element,
-  prev: () => void,
-  next: () => void,
-  first: () => void,
-  last: () => void,
+  prev: Control,
+  next: Control,
+  first: Control,
+  last: Control,
   selected: SelectedPage,
   total: number
 }

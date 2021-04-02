@@ -7,11 +7,12 @@ import { usePagination, useProducts } from './lib/hooks'
 import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
 import { AddCircleOutline } from '@material-ui/icons'
 import { TrailConfigs, Form } from 'core/types'
-import style from './catalog.module.scss'
-
+import { FormHelper } from 'core/utils/helpers'
 const axios = require('axios').default
 
-type InsertForm = {
+import style from './catalog.module.scss'
+
+interface InsertForm {
   code: string,
   name: string,
   auxcode: string,
@@ -26,11 +27,39 @@ const Catalog = () => {
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
 
   const [ form, setForm ] = useState<Form<InsertForm>>({
-    "code": { value: '', type: 'string', validator: [ (e: string) => e.length < 4 ] },
-    "name": { value: '', type: 'string' },
-    "auxcode": { value: '', type: 'string' },
-    "reference": { value: '', type: 'string' },
-    "isactive": { checked: false, type: 'bool' }
+    code: {
+      value: '',
+      type: 'string',
+      validator: [
+        { rule: (e: string) => e.length < 4, message: 'O campo "Cód. Produto" deve ter 3 caracteres no máximo.' },
+        { rule: (e: string) => !e.includes('word'), message: 'Não pode conter a palavra word' }
+      ],
+      error: { state: false, messages: [] }
+    },
+    name: {
+      value: '',
+      type: 'string',
+      validator: [
+        { rule: (e: string) => e.length < 20, message: 'O campo "Nome do Produto" deve ter 20 caracteres no máximo.' }
+      ],
+      error: { state: false, messages: [] }
+    },
+    auxcode: {
+      value: '',
+      type: 'string'
+    },
+    reference: {
+      value: '',
+      type: 'string',
+      validator: [
+        { rule: (e: string) => e.length < 4, message: 'O campo "Ref" deve ter 4 caracteres no máximo.' }
+      ],
+      error: { state: false, messages: [] }
+    },
+    isactive: {
+      checked: false,
+      type: 'bool'
+    }
   })
 
   const { products, hasChange } = useProducts(query)
@@ -58,33 +87,32 @@ const Catalog = () => {
   const handleModalState = (state: boolean) => {
     setModalIsOpen(state)
     setTrailConfigs({ reset: false, reverse: false })
+
+    if (!state) {
+      const clearedForm = FormHelper.Clear({ ...form })
+      setForm({ ...clearedForm })
+    }
   }
 
   const handleFormInput = (name: string, value: string | number | boolean) => {
-    if (form[name].type == 'bool') {
-      form[name].checked = value
-    }
-    else {
-      form[name].value = value
-    }
+    const newForm = { ...form }
 
-    setForm({ ...form })
+    FormHelper.Validator(newForm, name, value)
+
+    const dirtyForm = FormHelper.SetValue(newForm, name, value)
+
+    setForm({ ...dirtyForm })
   }
 
   const submitForm = () => {
-    const payload = Object.keys(form).reduce((payload, key) => {
-      let value: string | boolean;
+    const hasErrors = FormHelper.HasErrors(form)
 
-      if (form[key].type == 'bool') {
-        value = form[key].checked
-      }
-      else {
-        value = form[key].value
-      }
+    if (hasErrors) {
+      alert()
+      return
+    }
 
-      return { ...payload, [key]: value }
-    }, {})
-
+    const payload = FormHelper.ToJson(form)
     console.log(payload)
   }
 
@@ -117,6 +145,7 @@ const Catalog = () => {
                   name='code'
                   value={ form.code.value }
                   handleInput={ handleFormInput }
+                  error={ form.code.error }
                 />
                 <FormInput
                   placeholder='Cód. Auxiliar'
@@ -129,6 +158,7 @@ const Catalog = () => {
                   name='reference'
                   value={ form.reference.value }
                   handleInput={ handleFormInput }
+                  error={ form.reference.error }
                 />
                 <FormInput
                   style={{ gridColumn: '1/4' }}
@@ -136,6 +166,7 @@ const Catalog = () => {
                   name='name'
                   value={ form.name.value }
                   handleInput={ handleFormInput }
+                  error={ form.name.error }
                 />
               </Template>
               <Template slot='visibility'>

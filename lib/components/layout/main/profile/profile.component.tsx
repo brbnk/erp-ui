@@ -1,6 +1,6 @@
 import styles from './profile.module.scss'
 
-type ProfileProps = {
+interface ProfileProps {
   name: string,
   role: string,
   img: string

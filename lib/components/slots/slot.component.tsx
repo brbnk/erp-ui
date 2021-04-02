@@ -5,11 +5,7 @@ const Slot = ({ children, name }) => {
     child => child['props'].slot === name
   )
 
-  return (
-    <>
-      { findByName() }
-    </>
-  )
+  return <>{ findByName() }</>
 }
 
 export default Slot
