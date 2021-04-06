@@ -19,8 +19,8 @@ const ProductList = ({ products, trailConfigs }: ProductListProps) => {
         <div className={style.products}>
             <Trail containerClass={cardStyle.card} configs={trailConfigs}>
               {
-                products.map((product, index) => (
-                  <ProductCard product={product} key={index}/>
+                products.map((product) => (
+                  <ProductCard product={product} key={product.name}/>
                 ))
               }
             </Trail>

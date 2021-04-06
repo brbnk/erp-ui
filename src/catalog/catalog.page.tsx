@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { Page } from 'lib/components/layout'
 import { Modal, ModalTitle, ModalActions, ModalContent } from 'lib/components/modal'
 import { FormInput, Checkbox } from 'lib/components/inputs'
@@ -8,6 +8,8 @@ import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
 import { AddCircleOutline } from '@material-ui/icons'
 import { TrailConfigs, Form } from 'core/types'
 import { FormHelper } from 'core/utils/helpers'
+import { ProductsFilters } from './lib/hooks/useProducts'
+
 const axios = require('axios').default
 
 import style from './catalog.module.scss'
@@ -23,8 +25,21 @@ interface InsertForm {
 const Catalog = () => {
   const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
-  const [ filters, setFilters ] = useState({ query: null })
+  const [ filters, setFilters ] = useState<ProductsFilters>({ query: null, sortByName: false })
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
+  const [ change, setChange ] = useState<boolean>(false)
+
+  const { products, hasChange } = useProducts(filters)
+  const { pages, paginatedProducts, totalProducts, selected } = usePagination({ ...pagination, products, change })
+
+
+  useEffect(() => {
+    setFilters({ query: '', sortByName: null })
+  }, [])
+
+  useEffect(() => {
+    setChange(!change)
+  }, [ filters ])
 
   const [ form, setForm ] = useState<Form<InsertForm>>({
     code: {
@@ -62,13 +77,6 @@ const Catalog = () => {
     }
   })
 
-  const { products, hasChange } = useProducts(filters)
-  const { pages, paginatedProducts, totalProducts, selected } = usePagination({ ...pagination, products })
-
-  useEffect(() => {
-    setFilters({ query: '' })
-  }, [])
-
   const handleChangePage = (num: number) => {
     setPagination({ ...pagination, page: num })
 
@@ -82,6 +90,12 @@ const Catalog = () => {
       setPagination({ ...pagination, page: 1 })
       setTrailConfigs({ reset: hasChange || !q, reverse: false })
     }
+  }
+
+  const handleSortFilter = (field: string, value: any) => {
+    setFilters({ sortByName: value })
+    setPagination({ ...pagination, page: 1 })
+    setTrailConfigs({ reset: true, reverse: false })
   }
 
   const handleModalState = (state: boolean) => {
@@ -121,6 +135,7 @@ const Catalog = () => {
       <Filters
         quickSearch={handleQuickSearch}
         modalState={handleModalState}
+        sortFilter={handleSortFilter}
       />
       <ProductList
         products={paginatedProducts}

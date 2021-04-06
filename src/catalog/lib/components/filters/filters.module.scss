@@ -10,6 +10,11 @@
     align-items: center;
     gap: 10px;
 
+    .selected {
+      background-color: $primary;
+      color: $secondary !important;
+    }
+
     .sort_buttons {
       height: 100%;
       border-radius: 10px;
@@ -23,7 +28,7 @@
       cursor: pointer;
       transition: all .3s;
 
-      &:hover, .selected {
+      &:hover {
         background-color: $primary;
         color: $secondary;
       }
