@@ -24,7 +24,7 @@ const Catalog = () => {
   const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
   const [ query, setQuery ] = useState({ query: null })
-  const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
+  const [ pagination, setPagination ] = useState({ page: 1, perPage: 12 })
 
   const [ form, setForm ] = useState<Form<InsertForm>>({
     code: {

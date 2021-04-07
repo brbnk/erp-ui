@@ -12,15 +12,15 @@
     flex-direction: column;
 
     h1 {
-      font-size: 40px;
+      font-size: 3.5rem;
       color: $secondary;
     }
 
     a {
-      transform: translate(34px, 5px);
+      transform: translate(2px, 5px);
       text-decoration: none;
       color: $secondary;
-      font-size: 12px;
+      font-size: 1.1rem;
     }
   }
 }
