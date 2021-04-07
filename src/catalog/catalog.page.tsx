@@ -25,6 +25,7 @@ interface InsertForm {
 const Catalog = () => {
   const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
+
   const [ filters, setFilters ] = useState<ProductsFilters>({ query: null, sortByName: false })
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
   const [ change, setChange ] = useState<boolean>(false)

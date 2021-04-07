@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  font-size: 1.1rem;
 
   .counter {
     display: flex;
@@ -12,7 +13,6 @@
     align-items: flex-end;
     position: absolute;
     right: 0;
-    font-size: .75em;
   }
 
   .control {
@@ -24,6 +24,7 @@
     svg {
       cursor: pointer;
       color: $primary;
+      font-size: 2rem;
     }
   }
 }

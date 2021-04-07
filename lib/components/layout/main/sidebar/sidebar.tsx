@@ -21,7 +21,7 @@ const getForwardRef = (icon: any, section: string) => {
         style={{ display: 'flex', flexDirection: 'column', paddingTop: '2px'}}
       >
         { icon }
-        <span style={{ fontSize: '0.5em', marginTop: '-3px', fontWeight: 'bold' }}>
+        <span style={{ fontSize: '.7rem', marginTop: '-3px', fontWeight: 'bold' }}>
          { section }
         </span>
       </span>

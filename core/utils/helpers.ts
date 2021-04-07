@@ -60,9 +60,9 @@ export class FormHelper {
             form[field].error.messages.push(v.message)
         }
       })
-    }
 
-    form[field].error.state = form[field].error.messages.length > 0
+      form[field].error.state = form[field].error.messages.length > 0
+    }
   }
 
   static HasErrors = (form: any) => {
