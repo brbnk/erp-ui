@@ -4,7 +4,8 @@ import { Products } from 'core/models/products'
 interface PàginationParams {
   page: number,
   perPage: number,
-  products: Products[]
+  products: Products[],
+  change?: boolean
 }
 
 export interface SelectedPage {
@@ -12,7 +13,7 @@ export interface SelectedPage {
   totalPages?: number
 }
 
-export function usePagination({ page, perPage, products }: PàginationParams) {
+export function usePagination({ page, perPage, products, change }: PàginationParams) {
   const [ pages, setPages ] = useState<number[]>([])
   const [ selected, setSelected ] = useState<SelectedPage>({ page: 1, totalPages: 1 })
   const [ paginatedProducts, setPaginatedProducts ] = useState<Products[]>([])
@@ -28,7 +29,7 @@ export function usePagination({ page, perPage, products }: PàginationParams) {
     setPaginatedProducts(products.slice(start, end))
     setTotalProducts(products.length)
     setSelected({ page: currentPage, totalPages })
-  }, [ page, perPage, products ])
+  }, [ page, perPage, products, change ])
 
   return { pages, paginatedProducts, totalProducts, selected }
 }

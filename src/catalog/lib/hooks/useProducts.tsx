@@ -3,11 +3,12 @@ import { Products } from 'core/models/products'
 
 import mockProducts from '../../mock/products'
 
-interface ProductsParams {
-  query?: string
+export interface ProductsFilters {
+  query?: string,
+  sortByName?: boolean
 }
 
-export function useProducts({ query }: ProductsParams) {
+export function useProducts({ query, sortByName }: ProductsFilters) {
   const [ products, setProducts ] = useState<Products[]>([])
   const [ length, setLength ] = useState<number>(-1)
 
@@ -15,22 +16,38 @@ export function useProducts({ query }: ProductsParams) {
     return mockProducts.filter(el => el.name.includes(query))
   }
 
+  const sortNameField = (a: Products, b: Products) => {
+    if (a.name < b.name) return -1
+    if (a.name > b.name) return 1
+    return 0
+  }
+
   const hasChange = useMemo(() => {
     return length != products.length
   }, [ length ])
 
   useEffect(() => {
-    if (!query) {
-      setProducts(mockProducts)
+    if (!query && sortByName == null) {
+      let p: any = mockProducts.sort(sortNameField)
+      setProducts(p)
       setLength(-1)
       return
     }
 
-    const filteredByName = filterName(query)
+    let filteredProducts: Array<any> = products;
 
-    setProducts(filteredByName)
-    setLength(filteredByName.length)
-  }, [ query ])
+    if (query) {
+      filteredProducts = filterName(query)
+    }
+
+    if (sortByName !== null) {
+      filteredProducts = sortByName ? filteredProducts.sort(sortNameField) :
+        filteredProducts.sort(sortNameField).reverse()
+    }
+
+    setProducts(filteredProducts)
+    setLength(filteredProducts.length)
+  }, [ query, sortByName ])
 
   return { products, hasChange }
 }

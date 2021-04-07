@@ -3,7 +3,7 @@ import style from './card.module.scss'
 import { Products } from 'core/models/products'
 
 interface ProductCardProps {
-  product: Products
+  product: Products,
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
