@@ -28,12 +28,19 @@ export class FormHelper {
   }
 
   static Clear = (form: any) => {
-    Object.keys(form).forEach(name => {
-      if (form[name].type == 'bool') {
-        form[name].checked = false
+    Object.keys(form).forEach(field => {
+      const { validator } = form[field]
+
+      if (validator && validator > 0) {
+        form[field].error.state = false
+        form[field].error.messages = []
+      }
+
+      if (form[field].type == 'bool') {
+        form[field].checked = false
       }
       else {
-        form[name].value = ''
+        form[field].value = ''
       }
     })
 
@@ -59,9 +66,9 @@ export class FormHelper {
           if (!hasMessage)
             form[field].error.messages.push(v.message)
         }
-      })
 
-      form[field].error.state = form[field].error.messages.length > 0
+        form[field].error.state = form[field].error.messages.length > 0
+      })
     }
   }
 

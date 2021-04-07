@@ -27,7 +27,7 @@ const Catalog = () => {
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
 
   const [ filters, setFilters ] = useState<ProductsFilters>({ query: null, sortByName: false })
-  const [ pagination, setPagination ] = useState({ page: 1, perPage: 10})
+  const [ pagination, setPagination ] = useState({ page: 1, perPage: 12 })
   const [ change, setChange ] = useState<boolean>(false)
 
   const { products, hasChange } = useProducts(filters)
