@@ -2,15 +2,15 @@
 
 .card {
   display: grid;
-  grid-template-rows: 250px 40px 40px;
+  grid-template-rows: 210px 40px 40px;
   border: 1px solid $secondary;
-  width: 250px;
-  height: 330px;
+  width: 220px;
+  height: 280px;
   cursor: pointer;
 
   .image {
     overflow: hidden;
-    height: 250px;
+    height: 210px;
     text-align: center;
 
     img {
@@ -45,7 +45,7 @@
 
   .price {
     padding: 0 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: $primary;
     font-family: 'Rajdhani', sans-serif;
   }
