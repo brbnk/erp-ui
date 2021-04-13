@@ -1,6 +1,6 @@
 import React from 'react'
 import { InsertPhoto } from '@material-ui/icons'
-import { Slot } from 'lib/components'
+import { Slot } from 'common/components'
 
 import style from './InsertModal.module.scss'
 

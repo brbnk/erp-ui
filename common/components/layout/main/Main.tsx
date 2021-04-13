@@ -1,5 +1,5 @@
 import styles from './Main.module.scss'
-import Sidebar from 'lib/components/layout/main/sidebar/Sidebar'
+import Sidebar from 'common/components/layout/main/sidebar/Sidebar'
 
 interface MainPageLayoutProps {
   children: React.ReactChild[]

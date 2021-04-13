@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Products } from 'core/models/products'
 
-import mockProducts from '../../mock/products'
+import mockProducts from '../mock/products'
 
 export interface ProductsFilters {
   query?: string,

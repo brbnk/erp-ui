@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import { LoginForm, User } from './lib/components/main'
-import { useUserDisplayer, useLoginForm } from './lib/hooks/main'
+import { LoginForm, User } from './components/main'
+import { useUserDisplayer, useLoginForm } from './hooks/main'
 import { reducer, authState } from 'contexts/store/authStore'
 import { useReducer } from 'react'
 

@@ -1,6 +1,6 @@
 import ProductCard from './Card'
 import { Products } from 'core/models/products'
-import { Trail } from 'lib/components'
+import { Trail } from 'common/components'
 import { TrailConfigs } from 'core/types'
 
 import style from './List.module.scss'

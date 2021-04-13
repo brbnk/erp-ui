@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "lib/components/layout/main/page/Page.tsx"  ],
+, "common/components/layout/main/page/Page.tsx"  ],
   "exclude": [
     "node_modules"
   ]

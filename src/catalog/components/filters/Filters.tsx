@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { TextInput } from 'lib/components/inputs'
+import { TextInput } from 'common/components/inputs'
 import {
   FilterListOutlined,
   AddCircleOutlined,

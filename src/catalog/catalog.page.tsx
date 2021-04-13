@@ -1,14 +1,14 @@
-import { useEffect, useState, useMemo } from 'react'
-import { Page } from 'lib/components/layout'
-import { Modal, ModalTitle, ModalActions, ModalContent } from 'lib/components/modal'
-import { FormInput, Checkbox } from 'lib/components/inputs'
-import { Template } from 'lib/components'
-import { usePagination, useProducts } from './lib/hooks'
-import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
+import { useEffect, useState } from 'react'
+import { Page } from 'common/components/layout'
+import { Modal, ModalTitle, ModalActions, ModalContent } from 'common/components/modal'
+import { FormInput, Checkbox } from 'common/components/inputs'
+import { Template } from 'common/components'
+import { usePagination, useProducts } from './hooks'
+import { ProductList, Pagination, Filters, InsertModal } from './components'
 import { AddCircleOutline } from '@material-ui/icons'
 import { TrailConfigs, Form } from 'core/types'
 import { FormHelper } from 'core/utils/helpers'
-import { ProductsFilters } from './lib/hooks/useProducts'
+import { ProductsFilters } from './hooks/useProducts'
 
 const axios = require('axios').default
 
