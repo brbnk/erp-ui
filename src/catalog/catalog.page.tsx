@@ -26,7 +26,7 @@ const Catalog = () => {
   const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
 
-  const [ filters, setFilters ] = useState<ProductsFilters>({ query: null, sortByName: false })
+  const [ filters, setFilters ] = useState<ProductsFilters>({ query: null, sortByName: null, sortByPrice: null })
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 12 })
   const [ change, setChange ] = useState<boolean>(false)
 
@@ -35,7 +35,7 @@ const Catalog = () => {
 
 
   useEffect(() => {
-    setFilters({ query: '', sortByName: null })
+    setFilters({ query: '', sortByName: null, sortByPrice: null })
   }, [])
 
   useEffect(() => {
@@ -93,8 +93,12 @@ const Catalog = () => {
     }
   }
 
-  const handleSortFilter = (field: string, value: any) => {
-    setFilters({ sortByName: value })
+  const handleSortFilter = (field: string, value: boolean) => {
+    switch(field) {
+      case 'name': setFilters({ sortByName: value }); break
+      case 'price': setFilters({ sortByPrice: value }); break
+    }
+
     setPagination({ ...pagination, page: 1 })
     setTrailConfigs({ reset: true, reverse: false })
   }

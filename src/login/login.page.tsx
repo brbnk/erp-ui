@@ -8,7 +8,6 @@ import styles from './login.module.scss'
 
 function LoginPage() {
   const router = useRouter()
-  const join = (arr: Array<string>) => arr.join(' ')
   const { page, container } = styles
 
   const { user, visibility, resetUser, assignUser } = useUserDisplayer()

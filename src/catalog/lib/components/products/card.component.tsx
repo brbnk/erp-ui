@@ -21,10 +21,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
       {
         discount ?
           <div className={style.discount}>
-            <b className={style.price}> {discount} </b>
-            <span> {price} </span>
+            <b className={style.price}> {`R$ ${discount}`} </b>
+            <span> {`R$ ${price}`} </span>
           </div> :
-          <b className={style.price}> {price} </b>
+          <b className={style.price}> {`R$ ${price}`} </b>
       }
     </>
   )

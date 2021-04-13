@@ -5,7 +5,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient($gradient);
+  color: $contrast;
+  background: white;
 
   .container {
     display: flex;
@@ -13,13 +14,11 @@
 
     h1 {
       font-size: 3.5rem;
-      color: $secondary;
     }
 
     a {
       transform: translate(2px, 5px);
       text-decoration: none;
-      color: $secondary;
       font-size: 1.1rem;
     }
   }
