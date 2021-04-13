@@ -1,6 +1,6 @@
-import ProductList from './products/list.component'
-import Pagination from './pagination/pagination.components'
-import Filters from './filters/filters.component'
-import InsertModal from './insertModal/insert-modal.component'
+import ProductList from './products/List'
+import Pagination from './pagination/Pagination'
+import Filters from './filters/Filters'
+import InsertModal from './insertModal/InsertModal'
 
 export { ProductList, Pagination, Filters, InsertModal }

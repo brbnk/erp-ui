@@ -1,4 +1,4 @@
-import style from './controls.module.scss'
+import style from './Controls.module.scss'
 import PreviousIcon from '@material-ui/icons/NavigateBefore'
 import NextIcon from '@material-ui/icons/NavigateNext'
 import LastPageIcon from '@material-ui/icons/LastPage'

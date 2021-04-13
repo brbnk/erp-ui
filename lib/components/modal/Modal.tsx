@@ -1,4 +1,4 @@
-import style from './modal.module.scss'
+import style from './Modal.module.scss'
 import { animated, useSpring } from 'react-spring'
 
 interface ModalProps {

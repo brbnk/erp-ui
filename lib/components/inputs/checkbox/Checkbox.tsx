@@ -1,4 +1,4 @@
-import styles from './checkbox.module.scss'
+import styles from './Checkbox.module.scss'
 
 interface CheckboxProps {
   name: string,

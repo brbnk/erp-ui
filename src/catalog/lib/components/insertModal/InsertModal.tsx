@@ -2,7 +2,7 @@ import React from 'react'
 import { InsertPhoto } from '@material-ui/icons'
 import { Slot } from 'lib/components'
 
-import style from './insert-modal.module.scss'
+import style from './InsertModal.module.scss'
 
 interface InsertModalProps {
   children: JSX.Element | JSX.Element[]

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { icons, RenderLink, IconType } from './sidebar'
+import { icons, RenderLink, IconType } from './Sidebar.logic'
 
-import Trail from 'lib/components/trail/trail.component'
-import styles from './sidebar.module.scss'
+import Trail from 'lib/components/trail/Trail'
+import styles from './Sidebar.module.scss'
 
 
 const Sidebar = () => {

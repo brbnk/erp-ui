@@ -8,7 +8,7 @@ import {
   ArrowDownward
 } from '@material-ui/icons'
 
-import style from './filters.module.scss'
+import style from './Filters.module.scss'
 
 interface FilterProps {
   quickSearch: (input: string) => void,

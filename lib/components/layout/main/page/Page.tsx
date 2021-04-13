@@ -1,7 +1,7 @@
-import styles from 'lib/components/layout/main/main.module.scss'
-import Title from 'lib/components/layout/main/title/title.component'
-import Profile from 'lib/components/layout/main/profile/profile.component'
-import Content from 'lib/components/layout/main/content/content.component'
+import styles from 'lib/components/layout/main/Main.module.scss'
+import Title from 'lib/components/layout/main/title/Title'
+import Profile from 'lib/components/layout/main/profile/Profile'
+import Content from 'lib/components/layout/main/content/Content'
 
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'

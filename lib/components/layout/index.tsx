@@ -1,3 +1,3 @@
-import Page from './main/page/page.component'
+import Page from './main/page/Page'
 
 export { Page }

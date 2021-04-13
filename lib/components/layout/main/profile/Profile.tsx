@@ -1,4 +1,4 @@
-import styles from './profile.module.scss'
+import styles from './Profile.module.scss'
 
 interface ProfileProps {
   name: string,

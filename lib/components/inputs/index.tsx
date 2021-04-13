@@ -1,5 +1,5 @@
-import TextInput from 'lib/components/inputs/text/text.component'
-import FormInput from 'lib/components/inputs/form/form-input.component'
-import Checkbox from 'lib/components/inputs/checkbox/checkbox.component'
+import TextInput from 'lib/components/inputs/text/Text'
+import FormInput from 'lib/components/inputs/form/FormInput'
+import Checkbox from 'lib/components/inputs/checkbox/Checkbox'
 
 export { TextInput, FormInput, Checkbox }

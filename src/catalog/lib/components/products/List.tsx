@@ -1,10 +1,10 @@
-import ProductCard from './card.component'
+import ProductCard from './Card'
 import { Products } from 'core/models/products'
 import { Trail } from 'lib/components'
 import { TrailConfigs } from 'core/types'
 
-import style from './list.module.scss'
-import cardStyle from './card.module.scss'
+import style from './List.module.scss'
+import cardStyle from './Card.module.scss'
 
 interface ProductListProps {
   products: Products[],

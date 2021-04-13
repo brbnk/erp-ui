@@ -1,66 +1,46 @@
-import Link from 'next/link'
-import { forwardRef } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { icons, RenderLink, IconType } from './Sidebar_logic'
 
-import {
-  Dashboard,
-  MonetizationOn,
-  Group,
-  ListAlt,
-  Settings
-} from '@material-ui/icons'
+import Trail from 'lib/components/trail/Trail'
+import styles from './Sidebar.module.scss'
 
-export type IconType = 'dashboard' | 'monetization' | 'users' | 'catalog' | 'settings'
 
-const getForwardRef = (icon: any, section: string) => {
-  return forwardRef<any, any>(({ onClick, href }, ref) => {
-    return (
-      <span
-        data-href={href}
-        onClick={onClick}
-        ref={ref}
-        style={{ display: 'flex', flexDirection: 'column', paddingTop: '2px'}}
-      >
-        { icon }
-        <span style={{ fontSize: '.7rem', marginTop: '-3px', fontWeight: 'bold' }}>
-         { section }
-        </span>
-      </span>
-    )
-  })
-}
+const Sidebar = () => {
+  const [ selectedLink, setSelectedLink ] = useState<IconType>('dashboard')
 
-export const icons: Record<IconType, { ref: any, path: string }> = {
-  dashboard: {
-    ref: getForwardRef(<Dashboard/>, "Dashboard"),
-    path: '/dashboard'
-  },
-  monetization: {
-    ref: getForwardRef(<MonetizationOn/>, "Pedidos"),
-    path: '/monetization'
-  },
-  users: {
-    ref: getForwardRef(<Group/>, "Usuários"),
-    path: '/users'
-  },
-  catalog: {
-    ref: getForwardRef(<ListAlt/>, "Catálogo"),
-    path: '/catalog'
-  },
-  settings: {
-    ref: getForwardRef(<Settings/>, "Configs"),
-    path: '/settings'
-  }
-}
+  const { sidebar, selected } = styles
+  const router = useRouter()
 
-interface RenderLinkProps {
-  Component: any,
-  path: string
-}
+  useEffect(() => {
+    let pathname = router.pathname
+    pathname = pathname.slice(1, pathname.length + 1)
 
-export const RenderLink = ({ Component, path }: RenderLinkProps) => {
+    if (pathname != 'dashboard') {
+      setSelectedLink(pathname as IconType)
+    }
+  }, [])
+
   return (
-     <Link href={path} passHref>
-       <Component/>
-    </Link>
+    <div className={sidebar}>
+      <Trail configs={{ reset: false, reverse: false }}>
+        {
+          Object.keys(icons).map((key: IconType, index: number) => {
+            const { ref, path } = icons[key]
+            return (
+              <div
+                key={index}
+                className={ selectedLink == key ? selected : null }
+                onClick={() => setSelectedLink(key)}
+              >
+                <RenderLink Component={ref} path={path}/>
+              </div>
+            )
+          })
+        }
+      </Trail>
+    </div>
   )
 }
+
+export default Sidebar

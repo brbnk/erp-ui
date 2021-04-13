@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 
-import styles from './user.module.scss'
+import styles from './User.module.scss'
 
 type UserProps = {
   user: any,

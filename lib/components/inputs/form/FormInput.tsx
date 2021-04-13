@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { animated, useSpring } from 'react-spring'
-import styles from './form-input.module.scss'
+import styles from './FormInput.module.scss'
 import { Error } from 'core/types'
 
 type HandleInput = (name: string, value: string) => void

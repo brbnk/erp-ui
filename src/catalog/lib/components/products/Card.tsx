@@ -1,4 +1,4 @@
-import style from './card.module.scss'
+import style from './Card.module.scss'
 
 import { Products } from 'core/models/products'
 

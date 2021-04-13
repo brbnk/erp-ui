@@ -1,4 +1,4 @@
-import Form from './form/form.component'
-import User from './user/user.component'
+import LoginForm from './form/LoginForm'
+import User from './user/User'
 
-export { Form, User }
+export { LoginForm, User }

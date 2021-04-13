@@ -1,4 +1,4 @@
-import style from './modalTitle.module.scss'
+import style from './ModalTitle.module.scss'
 
 interface ModalTitleProps {
   children: JSX.Element,

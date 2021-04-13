@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Form, User } from './lib/components/main'
+import { LoginForm, User } from './lib/components/main'
 import { useUserDisplayer, useLoginForm } from './lib/hooks/main'
 import { reducer, authState } from 'contexts/store/authStore'
 import { useReducer } from 'react'
@@ -47,7 +47,7 @@ function LoginPage() {
           changeUser={changeUser}
           visibility={visibility}
         />
-        <Form
+        <LoginForm
           placeholder={form.placeholder}
           forgetText={form.forgetLabel}
           action={submit}

@@ -1,5 +1,5 @@
-import style from './pagination.module.scss'
-import Controls from './controls/controls.components'
+import style from './Pagination.module.scss'
+import Controls from './controls/Controls'
 import { SelectedPage } from '../../hooks/usePagination'
 
 interface PageProps {

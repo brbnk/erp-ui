@@ -1,4 +1,4 @@
-import styles from './text.module.scss'
+import styles from './Text.module.scss'
 
 type InputTextProps = {
   children?: JSX.Element

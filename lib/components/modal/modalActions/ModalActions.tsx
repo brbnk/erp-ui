@@ -10,7 +10,7 @@ interface ModalActionsProps {
   state: State
 }
 
-import style from './modalActions.module.scss'
+import style from './ModalActions.module.scss'
 
 const ModalActions = ({ action, state }: ModalActionsProps) => {
   const { type, event } = action

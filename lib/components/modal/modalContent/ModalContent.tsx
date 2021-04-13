@@ -1,4 +1,4 @@
-import style from './modalContent.module.scss'
+import style from './ModalContent.module.scss'
 
 interface ModalContentProps {
   children: JSX.Element | JSX.Element[]

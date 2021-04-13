@@ -1,7 +1,7 @@
-import ModalTitle from './modalTitle/modalTitle.component'
-import ModalContent from './modalContent/modalContent.component'
-import ModalActions from './modalActions/modalActions.component'
-import Modal from './modal.component'
+import ModalTitle from './modalTitle/ModalTitle'
+import ModalContent from './modalContent/ModalContent'
+import ModalActions from './modalActions/ModalActions'
+import Modal from './Modal'
 
 export {
   ModalTitle,
