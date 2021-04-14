@@ -9,7 +9,7 @@ type FormType = {
   setInput: (input: string) => void
 }
 
-const Form = (f: FormType) => {
+const LoginForm = (f: FormType) => {
   return (
     <>
       <TextInput
@@ -24,4 +24,4 @@ const Form = (f: FormType) => {
   )
 }
 
-export default Form
+export default LoginForm

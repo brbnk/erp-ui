@@ -132,7 +132,6 @@ const Catalog = () => {
     }
 
     const payload = FormHelper.ToJson(form)
-    console.log(payload)
   }
 
   return (

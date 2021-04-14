@@ -23,8 +23,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "common/components/layout/main/page/Page.tsx"  ],
+    "**/*.tsx",
+    "common/components/layout/main/page/Page.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
