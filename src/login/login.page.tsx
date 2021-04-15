@@ -8,7 +8,7 @@ import styles from './login.module.scss'
 
 function LoginPage() {
   const router = useRouter()
-  const { page, container } = styles
+  const { page, login, login_container, hero } = styles
 
   const { user, visibility, resetUser, assignUser } = useUserDisplayer()
   const { resetForm, setPasswordForm, input, setInput, form } = useLoginForm()
@@ -31,7 +31,7 @@ function LoginPage() {
       assignUser({
         found: true,
         name: 'Bruno Nakayabu',
-        photo: 'https://mlkgqpwrt1na.i.optimole.com/jYEI2CY-j_4Wfhth/w:auto/h:auto/q:auto/https://www.negretti.com.br/wp-content/uploads/2020/05/O-QUE-E-ECOMMERCE.jpg'
+        photo: 'https://resultadosdigitais.com.br/blog/files/2018/11/black-friday-para-ecommerce.jpg'
       })
 
       setPasswordForm()
@@ -40,20 +40,25 @@ function LoginPage() {
 
   return (
     <div className={page}>
-      <div className={container}>
-        <h1> SIMPLE ERP SYSTEM </h1>
-        <User
-          user={user}
-          changeUser={changeUser}
-          visibility={visibility}
-        />
-        <LoginForm
-          placeholder={form.placeholder}
-          forgetText={form.forgetLabel}
-          action={submit}
-          setInput={setInput}
-          input={input}
-        />
+      <div className={hero}>
+        <h1> BeWater </h1>
+      </div>
+      <div className={login_container}>
+        <div className={login}>
+          <h1> Sign in </h1>
+          <User
+            user={user}
+            changeUser={changeUser}
+            visibility={visibility}
+          />
+          <LoginForm
+            placeholder={form.placeholder}
+            forgetText={form.forgetLabel}
+            action={submit}
+            setInput={setInput}
+            input={input}
+          />
+        </div>
       </div>
     </div>
   )
