@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { icons, RenderLink, IconType } from './Sidebar.logic'
+import { icons, RenderLink, IconType } from './logic'
 
 import Trail from 'common/components/trail/Trail'
 import styles from './Sidebar.module.scss'
