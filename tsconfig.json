@@ -10,7 +10,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -23,8 +23,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "lib/components/layout/main/page/page.component.tsx"  ],
+    "**/*.tsx",
+    "common/components/layout/main/page/Page.tsx"
+  ],
   "exclude": [
     "node_modules"
   ]

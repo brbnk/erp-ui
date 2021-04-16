@@ -1,0 +1,15 @@
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  overflow-y: auto;
+  overflow-x: hidden;
+  grid-gap: 10px;
+  justify-items: center;
+}
+
+.noContent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

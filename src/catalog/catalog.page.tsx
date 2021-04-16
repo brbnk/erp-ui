@@ -1,14 +1,14 @@
-import { useEffect, useState, useMemo } from 'react'
-import { Page } from 'lib/components/layout'
-import { Modal, ModalTitle, ModalActions, ModalContent } from 'lib/components/modal'
-import { FormInput, Checkbox } from 'lib/components/inputs'
-import { Template } from 'lib/components'
-import { usePagination, useProducts } from './lib/hooks'
-import { ProductList, Pagination, Filters, InsertModal } from './lib/components'
+import { useEffect, useState } from 'react'
+import { Page } from 'common/components/layout'
+import { Modal, ModalTitle, ModalActions, ModalContent } from 'common/components/modal'
+import { FormInput, Checkbox } from 'common/components/inputs'
+import { Template } from 'common/components'
+import { usePagination, useProducts } from './hooks'
+import { ProductList, Pagination, Filters, InsertModal } from './components'
 import { AddCircleOutline } from '@material-ui/icons'
 import { TrailConfigs, Form } from 'core/types'
 import { FormHelper } from 'core/utils/helpers'
-import { ProductsFilters } from './lib/hooks/useProducts'
+import { ProductsFilters } from './hooks/useProducts'
 
 const axios = require('axios').default
 
@@ -26,7 +26,7 @@ const Catalog = () => {
   const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
 
-  const [ filters, setFilters ] = useState<ProductsFilters>({ query: null, sortByName: false })
+  const [ filters, setFilters ] = useState<ProductsFilters>({ query: null, sortByName: null, sortByPrice: null })
   const [ pagination, setPagination ] = useState({ page: 1, perPage: 12 })
   const [ change, setChange ] = useState<boolean>(false)
 
@@ -35,7 +35,7 @@ const Catalog = () => {
 
 
   useEffect(() => {
-    setFilters({ query: '', sortByName: null })
+    setFilters({ query: '', sortByName: null, sortByPrice: null })
   }, [])
 
   useEffect(() => {
@@ -93,8 +93,12 @@ const Catalog = () => {
     }
   }
 
-  const handleSortFilter = (field: string, value: any) => {
-    setFilters({ sortByName: value })
+  const handleSortFilter = (field: string, value: boolean) => {
+    switch(field) {
+      case 'name': setFilters({ sortByName: value }); break
+      case 'price': setFilters({ sortByPrice: value }); break
+    }
+
     setPagination({ ...pagination, page: 1 })
     setTrailConfigs({ reset: true, reverse: false })
   }
@@ -128,7 +132,6 @@ const Catalog = () => {
     }
 
     const payload = FormHelper.ToJson(form)
-    console.log(payload)
   }
 
   return (
@@ -157,20 +160,20 @@ const Catalog = () => {
             <InsertModal>
               <Template slot='identity'>
                 <FormInput
-                  placeholder='Cód. Produto'
+                  label='Cód. Produto'
                   name='code'
                   value={ form.code.value }
                   handleInput={ handleFormInput }
                   error={ form.code.error }
                 />
                 <FormInput
-                  placeholder='Cód. Auxiliar'
+                  label='Cód. Auxiliar'
                   name='auxcode'
                   value={ form.auxcode.value }
                   handleInput={ handleFormInput }
                 />
                 <FormInput
-                  placeholder='Ref'
+                  label='Ref'
                   name='reference'
                   value={ form.reference.value }
                   handleInput={ handleFormInput }
@@ -178,7 +181,7 @@ const Catalog = () => {
                 />
                 <FormInput
                   style={{ gridColumn: '1/4' }}
-                  placeholder='Nome do Produto'
+                  label='Nome do Produto'
                   name='name'
                   value={ form.name.value }
                   handleInput={ handleFormInput }

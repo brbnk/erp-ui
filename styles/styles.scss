@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 @import 'colors';
 
 html, body {
   min-height: 100vh;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Didact Gothic', sans-serif;
   color: $contrast;
   font-size: 10px;
 
