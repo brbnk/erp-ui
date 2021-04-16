@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useTrail, animated } from 'react-spring'
 import { TrailConfigs } from 'core/types'
 
@@ -20,11 +20,11 @@ const Trail = ({ children, containerClass, configs }: TrailProps) => {
   })
 
   return (
-    <>
+    <Fragment>
       {trail.map((t, index) => (
         <animated.div key={index} style={t} className={containerClass}> {items[index]} </animated.div>
       ))}
-    </>
+    </Fragment>
   )
 }
 

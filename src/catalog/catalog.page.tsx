@@ -160,20 +160,20 @@ const Catalog = () => {
             <InsertModal>
               <Template slot='identity'>
                 <FormInput
-                  placeholder='Cód. Produto'
+                  label='Cód. Produto'
                   name='code'
                   value={ form.code.value }
                   handleInput={ handleFormInput }
                   error={ form.code.error }
                 />
                 <FormInput
-                  placeholder='Cód. Auxiliar'
+                  label='Cód. Auxiliar'
                   name='auxcode'
                   value={ form.auxcode.value }
                   handleInput={ handleFormInput }
                 />
                 <FormInput
-                  placeholder='Ref'
+                  label='Ref'
                   name='reference'
                   value={ form.reference.value }
                   handleInput={ handleFormInput }
@@ -181,7 +181,7 @@ const Catalog = () => {
                 />
                 <FormInput
                   style={{ gridColumn: '1/4' }}
-                  placeholder='Nome do Produto'
+                  label='Nome do Produto'
                   name='name'
                   value={ form.name.value }
                   handleInput={ handleFormInput }

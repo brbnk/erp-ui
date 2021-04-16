@@ -16,7 +16,7 @@ const InsertModal = ({ children }: InsertModalProps) => {
 
         </div>
         <div className={style.drop}>
-          <div className={style.empty}>
+          <div className={style.empty} draggable={true}>
             <InsertPhoto/>
             <h4> Drag and drop image here </h4>
           </div>

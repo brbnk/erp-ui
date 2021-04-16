@@ -5,7 +5,7 @@ type Action = {
 
 type State = (s: boolean) => void
 
-interface ModalActionsProps {
+export interface ModalActionsProps {
   action: Action,
   state: State
 }
@@ -13,12 +13,19 @@ interface ModalActionsProps {
 import style from './ModalActions.module.scss'
 
 const ModalActions = ({ action, state }: ModalActionsProps) => {
-  const { type, event } = action
+  const { event } = action
+
+  const actionText = (action: Action) => {
+    switch(action.type) {
+      case 'DELETE': return 'DELETAR'
+      case 'INSERT': return 'INSERIR'
+      case 'UPDATE': return 'EDITAR'
+    }
+  }
+
   return (
     <div className={style.actions}>
-      { type == 'INSERT' ? <span className={style.insert} onClick={event}> INSERIR </span> : null }
-      { type == 'UPDATE' ? <span className={style.insert} onClick={event}> EDITAR </span> : null }
-      { type == 'DELETE' ? <span className={style.insert} onClick={event}> DELETAR </span> : null }
+      <span className={style.insert} onClick={event}> { actionText(action) } </span>
       <span className={style.cancel} onClick={() => state(false)}> CANCELAR </span>
     </div>
   )

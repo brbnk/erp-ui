@@ -27,14 +27,14 @@ const PageLayout = ({ children, title, contentLayout }: PageLayoutProps) => {
 
   return (
     <div className={main}>
-      <div className={header}>
+      <header className={header}>
         <Title text={title} />
         <Profile
           name='Bruno Nakayabu'
           role='Admnistrador'
-          img='https://mlkgqpwrt1na.i.optimole.com/jYEI2CY-j_4Wfhth/w:auto/h:auto/q:auto/https://www.negretti.com.br/wp-content/uploads/2020/05/O-QUE-E-ECOMMERCE.jpg'
+          img='https://resultadosdigitais.com.br/blog/files/2018/11/black-friday-para-ecommerce.jpg'
         />
-      </div>
+      </header>
       <Content layout={contentLayout}>
         { children }
       </Content>

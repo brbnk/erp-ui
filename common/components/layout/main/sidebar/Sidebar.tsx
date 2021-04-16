@@ -22,7 +22,7 @@ const Sidebar = () => {
   }, [])
 
   return (
-    <div className={sidebar}>
+    <section className={sidebar}>
       <Trail configs={{ reset: false, reverse: false }}>
         {
           Object.keys(icons).map((key: IconType, index: number) => {
@@ -39,7 +39,7 @@ const Sidebar = () => {
           })
         }
       </Trail>
-    </div>
+    </section>
   )
 }
 

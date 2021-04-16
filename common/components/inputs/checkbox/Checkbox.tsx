@@ -12,11 +12,12 @@ const Checkbox = ({ name, label, value, handleInput }: CheckboxProps) => {
     <div className={styles.checkbox}>
       <input
         type="checkbox"
-        name={ name }
-        checked={ value }
-        onChange={ e => handleInput(name, e.target.checked) }
+        id={name}
+        name={name}
+        checked={value}
+        onChange={e => handleInput(name, e.target.checked)}
       />
-      <span> { label } </span>
+      <label htmlFor={name}> {label} </label>
     </div>
   )
 }

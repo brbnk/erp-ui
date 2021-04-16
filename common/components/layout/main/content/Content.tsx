@@ -14,9 +14,9 @@ const Content = ({ children, layout }: ContentTypeProps) => {
   })
 
   return (
-    <animated.div className={ layout } style={ props }>
+    <animated.main className={ layout } style={ props }>
       { children }
-    </animated.div>
+    </animated.main>
   )
 }
 

@@ -15,7 +15,7 @@ const Profile = ({ name, role, img }: ProfileProps) => {
         <h4> { name } </h4>
         <span> { role } </span>
       </div>
-      <img src={ img }/>
+      <img src={ img } alt="Foto do Usuário"/>
     </div>
   )
 }

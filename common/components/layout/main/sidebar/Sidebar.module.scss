@@ -9,12 +9,15 @@
   align-items: center;
   background: linear-gradient($sidebar-gradient);
 
-  div, span {
+  span, div {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 100%;
+  }
+
+  div {
     text-decoration: none;
     color: $secondary;
     transition: all .3s;
