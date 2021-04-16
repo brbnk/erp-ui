@@ -1,26 +1,47 @@
 @import "colors";
 
 .page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  background: linear-gradient($gradient);
+  color: $contrast;
+  position: relative;
+  display: grid;
+  grid-template-columns: .6fr .4fr;
 
-  .container {
+  h1 {
+    font-family: 'Julius Sans One', sans-serif;
+  }
+
+  .login_container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .login {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+
+      a {
+        transform: translate(2px, 5px);
+        text-decoration: none;
+        font-size: 1.1rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .hero {
+    color: $secondary;
+    background-color: $contrast;
+    padding: 40px;
 
     h1 {
-      font-size: 3.5rem;
-      color: $secondary;
-    }
-
-    a {
-      transform: translate(2px, 5px);
-      text-decoration: none;
-      color: $secondary;
-      font-size: 1.1rem;
+      font-size: 4.5rem;
+      color: $white;
+      margin: 0;
     }
   }
 }

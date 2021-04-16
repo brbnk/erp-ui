@@ -2,8 +2,7 @@
 
 .layout {
   display: grid;
-  grid-template-rows: 1fr calc(100vh * 0.75) 1fr;
-  grid-gap: 5px;
+  grid-template-rows: .6fr calc(100vh * 0.75) .4fr;
   font-size: 1.6rem;
 
   .insert {

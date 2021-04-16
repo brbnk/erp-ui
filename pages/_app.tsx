@@ -1,6 +1,6 @@
 import 'styles/styles.scss'
 import type { AppProps } from 'next/app'
-import { applyLayout } from 'lib/components/layout/main/main.component'
+import { applyLayout } from 'common/components/layout/main/Main'
 
 export default function MyApp({ Component, pageProps, router }: AppProps) {
   if (router.pathname == '/login')

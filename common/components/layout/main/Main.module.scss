@@ -1,0 +1,27 @@
+@import 'colors';
+
+.main_wrapper {
+  display: grid;
+  grid-template-columns: 45px auto;
+  height: 100vh;
+  position: relative;
+
+  .main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    padding: 0 20px 20px 20px;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px dashed rgba($secondary, .4);
+
+      h1 {
+        color: $primary;
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
