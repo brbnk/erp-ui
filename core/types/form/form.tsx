@@ -11,9 +11,10 @@ export type Error = {
 }
 
 interface FormFields {
-  type: 'string' | 'bool' | 'number' | 'date',
+  type: 'string' | 'bool' | 'number' | 'date' | 'images',
   value?: string | number | readonly string[],
   checked?: boolean,
+  files?: File[],
   validator?: Validator[]
   error?: Error
 }

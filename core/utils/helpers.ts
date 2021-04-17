@@ -1,10 +1,13 @@
 export class FormHelper {
   static ToJson = (form: any) => {
     const payload = Object.keys(form).reduce((payload, key) => {
-      let value: string | boolean;
+      let value: string | boolean | File[];
 
       if (form[key].type == 'bool') {
         value = form[key].checked
+      }
+      else if (form[key].type == 'images')  {
+        value = form[key].files
       }
       else {
         value = form[key].value
@@ -38,6 +41,9 @@ export class FormHelper {
 
       if (form[field].type == 'bool') {
         form[field].checked = false
+      }
+      else if (form[field].type == 'images') {
+        form[field].files = []
       }
       else {
         form[field].value = ''
@@ -85,4 +91,13 @@ export class FormHelper {
   }
 }
 
+// join ClassNames
 export const cn = (arr: Array<string>) => arr.join(' ');
+
+export const fileSize = (size: number) => {
+  if (size === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  const i = Math.floor(Math.log(size) / Math.log(k));
+  return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}

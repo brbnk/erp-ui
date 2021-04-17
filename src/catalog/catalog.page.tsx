@@ -9,17 +9,20 @@ import { AddCircleOutline } from '@material-ui/icons'
 import { TrailConfigs, Form } from 'core/types'
 import { FormHelper } from 'core/utils/helpers'
 import { ProductsFilters } from './hooks/useProducts'
+import { DragAndDrop } from 'common/components/inputs'
 
 const axios = require('axios').default
 
 import style from './catalog.module.scss'
+import modalStyle from './components/insertModal/InsertModal.module.scss'
 
 interface InsertForm {
   code: string,
   name: string,
   auxcode: string,
   reference: string,
-  isactive: boolean
+  isactive: boolean,
+  images: File[],
 }
 
 const Catalog = () => {
@@ -32,7 +35,6 @@ const Catalog = () => {
 
   const { products, hasChange } = useProducts(filters)
   const { pages, paginatedProducts, totalProducts, selected } = usePagination({ ...pagination, products, change })
-
 
   useEffect(() => {
     setFilters({ query: '', sortByName: null, sortByPrice: null })
@@ -75,8 +77,18 @@ const Catalog = () => {
     isactive: {
       checked: false,
       type: 'bool'
+    },
+    images: {
+      files: [],
+      type: 'images'
     }
   })
+
+  const handleFileDrop = (files: File[]) => {
+    const newForm = { ...form }
+    form.images.files = files
+    setForm(newForm)
+  }
 
   const handleChangePage = (num: number) => {
     setPagination({ ...pagination, page: num })
@@ -119,7 +131,6 @@ const Catalog = () => {
     FormHelper.Validator(newForm, name, value)
 
     const dirtyForm = FormHelper.SetValue(newForm, name, value)
-
     setForm({ ...dirtyForm })
   }
 
@@ -132,6 +143,7 @@ const Catalog = () => {
     }
 
     const payload = FormHelper.ToJson(form)
+    console.log(payload)
   }
 
   return (
@@ -158,50 +170,31 @@ const Catalog = () => {
           </ModalTitle>
           <ModalContent>
             <InsertModal>
-              <Template slot='identity'>
-                <FormInput
-                  label='Cód. Produto'
-                  name='code'
-                  value={ form.code.value }
-                  handleInput={ handleFormInput }
-                  error={ form.code.error }
-                />
-                <FormInput
-                  label='Cód. Auxiliar'
-                  name='auxcode'
-                  value={ form.auxcode.value }
-                  handleInput={ handleFormInput }
-                />
-                <FormInput
-                  label='Ref'
-                  name='reference'
-                  value={ form.reference.value }
-                  handleInput={ handleFormInput }
-                  error={ form.reference.error }
-                />
-                <FormInput
-                  style={{ gridColumn: '1/4' }}
-                  label='Nome do Produto'
-                  name='name'
-                  value={ form.name.value }
-                  handleInput={ handleFormInput }
-                  error={ form.name.error }
+              <Template slot='images' className={modalStyle.img_container}>
+                <div className={modalStyle.viewer}>
+                  {
+                    form.images.files.length > 0 ?
+                      form.images.files.map((image, idx) => <img src={URL.createObjectURL(image)} key={idx}/>) :
+                      null
+                  }
+                </div>
+                <DragAndDrop
+                  isMultiple={true}
+                  handleFileDrop={handleFileDrop}
                 />
               </Template>
+              <Template slot='identity'>
+                <FormInput label='Cód. Produto' name='code' value={form.code.value} handleInput={handleFormInput} error={form.code.error}/>
+                <FormInput label='Cód. Auxiliar' name='auxcode' value={form.auxcode.value} handleInput={handleFormInput}/>
+                <FormInput label='Ref' name='reference' value={form.reference.value} handleInput={handleFormInput} error={form.reference.error}/>
+                <FormInput label='Nome do Produto' name='name' value={form.name.value} handleInput={handleFormInput} error={form.name.error} style={{ gridColumn: '1/4' }} />
+              </Template>
               <Template slot='visibility'>
-                <Checkbox
-                  name='isactive'
-                  label='Ativo?'
-                  value={ form.isactive.checked }
-                  handleInput={ handleFormInput }
-                />
+                <Checkbox name='isactive' label='Ativo?' value={form.isactive.checked} handleInput={handleFormInput}/>
               </Template>
             </InsertModal>
           </ModalContent>
-          <ModalActions
-            state={handleModalState}
-            action={{ type: 'INSERT', event: submitForm }}
-          />
+          <ModalActions state={handleModalState} action={{ type: 'INSERT', event: submitForm }}/>
         </Modal> : null
       }
     </Page>
