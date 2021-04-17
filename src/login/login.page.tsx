@@ -41,7 +41,7 @@ function LoginPage() {
   return (
     <div className={page}>
       <div className={hero}>
-        <h1> BeWater </h1>
+
       </div>
       <div className={login_container}>
         <div className={login}>

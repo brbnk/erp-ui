@@ -29,9 +29,9 @@ export class FormHelper {
 
   static Clear = (form: any) => {
     Object.keys(form).forEach(field => {
-      const { validator } = form[field]
+      const { validator, error } = form[field]
 
-      if (validator && validator > 0) {
+      if (validator && error && error.messages.length > 0) {
         form[field].error.state = false
         form[field].error.messages = []
       }
@@ -66,9 +66,9 @@ export class FormHelper {
           if (!hasMessage)
             form[field].error.messages.push(v.message)
         }
-
-        form[field].error.state = form[field].error.messages.length > 0
       })
+
+      form[field].error.state = form[field].error.messages.length > 0
     }
   }
 
@@ -84,3 +84,5 @@ export class FormHelper {
     })
   }
 }
+
+export const cn = (arr: Array<string>) => arr.join(' ');
