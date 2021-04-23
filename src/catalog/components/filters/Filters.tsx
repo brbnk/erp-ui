@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { TextInput } from 'common/components/inputs'
+import { cn } from 'core/utils/helpers'
 import {
   FilterListOutlined,
   AddCircleOutlined,
@@ -26,7 +27,7 @@ interface SortButtonProps {
 const SortButton = ({ selected, sort, field, text }: SortButtonProps) => {
   return (
     <div
-      className={selected !== null ? [style.sort_buttons, style.selected].join(' ') : style.sort_buttons}
+      className={selected !== null ? cn([style.sort_buttons, style.selected]) : style.sort_buttons}
       onClick={() => sort(field)}
     >
       <span> { text } </span>

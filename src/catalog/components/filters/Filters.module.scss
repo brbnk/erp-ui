@@ -17,7 +17,7 @@
 
     .sort_buttons {
       height: 100%;
-      border-radius: 25px;
+      border-radius: 15px;
       display: flex;
       align-items: center;
       justify-content: space-around;
@@ -27,6 +27,8 @@
       gap: 2px;
       cursor: pointer;
       transition: all .3s;
+      font-weight: bold;
+      font-size: 1.3rem;
 
       &:hover {
         background-color: $primary;

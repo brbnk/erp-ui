@@ -18,7 +18,7 @@ function setup() {
 describe("ModalActions", () => {
   test("it should render an action button with text 'INSERIR'", () => {
     const { queryByText } = setup()
-    expect(queryByText('INSERIR')).toBeInTheDocument()
+    expect(queryByText(/inserir/i)).toBeInTheDocument()
   })
 
   test("it should render an action button of type 'EDITAR'", () => {
@@ -26,7 +26,7 @@ describe("ModalActions", () => {
     const btn = render(
       <ModalActions {...props} action={{ type: 'UPDATE', event: jest.fn(() => {} )}}/>, { container })
 
-    expect(btn.queryByText('INSERIR')).toBeInTheDocument()
+    expect(btn.queryByText(/editar/i)).toBeInTheDocument()
   })
 
   test("it should render an action button of type 'DELETAR'", () => {
@@ -34,7 +34,7 @@ describe("ModalActions", () => {
     const btn = render(
       <ModalActions {...props} action={{ type: 'DELETE', event: jest.fn(() => {} )}}/>, { container })
 
-    expect(btn.queryByText('DELETAR')).toBeInTheDocument()
+    expect(btn.queryByText(/deletar/i)).toBeInTheDocument()
   })
 
   test("calls 'event' when INSERT, UPDATE or DELETE button is clicked", () => {

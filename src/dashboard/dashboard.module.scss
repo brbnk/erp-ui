@@ -7,8 +7,10 @@
   grid-gap: 15px;
 
   div {
-    background-color: $secondary;
+    background-color: $white;
     border-radius: 2px;
+    border: $cardBorder;
+    box-shadow: 2px 2px 8px #8f8f8f;
 
     &.orders {
       grid-row: 1 / 3;
