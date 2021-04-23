@@ -14,20 +14,26 @@ const InsertModal = ({ children }: InsertModalProps) => {
         { children }
       </Slot>
       <div className={style.infos}>
-        <div className={style.identity}>
+        <section className={style.identity}>
           <h2> Identificação </h2>
           <Slot name='identity'>
             { children }
           </Slot>
-        </div>
-        <div>
+        </section>
+        <section className={style.characteristics}>
+          <h2> Características </h2>
+          <Slot name='characteristics'>
+            { children }
+          </Slot>
+        </section>
+        <section>
           <h2> Visibilidade </h2>
           <div>
             <Slot name='visibility'>
               { children }
             </Slot>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   )

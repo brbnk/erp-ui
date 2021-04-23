@@ -32,6 +32,10 @@
     flex-direction: column;
     gap: 5px;
 
+    section {
+      margin: 5px 0;
+    }
+
     h2 {
       margin: 0;
       margin-bottom: 10px;
@@ -41,11 +45,18 @@
     .identity {
       & > div {
         display: grid;
-        grid-gap: 5px;
+        grid-gap: 3px;
         width: 100%;
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: repeat(3, 1fr);
-        margin: 10px 0;
+      }
+    }
+
+    .characteristics {
+      & > div {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
       }
     }
   }

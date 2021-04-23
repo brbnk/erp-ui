@@ -1,5 +1,5 @@
 interface TemplateProps {
-  children: JSX.Element[] | JSX.Element,
+  children: JSX.Element[] | JSX.Element | React.ReactNode,
   slot: string,
   className?: string
 }

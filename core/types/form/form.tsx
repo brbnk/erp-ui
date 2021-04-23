@@ -11,12 +11,15 @@ export type Error = {
 }
 
 interface FormFields {
+  group?: string,
   type: 'string' | 'bool' | 'number' | 'date' | 'images',
+  label?: string,
   value?: string | number | readonly string[],
   checked?: boolean,
   files?: File[],
   validator?: Validator[]
-  error?: Error
+  error?: Error,
+  style?: React.CSSProperties
 }
 
-export type Form<T> = Record<keyof T, FormFields>
+export type Form<T> = Record<keyof T | any, FormFields>

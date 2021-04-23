@@ -3,27 +3,17 @@ import { Page } from 'common/components/layout'
 import { Modal, ModalTitle, ModalActions, ModalContent } from 'common/components/modal'
 import { FormInput, Checkbox } from 'common/components/inputs'
 import { Template } from 'common/components'
-import { usePagination, useProducts } from './hooks'
+import { useInsertForm, usePagination, useProducts } from './hooks'
 import { ProductList, Pagination, Filters, InsertModal } from './components'
 import { AddCircleOutline } from '@material-ui/icons'
 import { TrailConfigs, Form } from 'core/types'
 import { FormHelper } from 'core/utils/helpers'
 import { ProductsFilters } from './hooks/useProducts'
-import { DragAndDrop } from 'common/components/inputs'
+import { Products } from 'core/models/products'
 
 const axios = require('axios').default
 
 import style from './catalog.module.scss'
-import modalStyle from './components/insertModal/InsertModal.module.scss'
-
-interface InsertForm {
-  code: string,
-  name: string,
-  auxcode: string,
-  reference: string,
-  isactive: boolean,
-  images: File[],
-}
 
 const Catalog = () => {
   const [ trailConfigs, setTrailConfigs ] = useState<TrailConfigs>({ reset: true, reverse: false })
@@ -35,6 +25,7 @@ const Catalog = () => {
 
   const { products, hasChange } = useProducts(filters)
   const { pages, paginatedProducts, totalProducts, selected } = usePagination({ ...pagination, products, change })
+  const { form: f, submit, clear, set } = useInsertForm()
 
   useEffect(() => {
     setFilters({ query: '', sortByName: null, sortByPrice: null })
@@ -44,56 +35,9 @@ const Catalog = () => {
     setChange(!change)
   }, [ filters ])
 
-  const [ form, setForm ] = useState<Form<InsertForm>>({
-    code: {
-      value: '',
-      type: 'string',
-      validator: [
-        { rule: (e: string) => e.length < 4, message: 'O campo "Cód. Produto" deve ter 3 caracteres no máximo.' },
-        { rule: (e: string) => !e.includes('word'), message: 'Não pode conter a palavra word' }
-      ],
-      error: { state: false, messages: [] }
-    },
-    name: {
-      value: '',
-      type: 'string',
-      validator: [
-        { rule: (e: string) => e.length < 20, message: 'O campo "Nome do Produto" deve ter 20 caracteres no máximo.' }
-      ],
-      error: { state: false, messages: [] }
-    },
-    auxcode: {
-      value: '',
-      type: 'string'
-    },
-    reference: {
-      value: '',
-      type: 'string',
-      validator: [
-        { rule: (e: string) => e.length < 4, message: 'O campo "Ref" deve ter 4 caracteres no máximo.' }
-      ],
-      error: { state: false, messages: [] }
-    },
-    isactive: {
-      checked: false,
-      type: 'bool'
-    },
-    images: {
-      files: [],
-      type: 'images'
-    }
-  })
-
-  const handleFileDrop = (files: File[]) => {
-    const newForm = { ...form }
-    form.images.files = files
-    setForm(newForm)
-  }
-
   const handleChangePage = (num: number) => {
-    setPagination({ ...pagination, page: num })
-
     let reverse = num < selected.page
+    setPagination({ ...pagination, page: num })
     setTrailConfigs({ reset: true, reverse })
   }
 
@@ -119,30 +63,11 @@ const Catalog = () => {
     setModalIsOpen(state)
     setTrailConfigs({ reset: false, reverse: false })
 
-    if (!state) {
-      const clearedForm = FormHelper.Clear({ ...form })
-      setForm({ ...clearedForm })
-    }
-  }
-
-  const handleFormInput = (name: string, value: string | number | boolean) => {
-    const newForm = { ...form }
-
-    FormHelper.Validator(newForm, name, value)
-
-    const dirtyForm = FormHelper.SetValue(newForm, name, value)
-    setForm({ ...dirtyForm })
+    if (!state) clear()
   }
 
   const submitForm = () => {
-    const hasErrors = FormHelper.HasErrors(form)
-
-    if (hasErrors) {
-      alert()
-      return
-    }
-
-    const payload = FormHelper.ToJson(form)
+    const payload = submit()
     console.log(payload)
   }
 
@@ -170,27 +95,75 @@ const Catalog = () => {
           </ModalTitle>
           <ModalContent>
             <InsertModal>
-              <Template slot='images' className={modalStyle.img_container}>
-                <div className={modalStyle.viewer}>
-                  {
-                    form.images.files.length > 0 ?
-                      form.images.files.map((image, idx) => <img src={URL.createObjectURL(image)} key={idx}/>) :
-                      null
-                  }
-                </div>
-                <DragAndDrop
-                  isMultiple={true}
-                  handleFileDrop={handleFileDrop}
+              <Template slot='identity'>
+                <FormInput
+                  name='code'
+                  label={f.code.label}
+                  value={f.code.value}
+                  error={f.code.error}
+                  handleInput={set}
+                />
+                <FormInput
+                  name='auxcode'
+                  label={f.auxcode.label}
+                  value={f.auxcode.value}
+                  handleInput={set}
+                />
+                <FormInput
+                  name='reference'
+                  label={f.reference.label}
+                  value={f.reference.value}
+                  error={f.reference.error}
+                  handleInput={set}
+                />
+                <FormInput
+                  name='name'
+                  label={f.name.label}
+                  value={f.name.value}
+                  error={f.name.error}
+                  handleInput={set}
+                  style={{ gridColumn: '1/4' }}
                 />
               </Template>
-              <Template slot='identity'>
-                <FormInput label='Cód. Produto' name='code' value={form.code.value} handleInput={handleFormInput} error={form.code.error}/>
-                <FormInput label='Cód. Auxiliar' name='auxcode' value={form.auxcode.value} handleInput={handleFormInput}/>
-                <FormInput label='Ref' name='reference' value={form.reference.value} handleInput={handleFormInput} error={form.reference.error}/>
-                <FormInput label='Nome do Produto' name='name' value={form.name.value} handleInput={handleFormInput} error={form.name.error} style={{ gridColumn: '1/4' }} />
-              </Template>
               <Template slot='visibility'>
-                <Checkbox name='isactive' label='Ativo?' value={form.isactive.checked} handleInput={handleFormInput}/>
+                <Checkbox
+                  name='isactive'
+                  label={f.isactive.label}
+                  value={f.isactive.checked}
+                  handleInput={set}
+                />
+              </Template>
+              <Template slot='characteristics'>
+                <FormInput
+                  name='description'
+                  label={f.description.label}
+                  value={f.description.value}
+                  handleInput={set}
+                />
+                <FormInput
+                  name='brand'
+                  label={f.brand.label}
+                  value={f.brand.value}
+                  handleInput={set}
+                />
+                <FormInput
+                  name='categories'
+                  label={f.categories.label}
+                  value={f.categories.value}
+                  handleInput={set}
+                />
+                <FormInput
+                  name='supplier'
+                  label={f.supplier.label}
+                  value={f.supplier.value}
+                  handleInput={set}
+                />
+                <FormInput
+                  name='keywords'
+                  label={f.keywords.label}
+                  value={f.keywords.value}
+                  handleInput={set}
+                />
               </Template>
             </InsertModal>
           </ModalContent>
