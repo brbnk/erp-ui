@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { animated, useSpring } from 'react-spring'
+import { animated, useSpring } from '@react-spring/web'
 import styles from './FormInput.module.scss'
 import { Error } from 'core/types'
 

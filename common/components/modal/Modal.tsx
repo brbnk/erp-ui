@@ -1,5 +1,5 @@
 import style from './Modal.module.scss'
-import { animated, useSpring } from 'react-spring'
+import { animated, useSpring } from '@react-spring/web'
 
 interface ModalProps {
   children?: JSX.Element | JSX.Element[]
