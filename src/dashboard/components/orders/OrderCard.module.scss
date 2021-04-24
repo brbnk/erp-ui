@@ -20,10 +20,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 1px;
     width: 100%;
+    min-height: 90px;
 
-    h3, h4, p {
+    h1, h3, h4, p {
       margin: 0;
     }
 
@@ -32,6 +32,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        p {
+          font-size: 1.2rem;
+        }
       }
     }
 
@@ -44,24 +48,47 @@
         align-items: flex-end;
 
         .order__price {
-          font-size: 1.4rem;
+          font-size: 1.7rem;
           font-weight: bold;
+          font-family: 'Rajdhani', sans-serif;
         }
 
-        .order__freight {
-          font-size: 1.0rem;
+        .order__shipping {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+
+          svg {
+            color: $contrast;
+          }
+
+          span {
+            font-size: 1.2rem;
+          }
         }
       }
     }
 
     .status {
-      background-color: #53f8e2b6;
+      background-color: #53f8e288;
       color: $contrast;
       width: fit-content;
       height: 15px;
       padding: 0 5px;
       border-radius: 8px;
       font-weight: bold;
+
+      &.status__processing {
+        background-color: #fff9a3;
+      }
+
+      &.status__delivering {
+        background-color: #d4a7ffb6;
+      }
+
+      &.status__finalized {
+        background-color: #53f8e2fd;
+      }
     }
   }
 }

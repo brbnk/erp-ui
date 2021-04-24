@@ -1,4 +1,5 @@
 import { Base } from './base'
+import { OrderStatus } from 'core/enums/order-status'
 
 interface Address {
   street: string,
@@ -18,5 +19,5 @@ export interface Order extends Base {
   customer: Customer
   total: number,
   freight: string,
-  status: string
+  status: OrderStatus
 }

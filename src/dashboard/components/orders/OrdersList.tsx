@@ -3,7 +3,7 @@ import { AccessTime } from '@material-ui/icons'
 import { Order } from 'core/models/orders'
 import OrderCard from './OrderCard'
 
-import style from './Orders.module.scss'
+import style from './OrdersList.module.scss'
 
 interface OrdersProps extends React.HTMLAttributes<HTMLDivElement> {
   orders: Order[]
@@ -16,7 +16,7 @@ function OrderList({ orders, ...rest }: OrdersProps)  {
     <section className={layout__orders} { ...rest }>
       <div className={orders_header}>
         <AccessTime/>
-        <h2> Pedidos Recentes </h2>
+        <h1> Pedidos Recentes </h1>
       </div>
       <div className={orders__card}>
         {

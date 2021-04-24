@@ -15,7 +15,7 @@ const orders: Order[] = [
     },
     total: 278.10,
     freight: 'Sedex',
-    status: 'Em andamento'
+    status: 0
   },
   {
     code: '98732',
@@ -31,7 +31,7 @@ const orders: Order[] = [
     },
     total: 678.90,
     freight: 'Jadlog',
-    status: 'Em andamento'
+    status: 0
   },
   {
     code: '34521',
@@ -47,7 +47,7 @@ const orders: Order[] = [
     },
     total: 78.90,
     freight: 'Sedex',
-    status: 'Em andamento'
+    status: 1
   },
   {
     code: '98231',
@@ -63,7 +63,7 @@ const orders: Order[] = [
     },
     total: 178.90,
     freight: 'Sedex',
-    status: 'Em andamento'
+    status: 2
   },
   {
     code: '7821',
@@ -79,7 +79,7 @@ const orders: Order[] = [
     },
     total: 1098.90,
     freight: 'Sedex',
-    status: 'Em andamento'
+    status: 2
   },
   {
     code: '3762',
@@ -95,24 +95,24 @@ const orders: Order[] = [
     },
     total: 2398.90,
     freight: 'Sedex',
-    status: 'Em andamento'
-  },
-  {
-    code: '476322',
-    customer: {
-      fullname: 'Claire Rosas',
-      address: {
-        street: 'Rua teste 7',
-        number: '5872',
-        zipcode: '90978-234',
-        state: 'SC',
-        city: 'Florianópolis'
-      }
-    },
-    total: 398.90,
-    freight: 'Sedex',
-    status: 'Em andamento'
+    status: 1
   }
+  // {
+  //   code: '476322',
+  //   customer: {
+  //     fullname: 'Claire Rosas',
+  //     address: {
+  //       street: 'Rua teste 7',
+  //       number: '5872',
+  //       zipcode: '90978-234',
+  //       state: 'SC',
+  //       city: 'Florianópolis'
+  //     }
+  //   },
+  //   total: 398.90,
+  //   freight: 'Sedex',
+  //   status: 2
+  // }
 ]
 
 export default orders
