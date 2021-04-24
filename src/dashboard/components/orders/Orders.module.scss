@@ -1,0 +1,27 @@
+.layout__orders {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .orders_header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    svg {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      margin: 0;
+      transform: translateY(-1px);
+    }
+  }
+
+  .orders__card {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(85px, 90px));
+    grid-gap: 5px;
+    height: 100%;
+  }
+}
