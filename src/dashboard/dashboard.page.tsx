@@ -9,6 +9,7 @@ import { SimpleChart } from 'common/d3-chart'
 
 const Dashboard = () => {
   const chart = useRef<HTMLDivElement>(null)
+  const [ data, setData ] = useState([])
   const [ canvas, setCanvas ] = useState<any>()
   const [ orders, setOrders ] = useState<Order[]>([])
   const { dimensions } = useElementDimensions(chart)
@@ -22,6 +23,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     setOrders(mock)
+    setData([4, 3, 7, 2, 2, 2, 2, 7, 3, 4, 10, 20, 13, 17, 7, 6])
   }, [])
 
   useEffect(() => {
@@ -34,8 +36,21 @@ const Dashboard = () => {
   }, [ dimensions ])
 
   useEffect(() => {
-    if (canvas) canvas.init([4, 3, 7, 2, 2, 2, 2, 7, 3, 4, 10, 20, 13, 17, 7, 6], dimensions)
+    if (canvas) canvas.init(data, dimensions)
   }, [ canvas ])
+
+  useEffect(() => {
+    if (canvas) canvas.updateData(data)
+  }, [ data ])
+
+  const changeData = () => {
+    let arr = []
+
+    for (let i = 0; i < 20; i ++) {
+      arr.push(Math.round(Math.random()  * 20))
+    }
+    setData(arr)
+  }
 
   return (
     <Page title='Dashboard' contentLayout={layout}>
@@ -51,7 +66,7 @@ const Dashboard = () => {
 
         </div>
         <div>
-
+          <button onClick={changeData}> Change Data </button>
         </div>
       </section>
       <section className={layout__left}>

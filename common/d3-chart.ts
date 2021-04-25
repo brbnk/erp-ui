@@ -9,7 +9,7 @@ select.prototype.transition = transition
 export class SimpleChart {
   private svg: any;
   private chart: any;
-  private circles: any;
+  private allCircles: any;
   private dims: DOMRect;
   private innerHeight: number;
   private innerWidth: number;
@@ -43,18 +43,17 @@ export class SimpleChart {
   }
 
   public updateDimensions(dimensions) {
-    if (!this.xAxisBottomG || !this.circles)
+    if (!this.xAxisBottomG || !this.allCircles)
       return
 
     this.setDimensions(dimensions)
     this.setScales()
     this.updateAxes()
 
-    this.circles = this.chart.selectAll('.myCircle')
+    this.allCircles = this.chart.selectAll('.myCircle')
       .transition().duration(500)
         .attr("cx", (_, index) => this.xScale(index) + this.margin.bottom)
         .attr("cy", (data) => this.yScale(data) + this.margin.left)
-
   }
 
   private setDimensions(dims: DOMRect) {
@@ -105,16 +104,33 @@ export class SimpleChart {
       .tickSize(-(this.innerWidth - this.margin.right))
   }
 
-  private updateData = (data) => {
+  public updateData = (data) => {
     this.data = data;
-    this.circles = this.chart.selectAll(".myCircle").data(this.data);
-    this.circles
-      .enter()
-      .append("circle")
-      .attr("class", "myCircle")
-      .attr("r", 5)
+    this.allCircles = this.chart.selectAll(".myCircle").data(this.data);
+
+    console.log(data)
+
+    this.allCircles
+      .transition().duration(500)
       .attr("cx", (_, index) => this.xScale(index) + this.margin.bottom)
       .attr("cy", (data) => this.yScale(data) + this.margin.left)
       .attr("fill", "lightgreen");
+
+    this.enter()
   };
+
+  private enter() {
+    this.allCircles
+      .enter().append('circle').attr("class", "myCircle")
+        .attr('r', 5)
+        .attr("cx", (_, index) => this.xScale(index) + this.margin.bottom)
+        .attr("cy", (data) => this.yScale(data) + this.margin.left)
+        .attr("fill", "lightgreen");
+
+    this.exit()
+  }
+
+  private exit() {
+    this.allCircles.exit().remove()
+  }
 }
