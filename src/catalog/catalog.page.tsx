@@ -6,10 +6,8 @@ import { Template } from 'common/components'
 import { useInsertForm, usePagination, useProducts } from './hooks'
 import { ProductList, Pagination, Filters, InsertModal } from './components'
 import { AddCircleOutline } from '@material-ui/icons'
-import { TrailConfigs, Form } from 'core/types'
-import { FormHelper } from 'core/utils/helpers'
+import { TrailConfigs } from 'core/types'
 import { ProductsFilters } from './hooks/useProducts'
-import { Products } from 'core/models/products'
 
 const axios = require('axios').default
 

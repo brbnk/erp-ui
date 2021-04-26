@@ -1,0 +1,94 @@
+@import 'colors';
+
+.card {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  border-radius: 2px;
+  border: 1px solid rgb(223, 223, 223);
+  height: 100%;
+  padding: 5px;
+  box-shadow: 1px 1px 2px $secondary;
+  transition: .5s background-color, .3s box-shadow;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(236, 236, 236);
+    box-shadow: none;
+  }
+
+  .card_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 90px;
+
+    h1, h3, h4, p {
+      margin: 0;
+    }
+
+    &.card__info_customer {
+      .customer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &.card__info_order {
+      align-items: flex-end;
+
+      .order {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .order__price {
+          font-size: 1.7rem;
+          font-weight: bold;
+          font-family: 'Rajdhani', sans-serif;
+        }
+
+        .order__shipping {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+
+          svg {
+            color: $contrast;
+          }
+
+          span {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+
+    .status {
+      background-color: #53f8e288;
+      color: $contrast;
+      width: fit-content;
+      height: 15px;
+      padding: 0 5px;
+      border-radius: 8px;
+      font-weight: bold;
+
+      &.status__processing {
+        background-color: #fff9a3;
+      }
+
+      &.status__delivering {
+        background-color: #d4a7ffb6;
+      }
+
+      &.status__finalized {
+        background-color: #53f8e2fd;
+      }
+    }
+  }
+}
