@@ -3,9 +3,10 @@ import { Page } from 'common/components/layout'
 import { Order } from 'core/models/orders'
 import { OrderList } from './components'
 import { useElementDimensions } from 'common/hooks/elementDimensions'
+import { SimpleChart } from './components/charts/simple-chart'
+
 import mock from './mock/orders'
 import styles from './dashboard.module.scss'
-import { SimpleChart } from 'common/d3-chart'
 
 const Dashboard = () => {
   const chart = useRef<HTMLDivElement>(null)
@@ -32,15 +33,15 @@ const Dashboard = () => {
     }
 
     if (canvas && dimensions)
-      canvas.updateDimensions(dimensions)
+      canvas.UpdateDimensions(dimensions)
   }, [ dimensions ])
 
   useEffect(() => {
-    if (canvas) canvas.init(data, dimensions)
+    if (canvas) canvas.Init(data, dimensions)
   }, [ canvas ])
 
   useEffect(() => {
-    if (canvas) canvas.updateData(data)
+    if (canvas) canvas.UpdateData(data)
   }, [ data ])
 
   const changeData = () => {
