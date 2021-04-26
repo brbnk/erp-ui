@@ -21,14 +21,14 @@ export class SimpleChart extends D3Chart {
   }
 
   /* BEGIN: Abstract Methods Implemented */
-  public Init(data, dimensions) {
-    super.SetDimensions(dimensions)
+  public Init(data: any, dimensions: DOMRect) {
+    this.SetDimensions(dimensions)
     this.setScales()
-    this.createAxes()
+    this.createAxis()
     this.UpdateData(data)
   }
 
-  public UpdateDimensions(dimensions) {
+  public UpdateDimensions(dimensions: DOMRect) {
     if (!this.xAxisBottomG || !this.allCircles)
       return
 
@@ -72,7 +72,7 @@ export class SimpleChart extends D3Chart {
   /* END: Abstract Methods Implemented */
 
   private updateAxes() {
-    this.scaleAxes()
+    this.ScaleAxis()
 
     this.xAxisBottomG
       .transition().duration(200)
@@ -89,8 +89,8 @@ export class SimpleChart extends D3Chart {
     this.yScale = scaleLinear().domain([0, 20]).range([this.innerHeight - this.margin.top, 0])
   }
 
-  private createAxes() {
-    this.scaleAxes()
+  private createAxis() {
+    this.ScaleAxis()
 
     this.xAxisBottomG = this.chart
       .append('g')
@@ -103,7 +103,7 @@ export class SimpleChart extends D3Chart {
       .call(this.yAxisLeft)
   }
 
-  private scaleAxes() {
+  public ScaleAxis() {
     this.xAxisBottom = axisBottom(null)
       .scale(this.xScale)
       .tickSize(-(this.innerHeight - this.margin.top))

@@ -3,9 +3,10 @@ import { Page } from 'common/components/layout'
 import { Order } from 'core/models/orders'
 import { OrderList } from './components'
 import { useElementDimensions } from 'common/hooks/elementDimensions'
-import { SimpleChart } from './components/charts/simple-chart'
+import { BarChart } from './components/charts/bar-chart'
 
 import mock from './mock/orders'
+import { mockData, xAxis, chartAxisDetails } from './mock/bar-chart-mock'
 import styles from './dashboard.module.scss'
 
 const Dashboard = () => {
@@ -24,12 +25,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     setOrders(mock)
-    setData([4, 3, 7, 2, 2, 2, 2, 7, 3, 4, 10, 20, 13, 17, 7, 6])
+    setData(mockData)
   }, [])
 
   useEffect(() => {
     if (!canvas) {
-      setCanvas(new SimpleChart(chart))
+      setCanvas(new BarChart(chart))
     }
 
     if (canvas && dimensions)
@@ -44,13 +45,22 @@ const Dashboard = () => {
     if (canvas) canvas.UpdateData(data)
   }, [ data ])
 
-  const changeData = () => {
-    let arr = []
+  const getRandomInt = (min: number, max: number) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 
-    for (let i = 0; i < 20; i ++) {
-      arr.push(Math.round(Math.random()  * 20))
-    }
-    setData(arr)
+  const changeData = () => {
+    let randomXAxis = xAxis.slice(0, getRandomInt(1, xAxis.length - 1))
+
+    let data = randomXAxis.reduce((startArray, letter) => {
+      return [...startArray, { name: letter, value: Math.random() }]
+    }, [])
+
+    let randomData = Object.assign(data, chartAxisDetails)
+
+    setData(randomData)
   }
 
   return (
