@@ -1,20 +1,22 @@
 import React from 'react'
-import { AccessTime } from '@material-ui/icons'
-import { Order } from 'core/models/orders'
 import OrderCard from './OrderCard'
+import { Order } from 'core/models/orders'
+import { AccessTime } from '@material-ui/icons'
 
-import style from './OrdersList.module.scss'
+import orderListStyle from './OrdersList.module.scss'
+import dashboardStyle from '../../dashboard.module.scss'
 
 interface OrdersProps extends React.HTMLAttributes<HTMLDivElement> {
   orders: Order[]
 }
 
 function OrderList({ orders, ...rest }: OrdersProps)  {
-  const { layout__orders, orders__card, orders_header } = style
+  const { layout__orders, orders__card } = orderListStyle
+  const { section_header } = dashboardStyle
 
   return (
     <section className={layout__orders} { ...rest }>
-      <div className={orders_header}>
+      <div className={section_header}>
         <AccessTime/>
         <h1> Pedidos Recentes </h1>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Page } from 'common/components/layout'
 import { Order } from 'core/models/orders'
-import { OrderList } from './components'
+import { OrderList, Insights } from './components'
 import { useElementDimensions } from 'common/hooks/elementDimensions'
 import { BarChart } from './components/charts/bar-chart'
 
@@ -72,14 +72,14 @@ const Dashboard = () => {
         }}
         orders={orders}
       />
-      <section className={layout__stats}>
-        <div style={{ height: '100%', width: '100%' }} ref={chart}>
-
-        </div>
-        <div>
-          <button onClick={changeData}> Change Data </button>
-        </div>
-      </section>
+      <Insights
+        ref={chart}
+        changeData={changeData}
+        style={{
+          gridRow: '1/2',
+          gridColumn: '2/4'
+        }}
+      />
       <section className={layout__left}>
 
       </section>

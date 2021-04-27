@@ -23,6 +23,8 @@ export class BarChart extends D3Chart {
     this.data = data
     this.margin.bottom = 20
     this.margin.left = 35
+    this.margin.right = 0
+    this.margin.top = 25
 
     this.SetDimensions(dimensions)
     this.setScales()
@@ -53,7 +55,7 @@ export class BarChart extends D3Chart {
     this.updateAxis()
 
     this.allRects = this.chart
-      .attr('fill', 'tomato')
+      .attr('fill', '#5f5fa3')
       .selectAll('rect')
       .data(this.data)
 
