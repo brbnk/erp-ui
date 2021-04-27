@@ -21,7 +21,7 @@ export class BarChart extends D3Chart {
 
   public Init(data: any, dimensions: DOMRect) {
     this.data = data
-    this.margin.bottom = 20
+    this.margin.bottom = 23
     this.margin.left = 35
     this.margin.right = 0
     this.margin.top = 25

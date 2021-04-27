@@ -11,7 +11,7 @@ interface InsightsProps extends React.HTMLAttributes<HTMLDivElement>{
 const Insights = forwardRef<any, any>(({ changeData, ...rest }: InsightsProps, ref) => {
   const [ selectedMarketplace, setSelectedMarketplace ] = useState<string>("Mercado Livre")
   const [ marketplaces, setMarketplaces ] = useState<string[]>([
-    "Mercado Livre", "Amazon", "Magazine Luiza"
+    "Mercado Livre", "Amazon", "Magazine Luiza", "Via Varejo", "B2W", "Madeira Madeira", "Submarino"
   ])
 
   const { layout__stats, stats_container, stats_filter, filters, selected } = insightStyle
