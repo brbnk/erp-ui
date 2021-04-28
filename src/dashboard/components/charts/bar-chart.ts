@@ -14,6 +14,7 @@ export class BarChart extends D3Chart {
   private yAxisLeft: any;
   private xAxisBottomG: any;
   private yAxisLeftG: any;
+  private color: any;
 
   constructor(node: MutableRefObject<HTMLDivElement>) {
     super(node)
@@ -55,7 +56,7 @@ export class BarChart extends D3Chart {
     this.updateAxis()
 
     this.allRects = this.chart
-      .attr('fill', '#5f5fa3')
+      .attr('fill', this.color)
       .selectAll('rect')
       .data(this.data)
 
@@ -145,5 +146,9 @@ export class BarChart extends D3Chart {
           .attr("transform", `translate(${this.margin.left}, 0)`)
           .call(this.yAxisLeft)
         )
+  }
+
+  public updateColor(color: string) {
+    this.color = color;
   }
 }

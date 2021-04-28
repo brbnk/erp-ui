@@ -37,7 +37,7 @@ export abstract class D3Chart implements RenderLifecycle {
       .attr('height', '100%')
 
     this.margin = { top: 80, bottom: 15, left: 65, right: 80 }
-    this.transition = 200
+    this.transition = 300
 
     this.chart = this.svg.append('g')
   }
