@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Page } from 'common/components/layout'
 import { Order } from 'core/models/orders'
 import { OrderList, Insights } from './components'
-import { Marketplace } from './components/insights'
+import { Marketplace } from './components/insights/Insights'
 import { useElementDimensions } from 'common/hooks/elementDimensions'
 import { BarChart } from './components/charts/bar-chart'
 
