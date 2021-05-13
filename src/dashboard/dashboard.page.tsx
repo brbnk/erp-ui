@@ -59,6 +59,8 @@ const Dashboard = () => {
   }
 
   const changeData = (marketplace: Marketplace) => {
+    if (marketplace.name === selectedMarketplace.name) return
+
     let randomXAxis = xAxis.slice(0, getRandomInt(1, xAxis.length - 1))
 
     let data = randomXAxis.reduce((startArray, letter) => {
