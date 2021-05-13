@@ -14,6 +14,7 @@ export class BarChart extends D3Chart {
   private yAxisLeft: any;
   private xAxisBottomG: any;
   private yAxisLeftG: any;
+  private color: any;
 
   constructor(node: MutableRefObject<HTMLDivElement>) {
     super(node)
@@ -21,8 +22,10 @@ export class BarChart extends D3Chart {
 
   public Init(data: any, dimensions: DOMRect) {
     this.data = data
-    this.margin.bottom = 20
+    this.margin.bottom = 23
     this.margin.left = 35
+    this.margin.right = 0
+    this.margin.top = 25
 
     this.SetDimensions(dimensions)
     this.setScales()
@@ -53,7 +56,7 @@ export class BarChart extends D3Chart {
     this.updateAxis()
 
     this.allRects = this.chart
-      .attr('fill', 'tomato')
+      .attr('fill', this.color)
       .selectAll('rect')
       .data(this.data)
 
@@ -143,5 +146,9 @@ export class BarChart extends D3Chart {
           .attr("transform", `translate(${this.margin.left}, 0)`)
           .call(this.yAxisLeft)
         )
+  }
+
+  public updateColor(color: string) {
+    this.color = color;
   }
 }
